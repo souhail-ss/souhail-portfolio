@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Theme tokens ──────────────────────────────────────────── */
+/* Default = grey mode */
+:root {
+  --accent:        #6366f1;
+  --accent-dk:     #4338ca;
+  --accent-a10:    rgba(99,102,241,0.10);
+  --accent-a15:    rgba(99,102,241,0.15);
+  --accent-a20:    rgba(99,102,241,0.20);
+  --accent-a25:    rgba(99,102,241,0.25);
+  --accent-a30:    rgba(99,102,241,0.30);
+  --accent-a40:    rgba(99,102,241,0.40);
+  --accent-a50:    rgba(99,102,241,0.50);
+  --accent-a60:    rgba(99,102,241,0.60);
+  --accent-a80:    rgba(99,102,241,0.80);
+  --accent-dk-a10: rgba(67,56,202,0.10);
+  --accent-dk-a20: rgba(67,56,202,0.20);
+  --accent-dk-a30: rgba(67,56,202,0.30);
+  --bg-body:       #1a1a1a;
+}
+
+/* Dark mode */
+html.dark {
+  --accent:        #6366f1;
+  --accent-dk:     #4338ca;
+  --accent-a10:    rgba(99,102,241,0.10);
+  --accent-a15:    rgba(99,102,241,0.15);
+  --accent-a20:    rgba(99,102,241,0.20);
+  --accent-a25:    rgba(99,102,241,0.25);
+  --accent-a30:    rgba(99,102,241,0.30);
+  --accent-a40:    rgba(99,102,241,0.40);
+  --accent-a50:    rgba(99,102,241,0.50);
+  --accent-a60:    rgba(99,102,241,0.60);
+  --accent-a80:    rgba(99,102,241,0.80);
+  --accent-dk-a10: rgba(67,56,202,0.10);
+  --accent-dk-a20: rgba(67,56,202,0.20);
+  --accent-dk-a30: rgba(67,56,202,0.30);
+  --bg-body:       #0a0a0a;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background: var(--accent-a25);
+  color: white;
+}

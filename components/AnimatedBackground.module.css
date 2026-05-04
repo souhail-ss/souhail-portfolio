@@ -1,0 +1,40 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+.b0 { animation: moveX 23s linear infinite alternate,
+                 moveY 17s linear infinite alternate; }
+
+.b1 { animation: moveX 31s linear infinite alternate,
+                 moveY 19s linear infinite alternate; }
+
+.b2 { animation: moveX 18s linear infinite alternate,
+                 moveY 27s linear infinite alternate; }
+
+.b3 { animation: moveX 37s linear infinite alternate,
+                 moveY 13s linear infinite alternate; }
+
+.b4 { animation: moveX 26s linear infinite alternate,
+                 moveY 33s linear infinite alternate; }
+
+@keyframes moveX {
+  from { transform: translateX(-28vw); }
+  to   { transform: translateX(28vw);  }
+}
+
+@keyframes moveY {
+  from { transform: translateY(-22vh); }
+  to   { transform: translateY(22vh);  }
+}

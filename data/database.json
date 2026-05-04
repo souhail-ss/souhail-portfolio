@@ -1,0 +1,448 @@
+{
+  "profile": {
+    "id": "souhail-ziyadi",
+    "firstName": "Souhail",
+    "lastName": "Ziyadi",
+    "fullName": "Souhail Ziyadi",
+    "title": "Développeur Full Stack",
+    "headline": "Full Stack Developer | React • Next.js • NestJS",
+    "email": "souhail.ziyadi2022@outlook.com",
+    "phone": "+33 7 66 58 63 30",
+    "location": {
+      "city": "Paris",
+      "region": "Île-de-France",
+      "country": "France",
+      "countryCode": "FR"
+    },
+    "profileImage": "/profile.png",
+    "coverImage": "",
+    "about": {
+      "short": "Développeur Full Stack JavaScript/TypeScript avec plus d'un an d'expérience dans la conception et le développement d'applications web et mobiles modernes. Expertise en React, Next.js, NestJS, et architectures microservices.",
+      "long": "Développeur Full Stack JavaScript/TypeScript avec plus d'un an d'expérience dans la conception et le développement d'applications web et mobiles modernes. Expertise en React, Next.js, NestJS, et architectures microservices. Maîtrise de TypeScript, REST APIs, et bases de données (MongoDB/PostgreSQL).\n\nExpérience avec les outils modernes : Git, Docker, Jest, CI/CD, et méthodologies Agile/Scrum. Compétences en React Native, Flutter, et optimisation des performances.\n\nPassionné par la création d'interfaces utilisateur réactives et l'architecture backend scalable. Capacité démontrée à livrer des solutions techniques innovantes avec une attention particulière à la qualité du code et les best practices du développement moderne.",
+      "philosophy": "Stack : TypeScript, React, Next.js, NestJS, Node.js, PostgreSQL, MongoDB, Docker"
+    },
+    "availability": {
+      "status": "available",
+      "type": "cdi",
+      "preferredContract": ["CDI"],
+      "remote": {
+        "paris": ["hybride", "full-remote", "on-site"],
+        "france": ["full-remote"]
+      },
+      "startDate": "2025-01",
+      "salary": {
+        "range": "40k€+",
+        "flexible": true,
+        "note": "Minimum 40k€"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "https://www.linkedin.com/in/souhail-ziyadi-2811a5258/",
+      "github": "https://github.com/souhail-ss",
+      "portfolio": "",
+      "twitter": "",
+      "stackoverflow": ""
+    },
+    "resume": {
+      "url": "/cv-souhail-ziyadi.pdf",
+      "lastUpdated": "2025-01"
+    }
+  },
+  "statistics": {
+    "yearsOfExperience": 1,
+    "projectsCompleted": 3,
+    "technologiesMastered": 15,
+    "clientSatisfaction": 100,
+    "certifications": 0,
+    "languages": 3,
+    "coffeeConsumed": 9999
+  },
+  "experiences": [
+    {
+      "id": "weneeds",
+      "company": "Weneeds",
+      "companyUrl": "",
+      "companyLogo": "",
+      "coverImage": "",
+      "title": "Développeur Full Stack",
+      "type": "internship",
+      "startDate": "2024-07",
+      "endDate": "2025-03",
+      "isCurrent": false,
+      "location": {
+        "city": "Paris",
+        "region": "Île-de-France",
+        "country": "France",
+        "remote": "onsite"
+      },
+      "description": "Développeur full-stack pour Weneeds, plateforme de recrutement boostée par l'IA. Conception et développement d'une application basée sur une architecture microservices avec NX monorepo, NestJS et Next.js.",
+      "responsibilities": [
+        "Développement d'une plateforme en architecture microservices avec NX monorepo, intégrant NestJS (backend API) et Next.js (frontend) avec TypeScript pour scalabilité et maintenabilité",
+        "Développement d'interfaces web responsives avec Next.js, React, TypeScript et styled-components, conformes aux maquettes design avec composants réutilisables",
+        "Conception et mise en place d'un processus d'onboarding utilisateur multi-étapes personnalisé et guidé, améliorant significativement l'accessibilité, l'engagement et la rétention des utilisateurs",
+        "Développement d'un système de widgets draggables et personnalisables sur les profils utilisateurs avec React DnD (drag-and-drop)",
+        "Intégration des endpoints IA (Django, Python) dans le backend NestJS pour le matching intelligent entre candidats et offres d'emploi",
+        "Mise en œuvre d'un moteur de recherche avancé avec filtres dynamiques multiples (localisation, salaire, type de contrat) incluant endpoints backend REST avec TypeORM, PostgreSQL et interface utilisateur interactive avec debouncing et pagination",
+        "Intégration et optimisation d'API externes REST (LinkedIn, GitHub, RapidApi) pour enrichissement de profils et gestion dynamique des données en temps réel",
+        "Optimisation de l'expérience utilisateur (UX/UI) avec feedbacks visuels interactifs, animations, notifications toast, et navigation intuitive",
+        "Tests unitaires et d'intégration avec Jest pour assurer une couverture robuste du code et la qualité"
+      ],
+      "achievements": [
+        "Architecture microservices scalable avec communication inter-services",
+        "Système de matching IA pour candidats et offres d'emploi",
+        "Moteur de recherche avancé avec filtres dynamiques"
+      ],
+      "technologies": ["TypeScript", "NestJS", "Next.js", "React", "styled-components", "TypeORM", "PostgreSQL", "Jest", "React DnD", "Python", "Django", "Docker", "NX Monorepo", "REST API", "GitHub", "LinkedIn API"],
+      "team": {
+        "size": 5,
+        "methodology": "Agile"
+      }
+    },
+    {
+      "id": "stellantis",
+      "company": "Stellantis",
+      "companyUrl": "https://www.stellantis.com",
+      "companyLogo": "",
+      "coverImage": "",
+      "title": "Développeur Front-end",
+      "type": "internship",
+      "startDate": "2022-05",
+      "endDate": "2022-07",
+      "isCurrent": false,
+      "location": {
+        "city": "Casablanca",
+        "region": "Casablanca-Settat",
+        "country": "Maroc",
+        "remote": "onsite"
+      },
+      "description": "Développement d'une application mobile interne de gestion des réservations des employés avec Flutter, assurant une solution performante et multiplateforme.",
+      "responsibilities": [
+        "Développement d'une application mobile interne de gestion des réservations des employés avec Flutter",
+        "Création d'interfaces modernes et ergonomiques conformes aux maquettes design",
+        "Implémentation et test rigoureux des fonctionnalités techniques en suivant les meilleures pratiques de développement mobile",
+        "Réalisation complète du projet, de l'implémentation des fonctionnalités aux tests finaux"
+      ],
+      "achievements": [
+        "Application mobile multiplateforme fonctionnelle",
+        "Expérience utilisateur fluide et intuitive"
+      ],
+      "technologies": ["Flutter", "Dart", "Firebase"],
+      "team": {
+        "size": 3,
+        "methodology": "Agile"
+      }
+    },
+    {
+      "id": "eqdom",
+      "company": "EQDOM",
+      "companyUrl": "",
+      "companyLogo": "",
+      "coverImage": "",
+      "title": "Développeur Front-End",
+      "type": "internship",
+      "startDate": "2021-03",
+      "endDate": "2021-06",
+      "isCurrent": false,
+      "location": {
+        "city": "Casablanca",
+        "region": "Casablanca-Settat",
+        "country": "Maroc",
+        "remote": "onsite"
+      },
+      "description": "Refonte du back-office interne avec amélioration de l'UX pour optimiser les processus métier.",
+      "responsibilities": [
+        "Refonte du back-office interne pour améliorer l'expérience utilisateur",
+        "Développement d'interfaces utilisateur modernes et ergonomiques",
+        "Optimisation des workflows et de l'ergonomie des outils internes"
+      ],
+      "achievements": [
+        "Amélioration significative de l'UX du back-office",
+        "Interfaces plus intuitives pour les utilisateurs internes"
+      ],
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "team": {
+        "size": 2,
+        "methodology": "Agile"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "Weneeds - Plateforme de Recrutement IA",
+      "slug": "weneeds-recruitment-platform",
+      "category": "SaaS",
+      "featured": true,
+      "status": "production",
+      "startDate": "2024-07",
+      "endDate": "2025-03",
+      "description": "Plateforme de recrutement boostée par l'IA pour optimiser le matching entre candidats et offres d'emploi.",
+      "longDescription": "Application full-stack basée sur une architecture microservices avec NX monorepo. Intégration NestJS pour le backend API et Next.js pour le frontend avec TypeScript. Système de widgets draggables, moteur de recherche avancé avec filtres dynamiques, et intégration d'endpoints IA pour le matching intelligent.",
+      "features": [
+        "Architecture microservices avec NX monorepo",
+        "API NestJS avec TypeORM et PostgreSQL",
+        "Frontend Next.js avec React et styled-components",
+        "Système de widgets personnalisables avec drag-and-drop",
+        "Endpoints IA pour matching sémantique",
+        "Moteur de recherche avec filtres dynamiques",
+        "Tests Jest avec couverture robuste"
+      ],
+      "technologies": ["NestJS", "React", "Next.js", "TypeScript", "NX", "TypeORM", "PostgreSQL", "Jest", "React DnD", "styled-components", "Docker"],
+      "image": "/projects/saas/weneeds-ai.jpg",
+      "screenshots": ["/projects/saas/weneeds.jpg"],
+      "links": {
+        "github": "",
+        "live": "",
+        "demo": ""
+      },
+      "role": "Développeur Full Stack",
+      "teamSize": 5,
+      "client": "Weneeds"
+    },
+    {
+      "id": "proj-2",
+      "title": "Notes App",
+      "slug": "notes-app",
+      "category": "Personal",
+      "featured": true,
+      "status": "production",
+      "startDate": "2024-01",
+      "endDate": null,
+      "description": "Application de prise de notes avec backend NestJS et frontend React.",
+      "longDescription": "Application full-stack de gestion de notes personnelles. Backend développé avec NestJS, frontend avec React. Utilisation de PostgreSQL en production et SQLite pour le développement local.",
+      "features": [
+        "CRUD complet pour les notes",
+        "Backend NestJS avec API REST",
+        "Frontend React moderne",
+        "PostgreSQL en production",
+        "SQLite pour le développement"
+      ],
+      "technologies": ["NestJS", "React", "PostgreSQL", "SQLite", "TypeScript"],
+      "image": "/projects/personal/notes-app-login.png",
+      "screenshots": ["/projects/personal/notes-app-dashboard.png"],
+      "links": {
+        "github": "https://github.com/souhail-ss",
+        "live": "",
+        "demo": ""
+      },
+      "role": "Développeur Full Stack",
+      "teamSize": 1,
+      "client": "Projet Personnel"
+    },
+    {
+      "id": "proj-3",
+      "title": "Application Mobile Stellantis",
+      "slug": "stellantis-mobile-app",
+      "category": "Mobile",
+      "featured": false,
+      "status": "production",
+      "startDate": "2022-05",
+      "endDate": "2022-07",
+      "description": "Application mobile interne de gestion des réservations pour Stellantis.",
+      "longDescription": "Application mobile multiplateforme développée avec Flutter pour la gestion des réservations internes des employés de Stellantis. Interface moderne et ergonomique avec une expérience utilisateur fluide.",
+      "features": [
+        "Gestion des réservations des employés",
+        "Interface moderne et ergonomique",
+        "Application multiplateforme (iOS/Android)",
+        "Intégration Firebase"
+      ],
+      "technologies": ["Flutter", "Dart", "Firebase"],
+      "image": "",
+      "screenshots": [],
+      "links": {
+        "github": "",
+        "live": "",
+        "demo": ""
+      },
+      "role": "Développeur Front-end",
+      "teamSize": 3,
+      "client": "Stellantis"
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "institution": "ÉSTIAM",
+      "institutionUrl": "https://www.estiam.education",
+      "logo": "/images/education/estiam-logo.jpg",
+      "institutionFullName": "École supérieure des technologies de l'information appliquées aux métiers",
+      "color": "linear-gradient(135deg, #FF6B00 0%, #FF8C00 100%)",
+      "degree": "Master Manager de projet Informatique",
+      "fieldOfStudy": "Développement Web & Application Mobile",
+      "level": "Master",
+      "startDate": "2022-10",
+      "endDate": "2024-09",
+      "grade": "",
+      "location": {
+        "city": "Paris",
+        "country": "France"
+      },
+      "description": "Formation en management de projet informatique avec spécialisation en développement web et applications mobiles.",
+      "courses": [
+        "Développement Web Full Stack",
+        "Applications Mobiles",
+        "Gestion de projet",
+        "Architecture logicielle",
+        "Méthodologies Agile"
+      ],
+      "activities": "Spécialité Développement Web & Application Mobile"
+    },
+    {
+      "id": "edu-2",
+      "institution": "Université Mundiapolis",
+      "institutionUrl": "https://mundiapolis.ma",
+      "logo": "",
+      "institutionFullName": "Université Mundiapolis Casablanca",
+      "color": "#FF6B35",
+      "degree": "Licence Développement logiciel",
+      "fieldOfStudy": "Développement logiciel",
+      "level": "Licence",
+      "startDate": "2019-09",
+      "endDate": "2022-06",
+      "grade": "",
+      "location": {
+        "city": "Casablanca",
+        "country": "Maroc"
+      },
+      "description": "Formation en développement logiciel couvrant le design web, la cybersécurité et les bases de données.",
+      "courses": [
+        "Design web",
+        "Cybersécurité",
+        "Bases de données",
+        "Programmation",
+        "Développement web"
+      ],
+      "activities": "Design web, cybersécurité, et bases de données"
+    }
+  ],
+  "skills": {
+    "technical": [
+      {
+        "category": "Frontend",
+        "items": [
+          { "name": "React.js", "level": 85, "yearsOfExperience": 2, "icon": "react" },
+          { "name": "Next.js", "level": 85, "yearsOfExperience": 2, "icon": "nextdotjs" },
+          { "name": "TypeScript", "level": 80, "yearsOfExperience": 2, "icon": "typescript" },
+          { "name": "JavaScript", "level": 90, "yearsOfExperience": 3, "icon": "javascript" },
+          { "name": "HTML5", "level": 95, "yearsOfExperience": 4, "icon": "html5" },
+          { "name": "CSS3", "level": 90, "yearsOfExperience": 4, "icon": "css3" },
+          { "name": "Styled Components", "level": 80, "yearsOfExperience": 1, "icon": "styledcomponents" },
+          { "name": "Bootstrap", "level": 85, "yearsOfExperience": 3, "icon": "bootstrap" },
+          { "name": "jQuery", "level": 75, "yearsOfExperience": 2, "icon": "jquery" },
+          { "name": "Tailwind CSS", "level": 80, "yearsOfExperience": 1, "icon": "tailwindcss" },
+          { "name": "Material-UI", "level": 75, "yearsOfExperience": 1, "icon": "mui" },
+          { "name": "Redux", "level": 75, "yearsOfExperience": 1, "icon": "redux" }
+        ]
+      },
+      {
+        "category": "Mobile",
+        "items": [
+          { "name": "React Native", "level": 70, "yearsOfExperience": 1, "icon": "react" },
+          { "name": "Flutter", "level": 75, "yearsOfExperience": 1, "icon": "flutter" },
+          { "name": "Dart", "level": 75, "yearsOfExperience": 1, "icon": "dart" }
+        ]
+      },
+      {
+        "category": "Backend",
+        "items": [
+          { "name": "Node.js", "level": 85, "yearsOfExperience": 2, "icon": "nodedotjs" },
+          { "name": "NestJS", "level": 85, "yearsOfExperience": 1, "icon": "nestjs" },
+          { "name": "REST API", "level": 90, "yearsOfExperience": 2, "icon": "fastapi" },
+          { "name": "SQL", "level": 80, "yearsOfExperience": 3, "icon": "postgresql" },
+          { "name": "Firebase", "level": 70, "yearsOfExperience": 1, "icon": "firebase" },
+          { "name": "PHP", "level": 65, "yearsOfExperience": 1, "icon": "php" },
+          { "name": "Java", "level": 60, "yearsOfExperience": 1, "icon": "java" },
+          { "name": "GraphQL", "level": 70, "yearsOfExperience": 1, "icon": "graphql" }
+        ]
+      },
+      {
+        "category": "Database",
+        "items": [
+          { "name": "PostgreSQL", "level": 80, "yearsOfExperience": 1 },
+          { "name": "SQLite", "level": 75, "yearsOfExperience": 1 },
+          { "name": "MongoDB", "level": 70, "yearsOfExperience": 1 }
+        ]
+      },
+      {
+        "category": "Tools & DevOps",
+        "items": [
+          { "name": "Git", "level": 90, "yearsOfExperience": 3 },
+          { "name": "GitHub", "level": 90, "yearsOfExperience": 3 },
+          { "name": "Docker", "level": 70, "yearsOfExperience": 1 },
+          { "name": "Figma", "level": 65, "yearsOfExperience": 1 },
+          { "name": "Jest", "level": 75, "yearsOfExperience": 1 },
+          { "name": "Postman", "level": 80, "yearsOfExperience": 2 },
+          { "name": "Jira", "level": 75, "yearsOfExperience": 1 },
+          { "name": "AWS", "level": 60, "yearsOfExperience": 1 }
+        ]
+      },
+      {
+        "category": "Design & Media",
+        "items": [
+          { "name": "Photoshop", "level": 65, "yearsOfExperience": 2 },
+          { "name": "Adobe Premiere Pro", "level": 60, "yearsOfExperience": 1 }
+        ]
+      }
+    ],
+    "soft": [
+      "Communication professionnelle",
+      "Management",
+      "Travail en équipe",
+      "Résolution de problèmes",
+      "Apprentissage continu",
+      "Adaptabilité"
+    ]
+  },
+  "certifications": [],
+  "languages": [
+    {
+      "name": "Français",
+      "proficiency": "Courant",
+      "level": "C1",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "Anglais",
+      "proficiency": "Professionnel",
+      "level": "B2",
+      "flag": "🇬🇧"
+    },
+    {
+      "name": "Arabe",
+      "proficiency": "Native",
+      "level": "C2",
+      "flag": "🇲🇦"
+    }
+  ],
+  "interests": [
+    "Développement Web",
+    "Applications Mobiles",
+    "Architecture logicielle",
+    "UI/UX Design",
+    "Open Source"
+  ],
+  "hobbies": {
+    "gaming": {
+      "type": "Gamer",
+      "role": "player"
+    },
+    "beatboxing": {
+      "type": "Beatboxing",
+      "role": "performer"
+    },
+    "sport": {
+      "type": "Sport",
+      "role": "athlete"
+    }
+  },
+  "achievements": [],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-26",
+    "theme": {
+      "primaryColor": "#10B981",
+      "secondaryColor": "#00DC82",
+      "darkMode": true
+    }
+  }
+}
