@@ -5,6 +5,27 @@ export const ExperiencesSection = styled.section`
   padding: 7rem 1.5rem;
   max-width: 72rem;
   margin: 0 auto;
+  position: relative;
+`;
+
+export const BgBlob = styled.div<{ $top: string; $left: string; $size: number; $color: string; $delay: string }>`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
+  width: ${({ $size }) => $size}px;
+  height: ${({ $size }) => $size}px;
+  background: ${({ $color }) => $color};
+  animation: floatBlob 18s ease-in-out infinite alternate;
+  animation-delay: ${({ $delay }) => $delay};
+
+  @keyframes floatBlob {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(40px, -30px) scale(1.1); }
+  }
 `;
 
 export const Title = styled(motion.h2)`
@@ -26,6 +47,11 @@ export const Line = styled.div`
   height: 1px;
   background-color: var(--border);
   margin-left: 0.5rem;
+`;
+
+export const SectionContent = styled.div`
+  position: relative;
+  z-index: 1;
 `;
 
 export const TimelineContainer = styled.div`
