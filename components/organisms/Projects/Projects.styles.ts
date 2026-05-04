@@ -31,15 +31,14 @@ export const Line = styled.div`
 export const CarouselWrapper = styled.div`
   position: relative;
   margin: 0 -1.5rem;
-  padding: 0 1.5rem;
 
   &::after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
-    width: 5rem;
-    height: 100%;
+    width: 4rem;
+    height: calc(100% - 2.5rem);
     background: linear-gradient(to left, var(--bg-page), transparent);
     pointer-events: none;
     z-index: 2;
@@ -51,19 +50,17 @@ export const CarouselTrack = styled.div`
   gap: 1.25rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  padding: 0.25rem 1.5rem 1rem;
   cursor: grab;
 
   &:active {
     cursor: grabbing;
   }
 
-  /* hide scrollbar but keep functionality */
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  &::-webkit-scrollbar { display: none; }
 `;
 
 export const ProjectCard = styled(motion.div)`
@@ -76,10 +73,13 @@ export const ProjectCard = styled(motion.div)`
   gap: 1.25rem;
   transition: all 0.3s;
   flex-shrink: 0;
-  width: 340px;
+  scroll-snap-align: start;
 
-  @media (min-width: 768px) {
-    width: 380px;
+  /* ~3 cards visible on desktop */
+  width: clamp(270px, calc(33.333% - 0.85rem), 360px);
+
+  @media (max-width: 768px) {
+    width: clamp(260px, 80vw, 320px);
   }
 
   &:hover {
@@ -194,4 +194,28 @@ export const ActionButtonPrimary = styled.a`
   &:hover {
     background-color: rgba(99, 102, 241, 0.25);
   }
+`;
+
+export const ScrollIndicator = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+  padding: 0 1.5rem;
+`;
+
+export const ScrollTrack = styled.div`
+  width: 120px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const ScrollThumb = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 9999px;
+  background: #6366f1;
 `;

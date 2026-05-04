@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import {
   ProjectsSection,
@@ -20,7 +20,10 @@ import {
   TechPill,
   ActionButtonsContainer,
   ActionButtonSecondary,
-  ActionButtonPrimary
+  ActionButtonPrimary,
+  ScrollIndicator,
+  ScrollTrack,
+  ScrollThumb,
 } from './Projects.styles';
 
 const projects = [
@@ -74,12 +77,43 @@ function ExternalLinkIcon() {
 
 export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [thumbLeft, setThumbLeft] = useState(0);
+  const [thumbWidth, setThumbWidth] = useState(30);
+
+  const updateThumb = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    const ratio = clientWidth / scrollWidth;
+    setThumbWidth(ratio * 100);
+    setThumbLeft((scrollLeft / scrollWidth) * 100);
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    updateThumb();
+    el.addEventListener('scroll', updateThumb);
+    window.addEventListener('resize', updateThumb);
+    return () => {
+      el.removeEventListener('scroll', updateThumb);
+      window.removeEventListener('resize', updateThumb);
+    };
+  }, [updateThumb]);
 
   const handleWheel = (e: React.WheelEvent) => {
     if (trackRef.current) {
       e.preventDefault();
       trackRef.current.scrollLeft += e.deltaY;
     }
+  };
+
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickRatio = (e.clientX - rect.left) / rect.width;
+    el.scrollLeft = clickRatio * (el.scrollWidth - el.clientWidth);
   };
 
   return (
@@ -150,6 +184,15 @@ export default function Projects() {
           ))}
         </CarouselTrack>
       </CarouselWrapper>
+
+      <ScrollIndicator>
+        <ScrollTrack onClick={handleTrackClick}>
+          <ScrollThumb
+            animate={{ left: `${thumbLeft}%`, width: `${thumbWidth}%` }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+        </ScrollTrack>
+      </ScrollIndicator>
     </ProjectsSection>
   );
 }
