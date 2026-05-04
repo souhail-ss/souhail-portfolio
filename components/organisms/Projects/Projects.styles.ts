@@ -30,19 +30,7 @@ export const Line = styled.div`
 
 export const CarouselWrapper = styled.div`
   position: relative;
-  margin: 0 -1.5rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4rem;
-    height: calc(100% - 2.5rem);
-    background: linear-gradient(to left, var(--bg-page), transparent);
-    pointer-events: none;
-    z-index: 2;
-  }
+  overflow: hidden;
 `;
 
 export const CarouselTrack = styled.div`
@@ -51,7 +39,7 @@ export const CarouselTrack = styled.div`
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  padding: 0.25rem 1.5rem 1rem;
+  padding: 0.25rem 0 1rem;
   cursor: grab;
 
   &:active {
@@ -75,8 +63,8 @@ export const ProjectCard = styled(motion.div)`
   flex-shrink: 0;
   scroll-snap-align: start;
 
-  /* ~3 cards visible on desktop */
-  width: clamp(270px, calc(33.333% - 0.85rem), 360px);
+  /* exactly 3 cards fill the row, 4th hidden until scroll */
+  width: calc((100% - 2 * 1.25rem) / 3);
 
   @media (max-width: 768px) {
     width: clamp(260px, 80vw, 320px);
