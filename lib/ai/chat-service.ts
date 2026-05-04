@@ -20,10 +20,9 @@ function generatePortfolioContext(): string {
   const { profile, experiences, skills, education, certifications, languages, interests, hobbies, achievements } = database;
 
   const experiencesText = experiences
-    .filter((exp) => exp.type === 'full-time' || exp.isCurrent)
     .slice(0, 3)
     .map((exp, index) => {
-      const prefix = index === 0 ? 'EXPERIENCE ACTUELLE' : 'EXPERIENCE PRECEDENTE';
+      const prefix = index === 0 ? 'DERNIERE EXPERIENCE (la plus recente)' : 'EXPERIENCE PRECEDENTE';
       const highlights = exp.responsibilities?.slice(0, 6).map((r: string) => `- ${r}`).join('\n') || '';
       return `${prefix} - ${exp.company} (${exp.startDate} - ${exp.endDate || 'Present'}):\n${exp.title} - ${exp.description}\n${highlights}`;
     })
