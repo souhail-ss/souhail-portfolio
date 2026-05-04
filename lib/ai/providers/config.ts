@@ -22,7 +22,7 @@ export const PROVIDER_CONFIGS: Record<ProviderName, ProviderConfig> = {
     displayName: 'Google Gemini',
     model: 'gemini-2.0-flash',
     envKey: 'GOOGLE_API_KEY',
-    limits: { rpm: 10, tpm: 250000, rpd: 20, tpd: 0 },
+    limits: { rpm: 15, tpm: 250000, rpd: 200, tpd: 0 },
     description: 'Gemini 2.0 Flash - 20 req/jour (free tier)',
   },
   'groq-70b': {
@@ -68,11 +68,11 @@ export const PROVIDER_CONFIGS: Record<ProviderName, ProviderConfig> = {
 };
 
 export const DEFAULT_FALLBACK_ORDER: ProviderName[] = [
+  'cerebras',
+  'groq-70b',
+  'groq-8b',
   'gemini',
   'mistral',
-  'groq-70b',
-  'cerebras',
-  'groq-8b',
   'openrouter',
 ];
 

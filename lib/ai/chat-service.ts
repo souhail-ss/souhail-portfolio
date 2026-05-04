@@ -3,7 +3,7 @@ import { getProvider, ProviderName, PROVIDER_CONFIGS, isProviderAvailable, getAv
 import { checkDailyQuota, checkMinuteLimit, recordMinuteUsage } from './providers/quota';
 import { database, projects } from '@/data/portfolio.data';
 
-const PROVIDER_TIMEOUT_MS = 15000;
+const PROVIDER_TIMEOUT_MS = 8000;
 
 function withTimeout<T>(promise: Promise<T>, ms: number, providerName: string): Promise<T> {
   return Promise.race([
