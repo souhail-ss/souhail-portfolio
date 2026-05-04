@@ -7,9 +7,9 @@ export const TabBar = styled.div`
   display: flex;
   gap: 0.25rem;
   padding: 0.25rem;
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--bg-card);
   border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   margin-bottom: 2rem;
 `;
 
@@ -22,12 +22,12 @@ export const TabButton = styled.button<{ $active: boolean }>`
   border-radius: 0.5rem;
   transition: color 0.2s;
   cursor: pointer;
-  color: ${props => props.$active ? 'white' : 'rgba(255, 255, 255, 0.4)'};
+  color: ${props => props.$active ? 'var(--text-primary)' : 'var(--text-dim)'};
   background: none;
   border: none;
 
   &:hover {
-    color: ${props => props.$active ? 'white' : 'rgba(255, 255, 255, 0.6)'};
+    color: ${props => props.$active ? 'var(--text-primary)' : 'var(--text-muted)'};
   }
 `;
 
@@ -45,8 +45,8 @@ export const TabLabel = styled.span`
 `;
 
 export const ContentContainer = styled.div`
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 2rem;
 `;
@@ -70,7 +70,7 @@ export const HeaderLine = styled.span`
 `;
 
 export const DescriptionText = styled.p`
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
   line-height: 1.625;
   font-size: 0.9375rem;
 `;
@@ -85,7 +85,7 @@ export const MissionItem = styled.li`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
   line-height: 1.625;
 `;
 
@@ -111,14 +111,14 @@ export const SkillPill = styled.span`
   padding: 0.375rem 0.875rem;
   font-size: 0.875rem;
   border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
   font-weight: 500;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-card-hover);
   }
 `;
 

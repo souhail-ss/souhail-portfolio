@@ -1,11 +1,11 @@
 import { NextRequest } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
-import { ChatSession, ChatMessage, TokenUsage, ProviderError, getSettings } from '@/lib/models';
-import { checkRateLimit } from '@/lib/rate-limit';
-import { generateChatResponse } from '@/lib/chat-service';
-import { handleCors, jsonResponse, errorResponse } from '@/lib/cors';
-import { getTodayParis } from '@/lib/providers/quota';
-import { getGeoFromIP, parseUserAgent } from '@/lib/geo';
+import { connectDB } from '@/lib/db/mongodb';
+import { ChatSession, ChatMessage, TokenUsage, ProviderError, getSettings } from '@/lib/db/models';
+import { checkRateLimit } from '@/lib/server/rate-limit';
+import { generateChatResponse } from '@/lib/ai/chat-service';
+import { handleCors, jsonResponse, errorResponse } from '@/lib/server/cors';
+import { getTodayParis } from '@/lib/ai/providers/quota';
+import { getGeoFromIP, parseUserAgent } from '@/lib/server/geo';
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) || jsonResponse({});

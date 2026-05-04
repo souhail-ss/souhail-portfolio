@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import ShimmeringText from './ShimmeringText';
+import ShimmeringText from '@/components/atoms/ShimmeringText/ShimmeringText';
 import {
   HeroSection,
   ContentContainer,
@@ -62,8 +62,8 @@ export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
         >
           <ShimmeringText
             text={WELCOME}
-            color="rgba(255, 255, 255, 0.55)"
-            shimmeringColor="rgba(255, 255, 255, 1)"
+            color="var(--text-muted)"
+            shimmeringColor="var(--text-primary)"
             duration={1.6}
             className="text-base md:text-xl font-semibold tracking-[0.22em] uppercase"
           />

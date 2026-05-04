@@ -10,7 +10,7 @@ export const ProjectsSection = styled.section`
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const Slash = styled.span`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border);
   margin-left: 0.5rem;
 `;
 
@@ -42,8 +42,8 @@ export const ProjectsGrid = styled.div`
 `;
 
 export const ProjectCard = styled(motion.div)`
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.75rem;
   display: flex;
@@ -53,7 +53,7 @@ export const ProjectCard = styled(motion.div)`
 
   &:hover {
     border-color: rgba(99, 102, 241, 0.4);
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: var(--bg-card-hover);
   }
 `;
 
@@ -66,7 +66,7 @@ export const CardHeader = styled.div`
 export const IconWrapper = styled.div`
   display: flex;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-dim);
 `;
 
 export const IconButton = styled.a`
@@ -74,7 +74,7 @@ export const IconButton = styled.a`
   transition: color 0.2s;
 
   &:hover {
-    color: white;
+    color: var(--text-primary);
   }
 `;
 
@@ -88,7 +88,7 @@ export const ContentWrapper = styled.div`
 export const ProjectTitle = styled.h3`
   font-size: 1.125rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   transition: color 0.3s;
 
   ${ProjectCard}:hover & {
@@ -97,7 +97,7 @@ export const ProjectTitle = styled.h3`
 `;
 
 export const ProjectDescription = styled.p`
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.625;
 `;
@@ -133,15 +133,15 @@ export const ActionButtonSecondary = styled.a`
   gap: 0.5rem;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
   font-size: 0.75rem;
   font-weight: 500;
   transition: all 0.2s;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    color: white;
+    border-color: var(--text-muted);
+    color: var(--text-primary);
   }
 `;
 

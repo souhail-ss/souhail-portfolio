@@ -10,7 +10,7 @@ export const AboutSection = styled.section`
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const Slash = styled.span`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border);
   margin-left: 0.5rem;
 `;
 
@@ -45,7 +45,7 @@ export const TextColumn = styled(motion.div)`
 `;
 
 export const Description = styled.p`
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
   font-size: 1.125rem;
   line-height: 1.625;
 `;
@@ -74,17 +74,17 @@ export const InfoLabel = styled.span`
 `;
 
 export const InfoValueLink = styled.a`
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-muted);
   transition: color 0.2s;
   word-break: break-all;
 
   &:hover {
-    color: white;
+    color: var(--text-primary);
   }
 `;
 
 export const InfoValueText = styled.span`
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-muted);
 `;
 
 export const DownloadButton = styled(motion.a)`
@@ -133,8 +133,8 @@ export const ImageWrapper = styled.div`
   height: 16rem;
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 
   @media (min-width: 768px) {
     width: 20rem;

@@ -12,49 +12,53 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ─── Theme tokens ──────────────────────────────────────────── */
-/* Default = grey mode */
+/* ─── Theme tokens — dark (default, no class needed) ─────────── */
 :root {
-  --accent:        #6366f1;
-  --accent-dk:     #4338ca;
-  --accent-a10:    rgba(99,102,241,0.10);
-  --accent-a15:    rgba(99,102,241,0.15);
-  --accent-a20:    rgba(99,102,241,0.20);
-  --accent-a25:    rgba(99,102,241,0.25);
-  --accent-a30:    rgba(99,102,241,0.30);
-  --accent-a40:    rgba(99,102,241,0.40);
-  --accent-a50:    rgba(99,102,241,0.50);
-  --accent-a60:    rgba(99,102,241,0.60);
-  --accent-a80:    rgba(99,102,241,0.80);
-  --accent-dk-a10: rgba(67,56,202,0.10);
-  --accent-dk-a20: rgba(67,56,202,0.20);
-  --accent-dk-a30: rgba(67,56,202,0.30);
-  --bg-body:       #1a1a1a;
+  --accent:          #6366f1;
+  --accent-dk:       #4338ca;
+  --accent-a10:      rgba(99,102,241,0.10);
+  --accent-a15:      rgba(99,102,241,0.15);
+  --accent-a20:      rgba(99,102,241,0.20);
+  --accent-a25:      rgba(99,102,241,0.25);
+  --accent-a30:      rgba(99,102,241,0.30);
+  --accent-a40:      rgba(99,102,241,0.40);
+  --accent-a50:      rgba(99,102,241,0.50);
+  --accent-a60:      rgba(99,102,241,0.60);
+  --accent-a80:      rgba(99,102,241,0.80);
+
+  /* Backgrounds */
+  --bg-page:         #0a0a0a;
+  --bg-nav:          rgba(10,10,10,0.75);
+  --bg-nav-scrolled: rgba(10,10,10,0.92);
+  --bg-card:         rgba(255,255,255,0.04);
+  --bg-card-hover:   rgba(255,255,255,0.07);
+  --bg-input:        rgba(255,255,255,0.06);
+
+  /* Borders */
+  --border:          rgba(255,255,255,0.10);
+  --border-strong:   rgba(255,255,255,0.15);
+  --nav-border:      rgba(255,255,255,0.10);
+
+  /* Text */
+  --text-primary:    #ffffff;
+  --text-muted:      rgba(255,255,255,0.60);
+  --text-dim:        rgba(255,255,255,0.35);
+
+  /* Nav */
+  --nav-text:        rgba(255,255,255,0.55);
+  --nav-text-hover:  #ffffff;
+  --nav-bg-hover:    rgba(255,255,255,0.07);
+
+  /* Blobs */
+  --blob-opacity:    1;
 }
 
-/* Dark mode */
-html.dark {
-  --accent:        #6366f1;
-  --accent-dk:     #4338ca;
-  --accent-a10:    rgba(99,102,241,0.10);
-  --accent-a15:    rgba(99,102,241,0.15);
-  --accent-a20:    rgba(99,102,241,0.20);
-  --accent-a25:    rgba(99,102,241,0.25);
-  --accent-a30:    rgba(99,102,241,0.30);
-  --accent-a40:    rgba(99,102,241,0.40);
-  --accent-a50:    rgba(99,102,241,0.50);
-  --accent-a60:    rgba(99,102,241,0.60);
-  --accent-a80:    rgba(99,102,241,0.80);
-  --accent-dk-a10: rgba(67,56,202,0.10);
-  --accent-dk-a20: rgba(67,56,202,0.20);
-  --accent-dk-a30: rgba(67,56,202,0.30);
-  --bg-body:       #0a0a0a;
-}
 
 body {
-  background-color: var(--bg-body);
-  color: white;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hide scrollbar */

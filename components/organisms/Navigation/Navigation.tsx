@@ -55,11 +55,9 @@ export default function Navigation({ visible }: NavigationProps) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <NavWrapper $scrolled={scrolled}>
-        {/* Cyan top accent line */}
         <TopAccentLine />
 
         <NavInner>
-          {/* Logo */}
           <Logo
             href="#"
             whileHover={{ scale: 1.06 }}
@@ -69,7 +67,6 @@ export default function Navigation({ visible }: NavigationProps) {
             <LogoDot>.</LogoDot>
           </Logo>
 
-          {/* Desktop links */}
           <DesktopMenu>
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -80,7 +77,6 @@ export default function Navigation({ visible }: NavigationProps) {
               </li>
             ))}
 
-            {/* CV pill */}
             <CVPillItem>
               <CVPill href="/cv.pdf" download>
                 CV ↓
@@ -88,7 +84,6 @@ export default function Navigation({ visible }: NavigationProps) {
             </CVPillItem>
           </DesktopMenu>
 
-          {/* Mobile hamburger */}
           <MobileMenuButton
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -99,7 +94,6 @@ export default function Navigation({ visible }: NavigationProps) {
           </MobileMenuButton>
         </NavInner>
 
-        {/* Mobile drawer */}
         <AnimatePresence>
           {menuOpen && (
             <MobileDrawer

@@ -10,7 +10,7 @@ export const ExperiencesSection = styled.section`
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const Slash = styled.span`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border);
   margin-left: 0.5rem;
 `;
 
@@ -52,15 +52,15 @@ export const ExperienceItem = styled(motion.div)``;
 export const ItemContent = styled.div`
   position: relative;
   padding-left: 4rem;
-  
+
   &:hover .timeline-dot {
     background-color: #6366f1;
     transform: scale(1.25);
   }
-  
+
   &:hover .experience-card {
     border-color: rgba(99, 102, 241, 0.4);
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: var(--bg-card-hover);
   }
 
   &:hover .company-name {
@@ -68,7 +68,7 @@ export const ItemContent = styled.div`
   }
 
   &:hover .view-details {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
   }
 `;
 
@@ -79,15 +79,15 @@ export const TimelineDot = styled.div.attrs({ className: 'timeline-dot' })`
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 9999px;
-  background-color: #0a0a0a;
+  background-color: var(--bg-page);
   border: 2px solid #6366f1;
   transition: all 0.3s;
   box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
 `;
 
 export const ExperienceCard = styled.div.attrs({ className: 'experience-card' })`
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.75rem;
   transition: all 0.3s;
@@ -107,7 +107,7 @@ export const CompanyInfo = styled.div``;
 export const CompanyName = styled.h3.attrs({ className: 'company-name' })`
   font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   transition: color 0.3s;
 `;
 
@@ -118,7 +118,7 @@ export const RoleName = styled.p`
 `;
 
 export const EmploymentType = styled.p`
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-dim);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 `;
@@ -129,13 +129,13 @@ export const MetaInfo = styled.div`
 `;
 
 export const Period = styled.span`
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   font-size: 0.875rem;
   font-weight: 500;
 `;
 
 export const Location = styled.p`
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-dim);
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: flex;
@@ -161,7 +161,7 @@ export const SkillPill = styled.span`
 `;
 
 export const ViewDetails = styled.p.attrs({ className: 'view-details' })`
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-dim);
   font-size: 0.75rem;
   margin-top: 1.25rem;
   display: flex;

@@ -3,8 +3,9 @@
   inset: 0;
   z-index: -10;
   pointer-events: none;
-  background: #0a0a0a;
+  background: var(--bg-page);
   overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .blob {
@@ -12,6 +13,8 @@
   border-radius: 50%;
   filter: blur(70px);
   will-change: transform;
+  opacity: var(--blob-opacity);
+  transition: opacity 0.3s ease;
 }
 
 .b0 { animation: moveX 23s linear infinite alternate,

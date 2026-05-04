@@ -18,17 +18,17 @@ export const NavWrapper = styled.nav<{ $scrolled: boolean }>`
   max-width: 48rem;
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--nav-border);
   transition: all 0.5s;
   backdrop-filter: blur(40px);
 
   ${props => props.$scrolled
     ? css`
-        background-color: rgba(10, 10, 10, 0.9);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        background-color: var(--bg-nav-scrolled);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
       `
     : css`
-        background-color: rgba(10, 10, 10, 0.7);
+        background-color: var(--bg-nav);
       `}
 `;
 
@@ -52,7 +52,7 @@ export const Logo = styled(motion.a)`
   display: flex;
   align-items: center;
   gap: 0.125rem;
-  color: white;
+  color: var(--text-primary);
   font-weight: 900;
   font-size: 1.125rem;
   letter-spacing: -0.025em;
@@ -77,15 +77,15 @@ export const DesktopNavLink = styled.a`
   position: relative;
   padding: 0.375rem 0.875rem;
   border-radius: 0.75rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 0.2s;
   display: block;
 
   &:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.07);
+    color: var(--nav-text-hover);
+    background-color: var(--nav-bg-hover);
   }
 `;
 
@@ -146,17 +146,17 @@ export const MobileMenuButton = styled.button`
 export const HamburgerLine1 = styled.span<{ $open: boolean }>`
   display: block;
   height: 1.5px;
-  background-color: white;
+  background-color: var(--text-primary);
   border-radius: 9999px;
   transition: all 0.3s;
-  width: ${props => props.$open ? '1.5rem' : '1.5rem'};
+  width: 1.5rem;
   transform: ${props => props.$open ? 'rotate(45deg) translateY(6.5px)' : 'none'};
 `;
 
 export const HamburgerLine2 = styled.span<{ $open: boolean }>`
   display: block;
   height: 1.5px;
-  background-color: white;
+  background-color: var(--text-primary);
   border-radius: 9999px;
   transition: all 0.2s;
   width: ${props => props.$open ? '0' : '1rem'};
@@ -166,7 +166,7 @@ export const HamburgerLine2 = styled.span<{ $open: boolean }>`
 export const HamburgerLine3 = styled.span<{ $open: boolean }>`
   display: block;
   height: 1.5px;
-  background-color: white;
+  background-color: var(--text-primary);
   border-radius: 9999px;
   transition: all 0.3s;
   width: ${props => props.$open ? '1.5rem' : '1.25rem'};
@@ -175,7 +175,7 @@ export const HamburgerLine3 = styled.span<{ $open: boolean }>`
 
 export const MobileDrawer = styled(motion.div)`
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--border);
   padding: 0.5rem 1.25rem 1rem 1.25rem;
 
   @media (min-width: 768px) {
@@ -193,21 +193,21 @@ export const MobileNavLink = styled.a`
   display: block;
   padding: 0.625rem 0.75rem;
   border-radius: 0.75rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 0.2s;
 
   &:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--nav-text-hover);
+    background-color: var(--nav-bg-hover);
   }
 `;
 
 export const MobileCVPillItem = styled.li`
   margin-top: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--border);
 `;
 
 export const MobileCVPill = styled.a`

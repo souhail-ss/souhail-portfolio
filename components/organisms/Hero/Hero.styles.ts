@@ -23,7 +23,7 @@ export const ContentContainer = styled.div`
 export const TitleName = styled(motion.h1)`
   font-size: 3.75rem;
   font-weight: 800;
-  color: white;
+  color: var(--text-primary);
   line-height: 1;
   letter-spacing: -0.025em;
 
@@ -37,7 +37,7 @@ export const Highlight = styled.span`
 `;
 
 export const Subtitle = styled(motion.p)`
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-dim);
   font-size: 1.125rem;
   font-weight: 300;
   letter-spacing: 0.15em;
@@ -71,15 +71,15 @@ export const PrimaryButton = styled.a`
 export const SecondaryButton = styled.a`
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.2s;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-    color: white;
+    border-color: var(--text-muted);
+    color: var(--text-primary);
   }
 `;
 
@@ -92,7 +92,7 @@ export const ScrollIndicator = styled(motion.a)`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-dim);
   transition: color 0.3s;
 
   &:hover {

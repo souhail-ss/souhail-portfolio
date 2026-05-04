@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ProviderName, DEFAULT_FALLBACK_ORDER } from './providers/config';
+import { ProviderName, DEFAULT_FALLBACK_ORDER } from '../ai/providers/config';
 
 export interface IChatSession extends Document {
   ip: string;

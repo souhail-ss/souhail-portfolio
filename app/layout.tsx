@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 import StyledComponentsRegistry from '@/lib/registry';
 import { ChatProvider } from '@/context/ChatContext';
-import ChatModal from '@/components/ChatWidget/ChatModal';
+import ChatModal from '@/components/organisms/Chat/ChatModal';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

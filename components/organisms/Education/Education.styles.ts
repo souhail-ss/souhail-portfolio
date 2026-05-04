@@ -10,7 +10,7 @@ export const EducationSection = styled.section`
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const Slash = styled.span`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border);
   margin-left: 0.5rem;
 `;
 
@@ -38,7 +38,7 @@ export const TimelineLine = styled.div`
   bottom: 0;
   left: 1rem;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--border);
 
   @media (min-width: 768px) {
     left: 2rem;
@@ -76,15 +76,15 @@ export const TimelineDot = styled.div`
 `;
 
 export const EducationCard = styled.div`
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.75rem;
   transition: all 0.3s;
 
   &:hover {
     border-color: rgba(99, 102, 241, 0.3);
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: var(--bg-card-hover);
   }
 `;
 
@@ -102,7 +102,7 @@ export const SchoolInfo = styled.div``;
 export const SchoolName = styled.h3`
   font-size: 1.125rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
 `;
 
 export const Degree = styled.p`
@@ -118,19 +118,19 @@ export const MetaInfo = styled.div`
 `;
 
 export const Period = styled.span`
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-dim);
   font-size: 0.75rem;
   font-weight: 500;
 `;
 
 export const Location = styled.p`
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-dim);
   font-size: 0.75rem;
   margin-top: 0.125rem;
 `;
 
 export const DescriptionText = styled.p`
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.625;
 `;

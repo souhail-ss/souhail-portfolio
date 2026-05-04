@@ -28,10 +28,10 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     const html = document.documentElement;
-    if (theme === 'dark') {
-      html.classList.add('dark');
+    if (theme === 'light') {
+      html.classList.add('light');
     } else {
-      html.classList.remove('dark');
+      html.classList.remove('light');
     }
     localStorage.setItem('theme', theme);
   }, [theme]);

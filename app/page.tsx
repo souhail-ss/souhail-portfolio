@@ -1,17 +1,17 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import AnimatedBackground from '@/components/AnimatedBackground';
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Experiences from '@/components/Experiences';
-import Projects from '@/components/Projects';
-import Skills from '@/components/Skills';
-import Education from '@/components/Education';
-import Hobbies from '@/components/Hobbies';
 import { motion } from 'framer-motion';
-import ChatWidget from '@/components/ChatWidget/ChatWidget';
+import AnimatedBackground from '@/components/organisms/AnimatedBackground/AnimatedBackground';
+import Navigation from '@/components/organisms/Navigation/Navigation';
+import Hero from '@/components/organisms/Hero/Hero';
+import About from '@/components/organisms/About/About';
+import Experiences from '@/components/organisms/Experiences/Experiences';
+import Projects from '@/components/organisms/Projects/Projects';
+import Skills from '@/components/organisms/Skills/Skills';
+import Education from '@/components/organisms/Education/Education';
+import Hobbies from '@/components/organisms/Hobbies/Hobbies';
+import ChatWidget from '@/components/organisms/Chat/ChatWidget';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -31,7 +31,6 @@ export default function Home() {
     sessionStorage.setItem('hasVisited', 'true');
   }, []);
 
-  // Lock scroll until hero animation finishes
   useEffect(() => {
     if (!mounted) return;
     if (!heroComplete && !skipAnimation) {
@@ -42,13 +41,12 @@ export default function Home() {
     return () => { document.body.style.overflow = ''; };
   }, [heroComplete, skipAnimation, mounted]);
 
-  if (!mounted) return <main className="min-h-screen bg-[#0a0a0a]" />;
+  if (!mounted) return <main className="min-h-screen" style={{ backgroundColor: 'var(--bg-page)' }} />;
 
   return (
     <main className="relative">
       <AnimatedBackground />
 
-      {/* Dark veil between blobs and content */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{ zIndex: -9, background: 'rgba(0,0,0,0.25)' }}
@@ -68,8 +66,8 @@ export default function Home() {
         <Skills />
         <Education />
         <Hobbies />
-        <footer className="py-10 text-center border-t border-white/[0.06]">
-          <p className="text-white/20 text-sm">
+        <footer className="py-10 text-center" style={{ borderTop: '1px solid var(--border)' }}>
+          <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
             © 2026 Souhail Ziyadi — Développeur Full Stack
           </p>
         </footer>

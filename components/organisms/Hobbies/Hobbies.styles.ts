@@ -10,7 +10,7 @@ export const HobbiesSection = styled.section`
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const Slash = styled.span`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border);
   margin-left: 0.5rem;
 `;
 
@@ -38,8 +38,8 @@ export const HobbiesGrid = styled.div`
 `;
 
 export const HobbyCard = styled(motion.div)`
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 2.5rem;
   display: flex;
@@ -52,6 +52,7 @@ export const HobbyCard = styled(motion.div)`
 
   &:hover {
     border-color: rgba(99, 102, 241, 0.4);
+    background-color: var(--bg-card-hover);
   }
 `;
 
@@ -62,7 +63,7 @@ export const HobbyIcon = styled(motion.span)`
 export const HobbyTitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   transition: color 0.3s;
 
   ${HobbyCard}:hover & {
@@ -71,7 +72,7 @@ export const HobbyTitle = styled.h3`
 `;
 
 export const HobbyDescription = styled.p`
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.625;
 `;

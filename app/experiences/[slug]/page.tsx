@@ -1,7 +1,7 @@
 import { getExperienceBySlug, experiences } from '@/lib/experiences';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import ExperienceTabs from '@/components/ExperienceTabs';
+import ExperienceTabs from '@/components/organisms/ExperienceTabs/ExperienceTabs';
 
 export async function generateStaticParams() {
   return experiences.map((exp) => ({ slug: exp.slug }));

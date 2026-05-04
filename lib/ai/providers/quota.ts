@@ -1,4 +1,4 @@
-import { TokenUsage } from '../models';
+import { TokenUsage } from '../../db/models';
 import { ProviderName, PROVIDER_CONFIGS } from './config';
 
 export function getTodayParis(): Date {
