@@ -1,12 +1,14 @@
 'use client';
 
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   ProjectsSection,
   Title,
   Slash,
   Line,
-  ProjectsGrid,
+  CarouselWrapper,
+  CarouselTrack,
   ProjectCard,
   CardHeader,
   IconWrapper,
@@ -22,6 +24,13 @@ import {
 } from './Projects.styles';
 
 const projects = [
+  {
+    title: 'Souhail Portfolio',
+    description: "Portfolio personnel développé avec Next.js et TypeScript. Intègre un chatbot IA multi-provider (Gemini, Groq, Mistral, Cerebras) avec persistance MongoDB, animations Framer Motion et architecture Atomic Design.",
+    tech: ['Next.js', 'TypeScript', 'Styled Components', 'Framer Motion', 'MongoDB', 'LangChain'],
+    github: 'https://github.com/souhail-ss/souhail-portfolio',
+    live: '',
+  },
   {
     title: 'Weneeds — Plateforme de Recrutement IA',
     description: "Plateforme full-stack de recrutement boostée par l'IA. Architecture microservices avec NX monorepo, NestJS backend, Next.js frontend. Système de widgets draggables, moteur de recherche avancé avec filtres dynamiques, et matching IA entre candidats et offres.",
@@ -64,6 +73,15 @@ function ExternalLinkIcon() {
 }
 
 export default function Projects() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (trackRef.current) {
+      e.preventDefault();
+      trackRef.current.scrollLeft += e.deltaY;
+    }
+  };
+
   return (
     <ProjectsSection id="projects">
       <Title
@@ -75,65 +93,63 @@ export default function Projects() {
         <Line />
       </Title>
 
-      <ProjectsGrid>
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={project.title}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.13 }}
-            whileHover={{ y: -6 }}
-          >
-            <CardHeader>
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(99,102,241,0.6)" strokeWidth="1.5">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-              <IconWrapper>
-                {project.github && (
-                  <IconButton href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <GithubIcon />
-                  </IconButton>
-                )}
-                {project.live && (
-                  <IconButton href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live">
-                    <ExternalLinkIcon />
-                  </IconButton>
-                )}
-              </IconWrapper>
-            </CardHeader>
+      <CarouselWrapper>
+        <CarouselTrack ref={trackRef} onWheel={handleWheel}>
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
+            >
+              <CardHeader>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(99,102,241,0.6)" strokeWidth="1.5">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+                <IconWrapper>
+                  {project.github && (
+                    <IconButton href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <GithubIcon />
+                    </IconButton>
+                  )}
+                  {project.live && (
+                    <IconButton href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live">
+                      <ExternalLinkIcon />
+                    </IconButton>
+                  )}
+                </IconWrapper>
+              </CardHeader>
 
-            <ContentWrapper>
-              <ProjectTitle>
-                {project.title}
-              </ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
-            </ContentWrapper>
+              <ContentWrapper>
+                <ProjectTitle>{project.title}</ProjectTitle>
+                <ProjectDescription>{project.description}</ProjectDescription>
+              </ContentWrapper>
 
-            <TechList>
-              {project.tech.map((tech) => (
-                <TechPill key={tech}>
-                  {tech}
-                </TechPill>
-              ))}
-            </TechList>
+              <TechList>
+                {project.tech.map((tech) => (
+                  <TechPill key={tech}>{tech}</TechPill>
+                ))}
+              </TechList>
 
-            {(project.github || project.live) && (
-              <ActionButtonsContainer>
-                {project.github && (
-                  <ActionButtonSecondary href={project.github} target="_blank" rel="noopener noreferrer">
-                    <GithubIcon /> GitHub
-                  </ActionButtonSecondary>
-                )}
-                {project.live && (
-                  <ActionButtonPrimary href={project.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLinkIcon /> Live
-                  </ActionButtonPrimary>
-                )}
-              </ActionButtonsContainer>
-            )}
-          </ProjectCard>
-        ))}
-      </ProjectsGrid>
+              {(project.github || project.live) && (
+                <ActionButtonsContainer>
+                  {project.github && (
+                    <ActionButtonSecondary href={project.github} target="_blank" rel="noopener noreferrer">
+                      <GithubIcon /> GitHub
+                    </ActionButtonSecondary>
+                  )}
+                  {project.live && (
+                    <ActionButtonPrimary href={project.live} target="_blank" rel="noopener noreferrer">
+                      <ExternalLinkIcon /> Live
+                    </ActionButtonPrimary>
+                  )}
+                </ActionButtonsContainer>
+              )}
+            </ProjectCard>
+          ))}
+        </CarouselTrack>
+      </CarouselWrapper>
     </ProjectsSection>
   );
 }

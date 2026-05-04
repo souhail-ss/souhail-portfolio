@@ -28,16 +28,41 @@ export const Line = styled.div`
   margin-left: 0.5rem;
 `;
 
-export const ProjectsGrid = styled.div`
-  display: grid;
-  gap: 1.5rem;
+export const CarouselWrapper = styled.div`
+  position: relative;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5rem;
+    height: 100%;
+    background: linear-gradient(to left, var(--bg-page), transparent);
+    pointer-events: none;
+    z-index: 2;
+  }
+`;
+
+export const CarouselTrack = styled.div`
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
   }
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
@@ -50,6 +75,12 @@ export const ProjectCard = styled(motion.div)`
   flex-direction: column;
   gap: 1.25rem;
   transition: all 0.3s;
+  flex-shrink: 0;
+  width: 340px;
+
+  @media (min-width: 768px) {
+    width: 380px;
+  }
 
   &:hover {
     border-color: rgba(99, 102, 241, 0.4);
