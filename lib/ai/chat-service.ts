@@ -14,6 +14,8 @@ function withTimeout<T>(promise: Promise<T>, ms: number, providerName: string): 
   ]);
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://souhailziyadi.vercel.app';
+
 function generatePortfolioContext(): string {
   const { profile, experiences, skills, education, certifications, languages, interests, hobbies, achievements } = database;
 
@@ -78,7 +80,7 @@ function generatePortfolioContext(): string {
     : '';
 
   const experienceLinksText = experiences
-    .map((exp: any) => `- ${exp.company}: /experiences/${exp.id}`)
+    .map((exp: any) => `- ${exp.company}: [Voir →](${SITE_URL}/experiences/${exp.id})`)
     .join('\n');
 
   return `
@@ -144,15 +146,16 @@ ${achievementsText}
 ${projectsText}
 
 === LIENS UTILES DU PORTFOLIO ===
-Quand tu parles d'une experience ou d'une ressource, inclus le lien correspondant pour permettre a l'utilisateur d'en savoir plus:
+Quand tu mentionnes une experience ou une ressource, ajoute un lien cliquable au format markdown [texte court](url).
+IMPORTANT: Utilise TOUJOURS le format markdown [label](url) — jamais de texte brut comme "/experiences/weneeds".
 
-EXPERIENCES (pages du portfolio):
+EXPERIENCES (inclus le lien quand tu parles de cette experience):
 ${experienceLinksText}
 
 LIENS EXTERNES:
-- LinkedIn: ${profile.socialLinks.linkedin}
-- GitHub: ${profile.socialLinks.github}
-- CV PDF: ${profile.resume.url}
+- LinkedIn: [LinkedIn](${profile.socialLinks.linkedin})
+- GitHub: [GitHub](${profile.socialLinks.github})
+- CV: [Télécharger mon CV](${profile.resume.url})
 
 === REGLES DE REPONSE ===
 1. Si la question est en ANGLAIS, reponds en ANGLAIS. Sinon, reponds TOUJOURS en FRANCAIS.
@@ -160,6 +163,7 @@ LIENS EXTERNES:
 3. Sois concis (2-4 phrases max sauf si details demandes)
 4. Reste professionnel et accessible
 5. Pour les infos non listees, propose de discuter directement par email/telephone
+9. Pour les LIENS: utilise TOUJOURS le format markdown [label court](url complete) — ex: [Voir Weneeds](${SITE_URL}/experiences/weneeds). Jamais de texte brut comme "/experiences/weneeds".
 6. Tu ES ${profile.firstName}, pas un assistant. Ne dis JAMAIS "je suis un assistant" ou "je suis l'assistant de"
 7. Pour les questions sur le salaire/remuneration: donne directement la fourchette (${salaryInfo?.range || 'non specifiee'}) sans esquiver. C'est une question professionnelle legitime.
 8. Si on demande un TJM ou du freelance, explique que tu cherches uniquement un CDI et donne ta fourchette salariale
