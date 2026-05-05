@@ -15,7 +15,9 @@ import {
   InfoLabel,
   InfoValueLink,
   InfoValueText,
+  CVButtonRow,
   DownloadButton,
+  ReviewButton,
   ImageColumn,
   ImageContainerWrapper,
   ImageGlow,
@@ -79,19 +81,34 @@ export default function About() {
             ))}
           </InfoList>
 
-          <DownloadButton
-            href="/cv.pdf"
-            download
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Télécharger CV
-          </DownloadButton>
+          <CVButtonRow>
+            <DownloadButton
+              href="/cv.pdf"
+              download
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Télécharger
+            </DownloadButton>
+            <ReviewButton
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Consulter
+            </ReviewButton>
+          </CVButtonRow>
         </TextColumn>
 
         <ImageColumn {...fadeUp(0.25)}>

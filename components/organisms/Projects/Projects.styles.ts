@@ -30,7 +30,6 @@ export const Line = styled.div`
 
 export const CarouselWrapper = styled.div`
   position: relative;
-  overflow: hidden;
 `;
 
 export const CarouselTrack = styled.div`
@@ -39,7 +38,7 @@ export const CarouselTrack = styled.div`
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  padding: 0.25rem 0 1rem;
+  padding: 0.75rem 0 1rem;
   cursor: grab;
 
   &:active {
@@ -197,7 +196,7 @@ export const ScrollTrack = styled.div`
   background: var(--border);
   border-radius: 9999px;
   position: relative;
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const ScrollThumb = styled(motion.div)`
@@ -206,4 +205,9 @@ export const ScrollThumb = styled(motion.div)`
   height: 100%;
   border-radius: 9999px;
   background: #6366f1;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 `;

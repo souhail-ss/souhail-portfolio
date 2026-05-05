@@ -87,21 +87,49 @@ export const InfoValueText = styled.span`
   color: var(--text-muted);
 `;
 
+export const CVButtonRow = styled.div`
+  display: flex;
+  gap: 0.875rem;
+  width: 100%;
+`;
+
 export const DownloadButton = styled(motion.a)`
-  display: inline-flex;
+  flex: 1;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.625rem;
-  padding: 0.875rem 1.75rem;
+  padding: 0.875rem 1.5rem;
   background-color: #6366f1;
   color: white;
   font-weight: 600;
   border-radius: 0.5rem;
   font-size: 0.875rem;
   transition: background-color 0.2s;
-  align-self: flex-start;
 
   &:hover {
     background-color: #4338ca;
+  }
+`;
+
+export const ReviewButton = styled(motion.a)`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border-strong);
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #6366f1;
+    color: #6366f1;
   }
 `;
 

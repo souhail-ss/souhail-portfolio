@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Section,
   Title,
@@ -90,15 +90,9 @@ export default function Skills() {
       </FilterRow>
 
       <Grid>
-        <AnimatePresence mode="popLayout">
-          {filtered.map((skill, i) => (
+          {filtered.map((skill) => (
             <Card
               key={skill.name}
-              layout
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.85 }}
-              transition={{ duration: 0.25, delay: i * 0.03 }}
               whileHover={{ y: -4, borderColor: 'rgba(99,102,241,0.5)' }}
             >
               <CardIcon
@@ -114,7 +108,6 @@ export default function Skills() {
               </Dots>
             </Card>
           ))}
-        </AnimatePresence>
       </Grid>
     </Section>
   );

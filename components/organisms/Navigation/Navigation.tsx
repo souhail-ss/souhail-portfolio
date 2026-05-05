@@ -14,6 +14,7 @@ import {
   NavLinkUnderline,
   CVPillItem,
   CVPill,
+  CVEyeButton,
   MobileMenuButton,
   HamburgerLine1,
   HamburgerLine2,
@@ -77,10 +78,17 @@ export default function Navigation({ visible }: NavigationProps) {
               </li>
             ))}
 
+            <li style={{ color: '#6366f1', fontWeight: 300, fontSize: '1.1rem', padding: '0 0.25rem' }}>|</li>
             <CVPillItem>
               <CVPill href="/cv.pdf" download>
                 CV ↓
               </CVPill>
+              <CVEyeButton href="/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Consulter le CV">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </CVEyeButton>
             </CVPillItem>
           </DesktopMenu>
 
@@ -118,6 +126,12 @@ export default function Navigation({ visible }: NavigationProps) {
                   <MobileCVPill href="/cv.pdf" download>
                     Télécharger CV ↓
                   </MobileCVPill>
+                  <CVEyeButton href="/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Consulter le CV">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </CVEyeButton>
                 </MobileCVPillItem>
               </MobileMenuList>
             </MobileDrawer>

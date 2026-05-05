@@ -77,6 +77,7 @@ function ExternalLinkIcon() {
 
 export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollTrackRef = useRef<HTMLDivElement>(null);
   const [thumbLeft, setThumbLeft] = useState(0);
   const [thumbWidth, setThumbWidth] = useState(30);
 
@@ -108,12 +109,28 @@ export default function Projects() {
     }
   };
 
-  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleThumbMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
     const el = trackRef.current;
-    if (!el) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickRatio = (e.clientX - rect.left) / rect.width;
-    el.scrollLeft = clickRatio * (el.scrollWidth - el.clientWidth);
+    const track = scrollTrackRef.current;
+    if (!el || !track) return;
+
+    const startX = e.clientX;
+    const startScrollLeft = el.scrollLeft;
+    const trackWidth = track.clientWidth;
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      const dx = moveEvent.clientX - startX;
+      el.scrollLeft = startScrollLeft + (dx / trackWidth) * el.scrollWidth;
+    };
+
+    const onMouseUp = () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
   };
 
   return (
@@ -186,10 +203,11 @@ export default function Projects() {
       </CarouselWrapper>
 
       <ScrollIndicator>
-        <ScrollTrack onClick={handleTrackClick}>
+        <ScrollTrack ref={scrollTrackRef}>
           <ScrollThumb
             animate={{ left: `${thumbLeft}%`, width: `${thumbWidth}%` }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            onMouseDown={handleThumbMouseDown}
           />
         </ScrollTrack>
       </ScrollIndicator>

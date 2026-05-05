@@ -15,7 +15,7 @@ export const NavContainer = styled(motion.div)`
 export const NavWrapper = styled.nav<{ $scrolled: boolean }>`
   position: relative;
   width: 100%;
-  max-width: 48rem;
+  max-width: 50rem;
   border-radius: 1rem;
   overflow: hidden;
   border: 1px solid var(--nav-border);
@@ -107,6 +107,9 @@ export const NavLinkUnderline = styled.span`
 
 export const CVPillItem = styled.li`
   margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
 `;
 
 export const CVPill = styled.a`
@@ -118,7 +121,27 @@ export const CVPill = styled.a`
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.2s;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  &:hover {
+    background-color: #6366f1;
+    color: white;
+    border-color: #6366f1;
+  }
+`;
+
+export const CVEyeButton = styled.a`
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.75rem;
+  background-color: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #6366f1;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #6366f1;
@@ -208,6 +231,9 @@ export const MobileCVPillItem = styled.li`
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 export const MobileCVPill = styled.a`
