@@ -125,7 +125,7 @@ export const MiniChat: React.FC = () => {
             <S.OnlineDot />
           </S.Avatar>
           <S.HeaderInfo>
-            <S.HeaderTitle>Souhail AI</S.HeaderTitle>
+            <S.HeaderTitle>Ziyadi AI</S.HeaderTitle>
             <S.HeaderStatus>En ligne</S.HeaderStatus>
           </S.HeaderInfo>
         </S.HeaderLeft>

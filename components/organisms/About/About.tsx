@@ -115,7 +115,7 @@ export default function About() {
           <ImageContainerWrapper>
             <ImageGlow />
             <ImageWrapper>
-              <Image src="/profile.jpeg" alt="Souhail Ziyadi" fill style={{ objectFit: 'cover' }} priority />
+              <Image src="/profilee.png" alt="Souhail Ziyadi" fill style={{ objectFit: 'cover' }} priority />
             </ImageWrapper>
             <DecoratorBottomRight />
             <DecoratorTopLeft />
