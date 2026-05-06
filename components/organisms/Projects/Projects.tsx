@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { projects } from '@/lib/projects';
 import {
   ProjectsSection,
   Title,
@@ -9,6 +10,7 @@ import {
   Line,
   CarouselWrapper,
   CarouselTrack,
+  ProjectLink,
   ProjectCard,
   CardHeader,
   IconWrapper,
@@ -25,37 +27,6 @@ import {
   ScrollTrack,
   ScrollThumb,
 } from './Projects.styles';
-
-const projects = [
-  {
-    title: 'Souhail Portfolio',
-    description: "Portfolio personnel développé avec Next.js et TypeScript. Intègre un chatbot IA multi-provider (Gemini, Groq, Mistral, Cerebras) avec persistance MongoDB, animations Framer Motion et architecture Atomic Design.",
-    tech: ['Next.js', 'TypeScript', 'Styled Components', 'Framer Motion', 'MongoDB', 'LangChain'],
-    github: 'https://github.com/souhail-ss/souhail-portfolio',
-    live: '',
-  },
-  {
-    title: 'Weneeds — Plateforme de Recrutement IA',
-    description: "Plateforme full-stack de recrutement boostée par l'IA. Architecture microservices avec NX monorepo, NestJS backend, Next.js frontend. Système de widgets draggables, moteur de recherche avancé avec filtres dynamiques, et matching IA entre candidats et offres.",
-    tech: ['NestJS', 'Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Django', 'Docker', 'NX Monorepo'],
-    github: '',
-    live: '',
-  },
-  {
-    title: 'Notes App',
-    description: "Application full-stack de gestion de notes personnelles. Backend NestJS avec API REST, frontend React moderne. PostgreSQL en production, SQLite pour le développement local.",
-    tech: ['NestJS', 'React', 'TypeScript', 'PostgreSQL', 'SQLite'],
-    github: 'https://github.com/souhail-ss',
-    live: '',
-  },
-  {
-    title: 'Application Mobile Stellantis',
-    description: "Application mobile multiplateforme (iOS/Android) de gestion des réservations internes pour les employés de Stellantis. Interface moderne et ergonomique avec une expérience utilisateur fluide.",
-    tech: ['Flutter', 'Dart', 'Firebase'],
-    github: '',
-    live: '',
-  },
-];
 
 function GithubIcon() {
   return (
@@ -80,6 +51,8 @@ export default function Projects() {
   const scrollTrackRef = useRef<HTMLDivElement>(null);
   const [thumbLeft, setThumbLeft] = useState(0);
   const [thumbWidth, setThumbWidth] = useState(30);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
 
   const updateThumb = useCallback(() => {
     const el = trackRef.current;
@@ -145,59 +118,91 @@ export default function Projects() {
       </Title>
 
       <CarouselWrapper>
-        <CarouselTrack ref={trackRef} onWheel={handleWheel}>
+        <CarouselTrack
+          ref={trackRef}
+          onWheel={handleWheel}
+          onMouseDown={e => { isDragging.current = false; dragStartX.current = e.clientX; }}
+          onMouseMove={e => { if (Math.abs(e.clientX - dragStartX.current) > 5) isDragging.current = true; }}
+        >
           {projects.map((project, index) => (
-            <ProjectCard
+            <ProjectLink
               key={project.title}
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
+              href={`/projects/${project.slug}`}
+              onClick={e => { if (isDragging.current) e.preventDefault(); }}
             >
-              <CardHeader>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(99,102,241,0.6)" strokeWidth="1.5">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-                <IconWrapper>
-                  {project.github && (
-                    <IconButton href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                      <GithubIcon />
-                    </IconButton>
-                  )}
-                  {project.live && (
-                    <IconButton href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live">
-                      <ExternalLinkIcon />
-                    </IconButton>
-                  )}
-                </IconWrapper>
-              </CardHeader>
+              <ProjectCard
+                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -6 }}
+              >
+                <CardHeader>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(99,102,241,0.6)" strokeWidth="1.5">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                  <IconWrapper>
+                    {project.github && (
+                      <IconButton
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <GithubIcon />
+                      </IconButton>
+                    )}
+                    {project.live && (
+                      <IconButton
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Live"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <ExternalLinkIcon />
+                      </IconButton>
+                    )}
+                  </IconWrapper>
+                </CardHeader>
 
-              <ContentWrapper>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-              </ContentWrapper>
+                <ContentWrapper>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                </ContentWrapper>
 
-              <TechList>
-                {project.tech.map((tech) => (
-                  <TechPill key={tech}>{tech}</TechPill>
-                ))}
-              </TechList>
+                <TechList>
+                  {project.tech.map((tech) => (
+                    <TechPill key={tech}>{tech}</TechPill>
+                  ))}
+                </TechList>
 
-              {(project.github || project.live) && (
-                <ActionButtonsContainer>
-                  {project.github && (
-                    <ActionButtonSecondary href={project.github} target="_blank" rel="noopener noreferrer">
-                      <GithubIcon /> GitHub
-                    </ActionButtonSecondary>
-                  )}
-                  {project.live && (
-                    <ActionButtonPrimary href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLinkIcon /> Live
-                    </ActionButtonPrimary>
-                  )}
-                </ActionButtonsContainer>
-              )}
-            </ProjectCard>
+                {(project.github || project.live) && (
+                  <ActionButtonsContainer>
+                    {project.github && (
+                      <ActionButtonSecondary
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <GithubIcon /> GitHub
+                      </ActionButtonSecondary>
+                    )}
+                    {project.live && (
+                      <ActionButtonPrimary
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <ExternalLinkIcon /> Live
+                      </ActionButtonPrimary>
+                    )}
+                  </ActionButtonsContainer>
+                )}
+              </ProjectCard>
+            </ProjectLink>
           ))}
         </CarouselTrack>
       </CarouselWrapper>

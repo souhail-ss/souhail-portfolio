@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export const ProjectsSection = styled.section`
   padding: 7rem 1.5rem;
@@ -39,15 +40,23 @@ export const CarouselTrack = styled.div`
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   padding: 0.75rem 0 1rem;
-  cursor: grab;
-
-  &:active {
-    cursor: grabbing;
-  }
+  cursor: default;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar { display: none; }
+`;
+
+export const ProjectLink = styled(Link)`
+  display: block;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: calc((100% - 2 * 1.25rem) / 3);
+  text-decoration: none;
+
+  @media (max-width: 768px) {
+    width: clamp(260px, 80vw, 320px);
+  }
 `;
 
 export const ProjectCard = styled(motion.div)`
@@ -59,17 +68,9 @@ export const ProjectCard = styled(motion.div)`
   flex-direction: column;
   gap: 1.25rem;
   transition: all 0.3s;
-  flex-shrink: 0;
-  scroll-snap-align: start;
+  height: 100%;
 
-  /* exactly 3 cards fill the row, 4th hidden until scroll */
-  width: calc((100% - 2 * 1.25rem) / 3);
-
-  @media (max-width: 768px) {
-    width: clamp(260px, 80vw, 320px);
-  }
-
-  &:hover {
+  ${ProjectLink}:hover & {
     border-color: rgba(99, 102, 241, 0.4);
     background-color: var(--bg-card-hover);
   }
@@ -109,7 +110,7 @@ export const ProjectTitle = styled.h3`
   color: var(--text-primary);
   transition: color 0.3s;
 
-  ${ProjectCard}:hover & {
+  ${ProjectLink}:hover & {
     color: #6366f1;
   }
 `;
