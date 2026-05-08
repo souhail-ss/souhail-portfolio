@@ -103,10 +103,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 href={project!.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all duration-200"
-                style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = '#6366f1'; (e.currentTarget as HTMLAnchorElement).style.color = '#6366f1'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.15)'; (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.7)'; }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all duration-200 border-white/15 text-white/70 hover:border-accent hover:text-accent"
               >
                 <GithubIcon /> GitHub
               </a>
