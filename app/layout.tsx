@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 import StyledComponentsRegistry from '@/lib/registry';
 import { ChatProvider } from '@/context/ChatContext';
 import ChatModal from '@/components/organisms/Chat/ChatModal';
+import PageTracker from '@/app/components/organisms/PageTracker';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.variable} font-sans antialiased`}>
         <StyledComponentsRegistry>
           <ChatProvider>
+            <PageTracker />
             {children}
             <ChatModal />
           </ChatProvider>

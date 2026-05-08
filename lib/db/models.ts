@@ -133,3 +133,34 @@ export const ChatMessage = mongoose.models.ChatMessage || mongoose.model<IChatMe
 export const TokenUsage = mongoose.models.TokenUsage || mongoose.model<ITokenUsage>('TokenUsage', TokenUsageSchema);
 export const Settings = mongoose.models.Settings || mongoose.model<ISettings>('Settings', SettingsSchema);
 export const ProviderError = mongoose.models.ProviderError || mongoose.model<IProviderError>('ProviderError', ProviderErrorSchema);
+
+export interface IPageView extends Document {
+  ip: string;
+  path: string;
+  country?: string;
+  countryCode?: string;
+  city?: string;
+  device?: string;
+  browser?: string;
+  referrer?: string;
+  createdAt: Date;
+}
+
+const PageViewSchema = new Schema<IPageView>(
+  {
+    ip: { type: String, required: true },
+    path: { type: String, default: '/' },
+    country: { type: String },
+    countryCode: { type: String },
+    city: { type: String },
+    device: { type: String },
+    browser: { type: String },
+    referrer: { type: String },
+  },
+  { timestamps: true }
+);
+
+PageViewSchema.index({ createdAt: 1 });
+PageViewSchema.index({ ip: 1 });
+
+export const PageView = mongoose.models.PageView || mongoose.model<IPageView>('PageView', PageViewSchema);
