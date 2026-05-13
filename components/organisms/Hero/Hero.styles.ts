@@ -105,3 +105,73 @@ export const ScrollText = styled.span`
   letter-spacing: 0.25em;
   text-transform: uppercase;
 `;
+
+export const AITeaserWrapper = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+`;
+
+export const AIInputBorder = styled.div<{ $focused: boolean }>`
+  padding: 1.5px;
+  border-radius: 999px;
+  background: ${({ $focused }) =>
+    $focused
+      ? 'linear-gradient(90deg, #e040fb, #6366f1)'
+      : 'linear-gradient(90deg, rgba(224,64,251,0.45), rgba(99,102,241,0.45))'};
+  transition: background 0.25s;
+  width: 520px;
+  max-width: 88vw;
+`;
+
+export const AIInputRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #0e0e12;
+  border-radius: 999px;
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+`;
+
+export const AIInput = styled.input`
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  min-width: 0;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+  }
+`;
+
+export const AISubmitButton = styled.button`
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.55);
+  transition: background 0.15s, color 0.15s;
+
+  svg { width: 17px; height: 17px; }
+
+  &:hover:not(:disabled) {
+    background: #6366f1;
+    color: #fff;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+`;

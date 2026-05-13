@@ -22,6 +22,7 @@ interface ChatContextType {
   isLoading: boolean;
   openChat: () => void;
   openChatWithQuestion: (question: string) => void;
+  openExpandedWithQuestion: (question: string) => void;
   closeChat: () => void;
   toggleChat: () => void;
   clearInitialQuestion: () => void;
@@ -50,6 +51,10 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const openChatWithQuestion = (question: string) => {
     setPendingQuestion(question);
     setChatState('minimized');
+  };
+  const openExpandedWithQuestion = (question: string) => {
+    setInitialQuestion(question);
+    setChatState('expanded');
   };
   const closeChat = () => {
     setChatState('closed');
@@ -127,7 +132,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return (
     <ChatContext.Provider value={{
       chatState, isOpen, initialQuestion, pendingQuestion, messages, sessionId, isLoading,
-      openChat, openChatWithQuestion, closeChat, toggleChat, clearInitialQuestion,
+      openChat, openChatWithQuestion, openExpandedWithQuestion, closeChat, toggleChat, clearInitialQuestion,
       clearPendingQuestion, minimizeToBar, minimizeToIcon, expandChat,
       sendMessage, markMessageComplete, clearChat
     }}>

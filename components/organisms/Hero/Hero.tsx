@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { Send } from 'lucide-react';
 import ShimmeringText from '@/components/atoms/ShimmeringText/ShimmeringText';
+import { useChat } from '@/context/ChatContext';
 import {
   HeroSection,
   ContentContainer,
@@ -13,7 +15,12 @@ import {
   PrimaryButton,
   SecondaryButton,
   ScrollIndicator,
-  ScrollText
+  ScrollText,
+  AITeaserWrapper,
+  AIInputBorder,
+  AIInputRow,
+  AIInput,
+  AISubmitButton,
 } from './Hero.styles';
 
 const WELCOME       = 'Welcome to my portfolio';
@@ -31,6 +38,9 @@ interface HeroProps {
 
 export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
   const [phase, setPhase] = useState<'intro' | 'settling' | 'done'>(skipAnimation ? 'done' : 'intro');
+  const [heroInput, setHeroInput] = useState('');
+  const [inputFocused, setInputFocused] = useState(false);
+  const { openExpandedWithQuestion } = useChat();
 
   const handleComplete = useCallback(() => {
     onComplete?.();
@@ -49,6 +59,13 @@ export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
 
   const settled = phase !== 'intro';
   const done    = phase === 'done';
+
+  const handleHeroInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && heroInput.trim()) {
+      openExpandedWithQuestion(heroInput.trim());
+      setHeroInput('');
+    }
+  };
 
   return (
     <HeroSection>
@@ -98,6 +115,36 @@ export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
             Voir mes projets
           </SecondaryButton>
         </ButtonContainer>
+
+        <AITeaserWrapper
+          initial={{ opacity: skipAnimation ? 1 : 0, y: skipAnimation ? 0 : 16 }}
+          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 16 }}
+          transition={{ duration: skipAnimation ? 0 : 0.7, delay: done && !skipAnimation ? 0.6 : 0 }}
+        >
+          <AIInputBorder $focused={inputFocused}>
+            <AIInputRow>
+              <AIInput
+                value={heroInput}
+                onChange={(e) => setHeroInput(e.target.value)}
+                onKeyDown={handleHeroInputKeyDown}
+                onFocus={() => setInputFocused(true)}
+                onBlur={() => setInputFocused(false)}
+                placeholder="My AI answers for me — ask anything!"
+              />
+              <AISubmitButton
+                disabled={!heroInput.trim()}
+                onClick={() => {
+                  if (heroInput.trim()) {
+                    openExpandedWithQuestion(heroInput.trim());
+                    setHeroInput('');
+                  }
+                }}
+              >
+                <Send />
+              </AISubmitButton>
+            </AIInputRow>
+          </AIInputBorder>
+        </AITeaserWrapper>
       </ContentContainer>
 
       <ScrollIndicator
