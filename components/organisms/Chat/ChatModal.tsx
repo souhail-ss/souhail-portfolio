@@ -57,7 +57,7 @@ const TypedMessage: React.FC<{
       const timer = setTimeout(() => {
         setDisplayedWords(prev => prev + 1);
         scrollToBottom();
-      }, 30);
+      }, 10);
       return () => clearTimeout(timer);
     } else {
       onComplete();
