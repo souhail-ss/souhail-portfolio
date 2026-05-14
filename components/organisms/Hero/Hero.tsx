@@ -129,7 +129,7 @@ export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
                 onKeyDown={handleHeroInputKeyDown}
                 onFocus={() => setInputFocused(true)}
                 onBlur={() => setInputFocused(false)}
-                placeholder="My AI answers for me — ask anything!"
+                placeholder="mon IA répond pour moi , Posez vos questions! "
               />
               <AISubmitButton
                 disabled={!heroInput.trim()}
