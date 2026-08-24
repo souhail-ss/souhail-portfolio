@@ -23,7 +23,7 @@ import {
   AISubmitButton,
 } from './Hero.styles';
 
-const WELCOME       = 'Welcome to my portfolio';
+const WELCOME       = 'Full-Stack Developer • Paris, France';
 const STAGGER_MS    = 55;
 const SPAWN_DUR_MS  = 750;
 const SPAWN_TOTAL   = (WELCOME.length - 1) * STAGGER_MS + SPAWN_DUR_MS;
@@ -109,7 +109,7 @@ export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
           transition={{ duration: skipAnimation ? 0 : 0.7, delay: done && !skipAnimation ? 0.4 : 0 }}
         >
           <PrimaryButton href="#about">
-            En savoir plus
+            À propos de moi
           </PrimaryButton>
           <SecondaryButton href="#projects">
             Voir mes projets

@@ -53,11 +53,12 @@ export default function About() {
       <ContentGrid>
         <TextColumn {...fadeUp(0.1)}>
           <Description>
-            Développeur Full Stack JavaScript/TypeScript avec plus d&apos;un an d&apos;expérience dans la
-            conception et le développement d&apos;applications web et mobiles modernes. Expertise en React,
-            Next.js, NestJS, et architectures microservices. Maîtrise de TypeScript, REST APIs, et bases
-            de données (MongoDB/PostgreSQL). Passionné par la création d&apos;interfaces utilisateur
-            réactives et l&apos;architecture backend scalable.
+            Développeur Full Stack spécialisé en JavaScript et TypeScript, avec plus d&apos;un an
+            d&apos;expérience dans la conception et le développement d&apos;applications web modernes. Je
+            travaille principalement avec React, Next.js, Node.js et NestJS, avec une expérience des
+            architectures microservices, des API REST et des bases de données PostgreSQL/MongoDB.
+            J&apos;aime construire des interfaces modernes et réactives tout en développant des backends
+            fiables et évolutifs.
           </Description>
 
           <InfoList>
@@ -93,12 +94,10 @@ export default function About() {
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
-              Télécharger
+              Télécharger mon CV
             </DownloadButton>
             <ReviewButton
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:souhail.ziyadi2022@outlook.com"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -106,7 +105,7 @@ export default function About() {
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
-              Consulter
+              Me contacter
             </ReviewButton>
           </CVButtonRow>
         </TextColumn>
