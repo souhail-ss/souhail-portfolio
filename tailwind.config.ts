@@ -9,11 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: '#6366f1',
-        'accent-dark': '#4338ca',
+        // Backed by CSS variables in app/globals.css so the palette lives in one place.
+        accent: 'rgb(var(--accent-rgb) / <alpha-value>)',
+        'accent-dark': 'rgb(var(--accent-dk-rgb) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        display: ['var(--font-display-face)', 'var(--font-inter)', 'sans-serif'],
       },
     },
   },

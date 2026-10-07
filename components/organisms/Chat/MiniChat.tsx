@@ -20,7 +20,7 @@ const parseMarkdown = (text: string): React.ReactNode => {
     if (match[2] && match[3]) {
       const isExternal = match[3].startsWith('http');
       elements.push(
-        <a key={key++} href={match[3]} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined} style={{ color: '#6366f1', textDecoration: 'underline' }}>
+        <a key={key++} href={match[3]} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined} style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           {match[2]}
         </a>
       );
@@ -104,9 +104,9 @@ export const MiniChat: React.FC = () => {
   };
 
   const suggestions = [
-    "Parle-moi de ton parcours",
-    "Quelle est ta stack technique ?",
-    "Qu'as-tu construit chez Weneeds ?",
+    "Es-tu disponible pour un nouveau projet ?",
+    "Comment se déroule une collaboration ?",
+    "C'est vrai que tu fais du beatbox ? 🎤",
   ];
 
   const isAnyMessageTyping = messages.some(m => m.isTyping);
@@ -140,10 +140,10 @@ export const MiniChat: React.FC = () => {
         {messages.length === 0 && !isLoading && (
           <S.EmptyState>
             <S.EmptyTitle>Clone IA de Souhail</S.EmptyTitle>
-            <S.EmptyText>Posez-moi vos questions sur mon parcours ou mes compétences !</S.EmptyText>
+            <S.EmptyText>Décrivez-moi votre projet ou posez-moi vos questions sur mes services !</S.EmptyText>
             <S.SuggestionsWrapper>
               {suggestions.map((suggestion, index) => (
-                <S.SuggestionButton key={index} onClick={() => sendMessage(suggestion)} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <S.SuggestionButton key={index} onClick={() => sendMessage(suggestion)} whileHover={{ x: -1, y: -1 }} whileTap={{ x: 1, y: 1 }}>
                   {suggestion}
                 </S.SuggestionButton>
               ))}
@@ -197,8 +197,8 @@ export const MiniChat: React.FC = () => {
         <S.SendButton
           onClick={handleSend}
           disabled={!inputValue.trim() || isLoading || isAnyMessageTyping}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ x: -1, y: -1 }}
+          whileTap={{ x: 1, y: 1 }}
         >
           <Send />
         </S.SendButton>

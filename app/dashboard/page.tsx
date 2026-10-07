@@ -97,7 +97,7 @@ function StatCard({ label, value, today }: { label: string; value: number; today
       <div style={{ color: '#fff', fontSize: '30px', fontWeight: '700', lineHeight: 1 }}>{fmtNum(value)}</div>
       {today !== undefined && (
         <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '12px', marginTop: '8px' }}>
-          <span style={{ color: today > 0 ? '#6366f1' : 'rgba(255,255,255,0.35)' }}>+{today}</span> today
+          <span style={{ color: today > 0 ? 'var(--accent)' : 'rgba(255,255,255,0.35)' }}>+{today}</span> today
         </div>
       )}
     </div>
@@ -116,7 +116,7 @@ function HBar({ data, title }: { data: CountStat[]; title: string }) {
               {d._id || 'Unknown'}
             </span>
             <div style={{ flex: 1, background: 'rgba(255,255,255,0.06)', borderRadius: '3px', height: '5px', overflow: 'hidden' }}>
-              <div style={{ width: `${(d.count / max) * 100}%`, height: '100%', background: '#6366f1', borderRadius: '3px', transition: 'width 0.6s ease' }} />
+              <div style={{ width: `${(d.count / max) * 100}%`, height: '100%', background: 'var(--accent)', borderRadius: '3px', transition: 'width 0.6s ease' }} />
             </div>
             <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '12px', width: '24px', textAlign: 'right', flexShrink: 0 }}>{d.count}</span>
           </div>
@@ -140,7 +140,7 @@ function ActivityChart({ dailyViews, dailySessions }: { dailyViews: CountStat[];
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div style={sectionLabel}>Activity — last 14 days</div>
         <div style={{ display: 'flex', gap: '16px' }}>
-          {[['#6366f1', 'Page Views'], ['rgba(99,102,241,0.35)', 'Chat Sessions']].map(([color, label]) => (
+          {[['var(--accent)', 'Page Views'], ['rgba(var(--accent-rgb), 0.35)', 'Chat Sessions']].map(([color, label]) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '2px', background: color }} />
               <span style={{ color: 'rgba(255,255,255,0.40)', fontSize: '11px' }}>{label}</span>
@@ -156,8 +156,8 @@ function ActivityChart({ dailyViews, dailySessions }: { dailyViews: CountStat[];
           const sH = Math.max((sess / maxVal) * 72, sess > 0 ? 3 : 0);
           return (
             <div key={day} title={`${day}: ${views} views, ${sess} sessions`} style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '1px', height: '72px', cursor: 'default' }}>
-              <div style={{ flex: 1, height: `${vH}px`, background: '#6366f1', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
-              <div style={{ flex: 1, height: `${sH}px`, background: 'rgba(99,102,241,0.35)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
+              <div style={{ flex: 1, height: `${vH}px`, background: 'var(--accent)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
+              <div style={{ flex: 1, height: `${sH}px`, background: 'rgba(var(--accent-rgb), 0.35)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
             </div>
           );
         })}
@@ -272,7 +272,7 @@ export default function DashboardPage() {
   // ── Auth Gate ──────────────────────────────────────────────────────────────
   if (!authenticated) {
     return (
-      <div style={{ minHeight: '100vh', background: '#0a0a0a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
+      <div style={{ minHeight: '100vh', background: 'var(--bg-page)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
         <form onSubmit={handleLogin} style={{ width: '320px' }}>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <div style={{ fontSize: '22px', fontWeight: '700', color: '#fff', marginBottom: '6px' }}>Analytics</div>
@@ -290,7 +290,7 @@ export default function DashboardPage() {
           <button
             type="submit"
             disabled={loading || !password}
-            style={{ width: '100%', padding: '11px', background: '#6366f1', border: 'none', borderRadius: '8px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: loading || !password ? 'not-allowed' : 'pointer', opacity: loading || !password ? 0.6 : 1, transition: 'opacity 0.15s' }}
+            style={{ width: '100%', padding: '11px', background: 'var(--accent)', border: 'none', borderRadius: '8px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: loading || !password ? 'not-allowed' : 'pointer', opacity: loading || !password ? 0.6 : 1, transition: 'opacity 0.15s' }}
           >
             {loading ? 'Verifying…' : 'Sign In'}
           </button>
@@ -303,7 +303,7 @@ export default function DashboardPage() {
   const s = stats;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: 'var(--font-inter), Inter, sans-serif', padding: '32px max(24px, calc((100vw - 1160px) / 2))' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-page)', color: '#fff', fontFamily: 'var(--font-inter), Inter, sans-serif', padding: '32px max(24px, calc((100vw - 1160px) / 2))' }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
@@ -363,7 +363,7 @@ export default function DashboardPage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px' }}>
                 {s.tokenStats.map((t) => (
                   <div key={t._id} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '8px', padding: '12px 14px' }}>
-                    <div style={{ color: '#6366f1', fontSize: '13px', fontWeight: '600', marginBottom: '6px' }}>{t._id}</div>
+                    <div style={{ color: 'var(--accent)', fontSize: '13px', fontWeight: '600', marginBottom: '6px' }}>{t._id}</div>
                     <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '12px' }}>{fmtNum(t.requests)} requests</div>
                     <div style={{ color: 'rgba(255,255,255,0.30)', fontSize: '12px' }}>{fmtNum(t.tokensIn + t.tokensOut)} tokens</div>
                   </div>
@@ -405,11 +405,11 @@ export default function DashboardPage() {
                         <td style={{ padding: '13px 20px', color: 'rgba(255,255,255,0.50)', fontSize: '13px' }}>{session.device || '—'}</td>
                         <td style={{ padding: '13px 20px', color: 'rgba(255,255,255,0.50)', fontSize: '13px' }}>{session.browser || '—'}</td>
                         <td style={{ padding: '13px 20px' }}>
-                          <span style={{ background: session.messageCount > 0 ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.06)', color: session.messageCount > 0 ? '#6366f1' : 'rgba(255,255,255,0.30)', fontSize: '12px', fontWeight: '600', padding: '2px 8px', borderRadius: '10px' }}>
+                          <span style={{ background: session.messageCount > 0 ? 'rgba(var(--accent-rgb), 0.15)' : 'rgba(255,255,255,0.06)', color: session.messageCount > 0 ? 'var(--accent)' : 'rgba(255,255,255,0.30)', fontSize: '12px', fontWeight: '600', padding: '2px 8px', borderRadius: '10px' }}>
                             {session.messageCount}
                           </span>
                         </td>
-                        <td style={{ padding: '13px 20px', fontSize: '12px', color: '#6366f1', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '13px 20px', fontSize: '12px', color: 'var(--accent)', whiteSpace: 'nowrap' }}>
                           {session.messageCount > 0 ? (expandedSession === session._id ? '▲ hide' : '▼ view') : ''}
                         </td>
                       </tr>
@@ -426,10 +426,10 @@ export default function DashboardPage() {
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                   {conversations[session._id].map((msg) => (
                                     <div key={msg._id} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', flexDirection: msg.role === 'user' ? 'row-reverse' : 'row' }}>
-                                      <div style={{ width: '26px', height: '26px', borderRadius: '50%', flexShrink: 0, background: msg.role === 'user' ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: msg.role === 'user' ? '#6366f1' : 'rgba(255,255,255,0.40)', fontWeight: '600' }}>
+                                      <div style={{ width: '26px', height: '26px', borderRadius: '50%', flexShrink: 0, background: msg.role === 'user' ? 'rgba(var(--accent-rgb), 0.25)' : 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: msg.role === 'user' ? 'var(--accent)' : 'rgba(255,255,255,0.40)', fontWeight: '600' }}>
                                         {msg.role === 'user' ? 'U' : 'AI'}
                                       </div>
-                                      <div style={{ maxWidth: '78%', background: msg.role === 'user' ? 'rgba(99,102,241,0.12)' : 'rgba(255,255,255,0.05)', borderRadius: msg.role === 'user' ? '10px 3px 10px 10px' : '3px 10px 10px 10px', padding: '8px 12px', fontSize: '13px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.55', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                                      <div style={{ maxWidth: '78%', background: msg.role === 'user' ? 'rgba(var(--accent-rgb), 0.12)' : 'rgba(255,255,255,0.05)', borderRadius: msg.role === 'user' ? '10px 3px 10px 10px' : '3px 10px 10px 10px', padding: '8px 12px', fontSize: '13px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.55', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                                         {msg.content}
                                         {msg.provider && msg.role === 'assistant' && (
                                           <div style={{ marginTop: '5px', fontSize: '10px', color: 'rgba(255,255,255,0.20)' }}>via {msg.provider}</div>
@@ -464,7 +464,7 @@ export default function DashboardPage() {
                   <button
                     key={pg}
                     onClick={() => setPage(pg)}
-                    style={{ width: '30px', height: '30px', borderRadius: '6px', background: pg === page ? '#6366f1' : 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: pg === page ? '#fff' : 'rgba(255,255,255,0.45)', fontSize: '12px', cursor: 'pointer', transition: 'background 0.15s' }}
+                    style={{ width: '30px', height: '30px', borderRadius: '6px', background: pg === page ? 'var(--accent)' : 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: pg === page ? '#fff' : 'rgba(255,255,255,0.45)', fontSize: '12px', cursor: 'pointer', transition: 'background 0.15s' }}
                   >
                     {pg}
                   </button>

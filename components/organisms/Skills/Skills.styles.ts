@@ -18,13 +18,13 @@ export const Title = styled(motion.h2)`
 `;
 
 export const Slash = styled.span`
-  color: #6366f1;
+  color: var(--accent);
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 1px;
-  background: var(--border);
+  height: 2px;
+  background: var(--text-primary);
 `;
 
 export const FilterRow = styled.div`
@@ -38,17 +38,18 @@ export const FilterTab = styled.button<{ $active: boolean }>`
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid ${({ $active }) => $active ? 'transparent' : 'var(--border-strong)'};
-  background: ${({ $active }) => $active ? 'var(--text-primary)' : 'transparent'};
-  color: ${({ $active }) => $active ? 'var(--bg-page)' : 'var(--text-muted)'};
+  transition: all 0.15s ease;
+  border: 2px solid var(--text-primary);
+  background: ${({ $active }) => $active ? 'var(--accent)' : 'var(--bg-elev)'};
+  color: var(--text-primary);
+  box-shadow: ${({ $active }) => $active ? '3px 3px 0 var(--text-primary)' : 'none'};
 
   &:hover {
-    background: ${({ $active }) => $active ? 'var(--text-primary)' : 'var(--bg-card-hover)'};
-    color: ${({ $active }) => $active ? 'var(--bg-page)' : 'var(--text-primary)'};
-    border-color: ${({ $active }) => $active ? 'transparent' : 'var(--border-strong)'};
+    background: ${({ $active }) => $active ? 'var(--accent)' : 'var(--accent-a15)'};
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 
@@ -64,16 +65,21 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled(motion.div)`
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  border: 3px solid var(--text-primary);
   border-radius: 1rem;
+  box-shadow: 4px 4px 0 var(--text-primary);
   padding: 1.5rem 1rem 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
   cursor: default;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 6px 6px 0 var(--text-primary);
+  }
 `;
 
 export const CardIcon = styled.img`

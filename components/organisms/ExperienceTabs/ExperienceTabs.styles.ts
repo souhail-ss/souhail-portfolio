@@ -7,9 +7,10 @@ export const TabBar = styled.div`
   display: flex;
   gap: 0.25rem;
   padding: 0.25rem;
-  background-color: var(--bg-card);
+  background-color: var(--bg-elev);
   border-radius: 0.75rem;
-  border: 1px solid var(--border);
+  border: 3px solid var(--text-primary);
+  box-shadow: 4px 4px 0 var(--text-primary);
   margin-bottom: 2rem;
 `;
 
@@ -34,8 +35,8 @@ export const TabButton = styled.button<{ $active: boolean }>`
 export const ActiveTabBackground = styled(motion.div)`
   position: absolute;
   inset: 0;
-  background-color: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  background-color: var(--accent);
+  border: 2px solid var(--text-primary);
   border-radius: 0.5rem;
 `;
 
@@ -45,9 +46,10 @@ export const TabLabel = styled.span`
 `;
 
 export const ContentContainer = styled.div`
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background-color: var(--bg-elev);
+  border: 3px solid var(--text-primary);
   border-radius: 1rem;
+  box-shadow: 5px 5px 0 var(--text-primary);
   padding: 2rem;
 `;
 
@@ -56,7 +58,7 @@ export const ContentHeader = styled.h2`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #6366f1;
+  color: var(--accent);
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
@@ -66,7 +68,7 @@ export const ContentHeader = styled.h2`
 export const HeaderLine = styled.span`
   width: 1rem;
   height: 1px;
-  background-color: #6366f1;
+  background-color: var(--accent);
 `;
 
 export const DescriptionText = styled.p`
@@ -94,7 +96,7 @@ export const MissionBullet = styled.span`
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 9999px;
-  background-color: #6366f1;
+  background-color: var(--accent);
   flex-shrink: 0;
 `;
 
@@ -111,14 +113,17 @@ export const SkillPill = styled.span`
   padding: 0.375rem 0.875rem;
   font-size: 0.875rem;
   border-radius: 0.5rem;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background-color: var(--bg-elev);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
   color: var(--text-primary);
-  font-weight: 500;
-  transition: background-color 0.2s;
+  font-weight: 600;
+  transition: all 0.15s;
 
   &:hover {
-    background-color: var(--bg-card-hover);
+    background-color: var(--accent-a15);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 

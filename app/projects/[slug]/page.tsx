@@ -35,13 +35,13 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-[#4338ca]/10 to-transparent pointer-events-none -z-0" />
+    <main className="min-h-screen bg-[var(--bg-page)] text-white">
+      <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-accent-dark/10 to-transparent pointer-events-none -z-0" />
 
       <div className="relative max-w-4xl mx-auto px-6 py-20">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-[#6366f1] transition-colors duration-200 mb-14 text-sm group"
+          className="inline-flex items-center gap-2 text-white/40 hover:text-accent transition-colors duration-200 mb-14 text-sm group"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             className="group-hover:-translate-x-1 transition-transform duration-200">
@@ -53,7 +53,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         {/* Header */}
         <div className="mb-8 space-y-3">
-          <p className="text-[#6366f1] text-xs font-bold uppercase tracking-[0.2em]">Projet</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.2em]">Projet</p>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{project!.title}</h1>
         </div>
 
@@ -63,7 +63,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <span
               key={tech}
               className="px-3 py-1 text-xs font-medium rounded-full border"
-              style={{ background: 'rgba(67,56,202,0.2)', borderColor: 'rgba(67,56,202,0.3)', color: '#6366f1' }}
+              style={{ background: 'rgba(var(--accent-dk-rgb), 0.2)', borderColor: 'rgba(var(--accent-dk-rgb), 0.3)', color: 'var(--accent)' }}
             >
               {tech}
             </span>
@@ -88,7 +88,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <ul className="space-y-3">
             {project!.highlights.map((h, i) => (
               <li key={i} className="flex items-start gap-3 text-white/70 text-sm leading-relaxed">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#6366f1' }} />
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent)' }} />
                 {h}
               </li>
             ))}
@@ -114,7 +114,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
-                style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)', color: '#6366f1' }}
+                style={{ background: 'rgba(var(--accent-rgb), 0.15)', border: '1px solid rgba(var(--accent-rgb), 0.3)', color: 'var(--accent)' }}
               >
                 <ExternalLinkIcon /> Live
               </a>

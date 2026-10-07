@@ -10,6 +10,7 @@ import {
   Line,
   CarouselWrapper,
   CarouselTrack,
+  ProjectItem,
   ProjectLink,
   ProjectCard,
   CardHeader,
@@ -125,18 +126,18 @@ export default function Projects() {
           onMouseMove={e => { if (Math.abs(e.clientX - dragStartX.current) > 5) isDragging.current = true; }}
         >
           {projects.map((project, index) => (
-            <ProjectLink
+            <ProjectItem
               key={project.title}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+            <ProjectLink
               href={`/projects/${project.slug}`}
               onClick={e => { if (isDragging.current) e.preventDefault(); }}
             >
-              <ProjectCard
-                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -6 }}
-              >
+              <ProjectCard>
                 <CardHeader>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(99,102,241,0.6)" strokeWidth="1.5">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ color: 'rgba(var(--accent-rgb), 0.6)' }} strokeWidth="1.5">
                     <polyline points="16 18 22 12 16 6" />
                     <polyline points="8 6 2 12 8 18" />
                   </svg>
@@ -203,6 +204,7 @@ export default function Projects() {
                 )}
               </ProjectCard>
             </ProjectLink>
+            </ProjectItem>
           ))}
         </CarouselTrack>
       </CarouselWrapper>

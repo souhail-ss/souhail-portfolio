@@ -33,9 +33,9 @@ import {
 export default function Experiences() {
   return (
     <ExperiencesSection id="experiences">
-      <BgBlob $top="-10%"  $left="60%"  $size={500} $color="radial-gradient(circle, rgba(99,102,241,0.30) 0%, transparent 70%)"  $delay="0s" />
-      <BgBlob $top="40%"  $left="-10%" $size={420} $color="radial-gradient(circle, rgba(67,56,202,0.25) 0%, transparent 70%)"   $delay="-6s" />
-      <BgBlob $top="70%"  $left="55%"  $size={380} $color="radial-gradient(circle, rgba(79,70,229,0.20) 0%, transparent 70%)"   $delay="-12s" />
+      <BgBlob $top="-10%"  $left="60%"  $size={500} $color="radial-gradient(circle, rgba(var(--accent-rgb), 0.30) 0%, transparent 70%)"  $delay="0s" />
+      <BgBlob $top="40%"  $left="-10%" $size={420} $color="radial-gradient(circle, rgba(var(--accent-dk-rgb), 0.25) 0%, transparent 70%)"   $delay="-6s" />
+      <BgBlob $top="70%"  $left="55%"  $size={380} $color="radial-gradient(circle, rgba(var(--accent-dk-rgb), 0.20) 0%, transparent 70%)"   $delay="-12s" />
 
       <SectionContent>
         <Title
@@ -43,7 +43,7 @@ export default function Experiences() {
           viewport={{ once: true }} transition={{ duration: 0.7 }}
         >
           <Slash>/</Slash>
-          <span>Expériences</span>
+          <span>Références</span>
           <Line />
         </Title>
 

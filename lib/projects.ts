@@ -11,23 +11,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'souhail-portfolio',
-    title: 'Souhail Portfolio',
-    description: "Portfolio personnel développé avec Next.js et TypeScript. Intègre un chatbot IA multi-provider (Gemini, Groq, Mistral, Cerebras) avec persistance MongoDB, animations Framer Motion et architecture Atomic Design.",
-    fullDescription: "Portfolio personnel conçu et développé de A à Z avec Next.js 14 et TypeScript. Le projet met en avant une architecture Atomic Design rigoureuse et intègre un chatbot IA multi-provider capable de basculer entre Gemini, Groq, Mistral et Cerebras selon disponibilité. Les conversations sont persistées en MongoDB, le tout animé avec Framer Motion pour une expérience utilisateur fluide et moderne.",
-    tech: ['Next.js', 'TypeScript', 'Styled Components', 'Framer Motion', 'MongoDB', 'LangChain'],
-    github: 'https://github.com/souhail-ss/souhail-portfolio',
-    live: '',
-    highlights: [
-      "Architecture Atomic Design avec composants réutilisables (atoms, molecules, organisms)",
-      "Chatbot IA multi-provider avec fallback automatique entre Gemini, Groq, Mistral et Cerebras",
-      "Persistance des conversations en MongoDB avec gestion des sessions",
-      "Animations avancées avec Framer Motion : transitions de page, scroll-triggered, hover effects",
-      "Design system cohérent avec variables CSS et thème sombre",
-      "Déploiement continu sur Vercel avec CI/CD",
-    ],
-  },
-  {
     slug: 'weneeds',
     title: 'Weneeds — Plateforme de Recrutement IA',
     description: "Plateforme full-stack de recrutement boostée par l'IA. Architecture microservices avec NX monorepo, NestJS backend, Next.js frontend.",
@@ -43,6 +26,23 @@ export const projects: Project[] = [
       "Onboarding utilisateur multi-étapes personnalisé pour améliorer la rétention",
       "Intégration d'API externes : LinkedIn, GitHub, RapidApi pour enrichissement de profils",
       "Tests unitaires et d'intégration avec Jest",
+    ],
+  },
+  {
+    slug: 'souhail-portfolio',
+    title: 'Souhail Portfolio',
+    description: "Portfolio personnel développé avec Next.js et TypeScript. Intègre un chatbot IA multi-provider (Gemini, Groq, Mistral, Cerebras) avec persistance MongoDB, animations Framer Motion et architecture Atomic Design.",
+    fullDescription: "Portfolio personnel conçu et développé de A à Z avec Next.js 14 et TypeScript. Le projet met en avant une architecture Atomic Design rigoureuse et intègre un chatbot IA multi-provider capable de basculer entre Gemini, Groq, Mistral et Cerebras selon disponibilité. Les conversations sont persistées en MongoDB, le tout animé avec Framer Motion pour une expérience utilisateur fluide et moderne.",
+    tech: ['Next.js', 'TypeScript', 'Styled Components', 'Framer Motion', 'MongoDB', 'LangChain'],
+    github: 'https://github.com/souhail-ss/souhail-portfolio',
+    live: '',
+    highlights: [
+      "Architecture Atomic Design avec composants réutilisables (atoms, molecules, organisms)",
+      "Chatbot IA multi-provider avec fallback automatique entre Gemini, Groq, Mistral et Cerebras",
+      "Persistance des conversations en MongoDB avec gestion des sessions",
+      "Animations avancées avec Framer Motion : transitions de page, scroll-triggered, hover effects",
+      "Design system cohérent avec variables CSS et thème sombre",
+      "Déploiement continu sur Vercel avec CI/CD",
     ],
   },
   {

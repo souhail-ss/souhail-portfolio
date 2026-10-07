@@ -18,13 +18,13 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
   if (!exp) notFound();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-[#4338ca]/10 to-transparent pointer-events-none -z-0" />
+    <main className="min-h-screen bg-[var(--bg-page)] text-white">
+      <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-accent-dark/10 to-transparent pointer-events-none -z-0" />
 
       <div className="relative max-w-4xl mx-auto px-6 py-20">
         <Link
           href="/#experiences"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-[#6366f1] transition-colors duration-200 mb-14 text-sm group"
+          className="inline-flex items-center gap-2 text-white/40 hover:text-accent transition-colors duration-200 mb-14 text-sm group"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             className="group-hover:-translate-x-1 transition-transform duration-200">
@@ -36,9 +36,9 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
 
         {/* Header */}
         <div className="mb-4 space-y-3">
-          <p className="text-[#6366f1] text-xs font-bold uppercase tracking-[0.2em]">Expérience professionnelle</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.2em]">Expérience professionnelle</p>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{exp!.company}</h1>
-          <p className="text-[#6366f1] text-xl font-semibold">{exp!.role}</p>
+          <p className="text-accent text-xl font-semibold">{exp!.role}</p>
           <p className="text-white/40 text-sm">{exp!.type}</p>
         </div>
 

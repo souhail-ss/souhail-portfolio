@@ -6,20 +6,28 @@ export const typing = keyframes`
   50% { opacity: 1; }
 `;
 
+const wave = keyframes`
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-12deg); }
+  40% { transform: rotate(10deg); }
+  60% { transform: rotate(-8deg); }
+  80% { transform: rotate(6deg); }
+`;
+
 export const Container = styled(motion.div)`
   position: fixed;
   bottom: 0;
   right: 2rem;
   width: 350px;
   height: 450px;
-  background: #1a1a1a;
+  background: var(--bg-elev-2);
   border-radius: 12px 12px 0 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: -4px -4px 0 var(--text-primary);
   z-index: 1000;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--text-primary);
   border-bottom: none;
 
   @media (max-width: 768px) {
@@ -36,8 +44,8 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px 12px 12px 16px;
-  background: #0a0a0a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 `;
 
@@ -55,11 +63,18 @@ export const Avatar = styled.div`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #111;
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
 
-  img { width: 100%; height: 100%; object-fit: cover; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: 70% 70%;
+    animation: ${wave} 0.6s ease-in-out 0.3s;
+  }
 `;
 
 export const OnlineDot = styled.span`
@@ -70,7 +85,7 @@ export const OnlineDot = styled.span`
   height: 10px;
   background: #22c55e;
   border-radius: 50%;
-  border: 2px solid #0a0a0a;
+  border: 2px solid var(--bg-page);
 `;
 
 export const HeaderInfo = styled.div`
@@ -79,13 +94,13 @@ export const HeaderInfo = styled.div`
 `;
 
 export const HeaderTitle = styled.span`
-  color: #fff;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
 `;
 
 export const HeaderStatus = styled.span`
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   font-size: 12px;
 `;
 
@@ -105,12 +120,12 @@ export const ControlButton = styled.button<{ $variant?: 'close' }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-muted);
   transition: all 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: ${({ $variant }) => $variant === 'close' ? '#ff5f57' : '#fff'};
+    background: var(--bg-card-hover);
+    color: ${({ $variant }) => $variant === 'close' ? '#ff5f57' : 'var(--text-primary)'};
   }
 
   svg { width: 16px; height: 16px; }
@@ -127,7 +142,7 @@ export const MessagesContainer = styled.div`
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--border-strong);
     border-radius: 2px;
   }
 `;
@@ -145,13 +160,13 @@ export const EmptyState = styled.div`
 export const EmptyTitle = styled.h4`
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0 0 8px;
 `;
 
 export const EmptyText = styled.p`
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   margin: 0 0 16px;
   line-height: 1.4;
 `;
@@ -165,18 +180,21 @@ export const SuggestionsWrapper = styled.div`
 
 export const SuggestionButton = styled(motion.button)`
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-elev);
+  border: 2px solid var(--text-primary);
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 0 var(--text-primary);
+  color: var(--text-primary);
   font-size: 13px;
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
   transition: all 0.15s ease;
 
   &:hover {
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.4);
+    background: var(--accent-a15);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--text-primary);
   }
 `;
 
@@ -190,7 +208,8 @@ export const MessageAvatar = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #111;
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
   align-self: flex-end;
@@ -210,13 +229,15 @@ export const MessageBubble = styled.div<{ $role: 'user' | 'assistant' }>`
   ${({ $role }) =>
     $role === 'user'
       ? `
-          background: #6366f1;
-          color: #fff;
+          background: var(--accent);
+          color: var(--on-accent);
+          border: 2px solid var(--text-primary);
           border-bottom-right-radius: 4px;
         `
       : `
-          background: rgba(255, 255, 255, 0.08);
-          color: #fff;
+          background: var(--bg-elev);
+          color: var(--text-primary);
+          border: 2px solid var(--text-primary);
           border-bottom-left-radius: 4px;
         `}
 `;
@@ -232,7 +253,7 @@ export const TypingDot = styled.span`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--text-dim);
   animation: ${typing} 1s ease-in-out infinite;
 `;
 
@@ -241,28 +262,27 @@ export const InputSection = styled.div`
   align-items: center;
   gap: 8px;
   padding: 12px;
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-page);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
 `;
 
 export const TextInput = styled.input`
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-input);
+  border: 2px solid var(--text-primary);
   border-radius: 20px;
   padding: 10px 16px;
-  color: #fff;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 13px;
   transition: all 0.15s ease;
 
-  &::placeholder { color: rgba(255, 255, 255, 0.4); }
+  &::placeholder { color: var(--text-dim); }
 
   &:focus {
     outline: none;
-    border-color: #6366f1;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-card-hover);
   }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -272,16 +292,21 @@ export const SendButton = styled(motion.button)`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #6366f1;
-  border: none;
+  background: var(--accent);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--on-accent);
   flex-shrink: 0;
+  transition: box-shadow 0.15s;
 
-  &:hover:not(:disabled) { background: #4f46e5; }
+  &:hover:not(:disabled) {
+    background: var(--accent-dk);
+    box-shadow: 3px 3px 0 var(--text-primary);
+  }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 

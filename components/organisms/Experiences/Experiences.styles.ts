@@ -39,13 +39,13 @@ export const Title = styled(motion.h2)`
 `;
 
 export const Slash = styled.span`
-  color: #6366f1;
+  color: var(--accent);
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 1px;
-  background-color: var(--border);
+  height: 2px;
+  background-color: var(--text-primary);
   margin-left: 0.5rem;
 `;
 
@@ -64,7 +64,7 @@ export const TimelineLine = styled.div`
   top: 1.5rem;
   bottom: 1.5rem;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(99,102,241,0.8), rgba(67,56,202,0.4), transparent);
+  background: linear-gradient(to bottom, rgba(var(--accent-rgb), 0.8), rgba(var(--accent-dk-rgb), 0.4), transparent);
 `;
 
 export const ExperiencesList = styled.div`
@@ -80,17 +80,17 @@ export const ItemContent = styled.div`
   padding-left: 4rem;
 
   &:hover .timeline-dot {
-    background-color: #6366f1;
+    background-color: var(--accent);
     transform: scale(1.25);
   }
 
   &:hover .experience-card {
-    border-color: rgba(99, 102, 241, 0.4);
-    background-color: var(--bg-card-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--text-primary);
   }
 
   &:hover .company-name {
-    color: #6366f1;
+    color: var(--accent);
   }
 
   &:hover .view-details {
@@ -105,18 +105,19 @@ export const TimelineDot = styled.div.attrs({ className: 'timeline-dot' })`
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 9999px;
-  background-color: var(--bg-page);
-  border: 2px solid #6366f1;
-  transition: all 0.3s;
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+  background-color: var(--bg-elev);
+  border: 3px solid var(--text-primary);
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0 var(--text-primary);
 `;
 
 export const ExperienceCard = styled.div.attrs({ className: 'experience-card' })`
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background-color: var(--bg-elev);
+  border: 3px solid var(--text-primary);
   border-radius: 1rem;
+  box-shadow: 5px 5px 0 var(--text-primary);
   padding: 1.75rem;
-  transition: all 0.3s;
+  transition: all 0.2s;
 `;
 
 export const CardHeader = styled.div`
@@ -138,7 +139,7 @@ export const CompanyName = styled.h3.attrs({ className: 'company-name' })`
 `;
 
 export const RoleName = styled.p`
-  color: #6366f1;
+  color: var(--accent);
   font-weight: 500;
   margin-top: 0.125rem;
 `;
@@ -180,10 +181,10 @@ export const SkillPill = styled.span`
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
   border-radius: 9999px;
-  background-color: rgba(67, 56, 202, 0.2);
-  color: #6366f1;
-  border: 1px solid rgba(67, 56, 202, 0.3);
-  font-weight: 500;
+  background-color: var(--accent-a20);
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+  font-weight: 700;
 `;
 
 export const ViewDetails = styled.p.attrs({ className: 'view-details' })`

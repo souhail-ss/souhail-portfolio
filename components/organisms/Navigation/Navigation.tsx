@@ -2,6 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { ctaHref, ctaIsExternal } from '@/data/site';
 import {
   NavContainer,
   NavWrapper,
@@ -15,6 +17,7 @@ import {
   CVPillItem,
   CVPill,
   CVEyeButton,
+  ThemeToggleButton,
   MobileMenuButton,
   HamburgerLine1,
   HamburgerLine2,
@@ -27,12 +30,11 @@ import {
 } from './Navigation.styles';
 
 const navLinks = [
-  { label: 'À propos',     href: '#about' },
-  { label: 'Expériences',  href: '#experiences' },
-  { label: 'Projets',      href: '#projects' },
-  { label: 'Compétences',  href: '#skills' },
-  { label: 'Formation',    href: '#education' },
-  { label: 'Hobbies',      href: '#hobbies' },
+  { label: 'Services',    href: '#services' },
+  { label: 'Projets',     href: '#projects' },
+  { label: 'Références',  href: '#experiences' },
+  { label: 'Méthode',     href: '#process' },
+  { label: 'À propos',    href: '#about' },
 ];
 
 interface NavigationProps {
@@ -42,12 +44,24 @@ interface NavigationProps {
 export default function Navigation({ visible }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', fn);
     return () => window.removeEventListener('scroll', fn);
   }, []);
+
+  useEffect(() => {
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch {}
+  };
 
   return (
     <NavContainer
@@ -78,10 +92,10 @@ export default function Navigation({ visible }: NavigationProps) {
               </li>
             ))}
 
-            <li style={{ color: '#6366f1', fontWeight: 300, fontSize: '1.1rem', padding: '0 0.25rem' }}>|</li>
+            <li style={{ color: 'var(--accent)', fontWeight: 300, fontSize: '1.1rem', padding: '0 0.25rem' }}>|</li>
             <CVPillItem>
-              <CVPill href="/cv.pdf" download>
-                CV ↓
+              <CVPill href={ctaHref} target={ctaIsExternal ? '_blank' : undefined} rel={ctaIsExternal ? 'noopener noreferrer' : undefined}>
+                Me contacter
               </CVPill>
               <CVEyeButton href="/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Consulter le CV">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -89,6 +103,9 @@ export default function Navigation({ visible }: NavigationProps) {
                   <circle cx="12" cy="12" r="3" />
                 </svg>
               </CVEyeButton>
+              <ThemeToggleButton onClick={toggleTheme} aria-label="Changer de thème">
+                {theme === 'dark' ? <Sun /> : <Moon />}
+              </ThemeToggleButton>
             </CVPillItem>
           </DesktopMenu>
 
@@ -123,8 +140,8 @@ export default function Navigation({ visible }: NavigationProps) {
                   </li>
                 ))}
                 <MobileCVPillItem>
-                  <MobileCVPill href="/cv.pdf" download>
-                    Télécharger CV ↓
+                  <MobileCVPill href={ctaHref} onClick={() => setMenuOpen(false)} target={ctaIsExternal ? '_blank' : undefined} rel={ctaIsExternal ? 'noopener noreferrer' : undefined}>
+                    Me contacter
                   </MobileCVPill>
                   <CVEyeButton href="/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Consulter le CV">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -132,6 +149,9 @@ export default function Navigation({ visible }: NavigationProps) {
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </CVEyeButton>
+                  <ThemeToggleButton onClick={toggleTheme} aria-label="Changer de thème">
+                    {theme === 'dark' ? <Sun /> : <Moon />}
+                  </ThemeToggleButton>
                 </MobileCVPillItem>
               </MobileMenuList>
             </MobileDrawer>

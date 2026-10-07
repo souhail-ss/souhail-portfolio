@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { ArrowRight, Download } from 'lucide-react';
+import { ctaHref, ctaIsExternal, site } from '@/data/site';
 import {
   AboutSection,
   Title,
@@ -10,35 +12,40 @@ import {
   ContentGrid,
   TextColumn,
   Description,
+  StatGrid,
+  StatTile,
+  StatValue,
+  StatLabel,
   InfoList,
   InfoRow,
   InfoLabel,
-  InfoValueLink,
   InfoValueText,
   CVButtonRow,
   DownloadButton,
   ReviewButton,
   ImageColumn,
   ImageContainerWrapper,
-  ImageGlow,
   ImageWrapper,
-  DecoratorBottomRight,
-  DecoratorTopLeft
 } from './About.styles';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
 });
 
-const contactInfo = [
-  { label: 'Email',       value: 'souhail.ziyadi2022@outlook.com', href: 'mailto:souhail.ziyadi2022@outlook.com' },
-  { label: 'LinkedIn',    value: 'linkedin.com/in/souhail-ziyadi', href: 'https://www.linkedin.com/in/souhail-ziyadi-2811a5258/' },
-  { label: 'GitHub',      value: 'github.com/souhail-ss',          href: 'https://github.com/souhail-ss' },
-  { label: 'Localisation',value: 'Paris, France',                  href: null },
-  { label: 'Téléphone',   value: '+33 7 66 58 63 30',              href: 'tel:+33766586330' },
+const stats = [
+  { value: '3', label: 'projets livrés : SaaS, web et mobile' },
+  { value: '5', label: 'personnes dans l’équipe Weneeds, en Agile' },
+  { value: '1', label: 'interlocuteur unique, du cadrage à la mise en ligne' },
+  { value: '48h', label: 'pour recevoir un devis clair' },
+];
+
+const parcours = [
+  { label: 'Master', value: 'Manager de projet informatique — ÉSTIAM, Paris (2022–2024)' },
+  { label: 'Licence', value: 'Développement logiciel — Mundiapolis, Casablanca (2019–2022)' },
+  { label: 'Langues', value: 'Français (C1) · Anglais (B2) · Arabe (natif)' },
 ];
 
 export default function About() {
@@ -53,71 +60,62 @@ export default function About() {
       <ContentGrid>
         <TextColumn {...fadeUp(0.1)}>
           <Description>
-            Développeur Full Stack spécialisé en JavaScript et TypeScript, avec plus d&apos;un an
-            d&apos;expérience dans la conception et le développement d&apos;applications web modernes. Je
-            travaille principalement avec React, Next.js, Node.js et NestJS, avec une expérience des
-            architectures microservices, des API REST et des bases de données PostgreSQL/MongoDB.
-            J&apos;aime construire des interfaces modernes et réactives tout en développant des backends
-            fiables et évolutifs.
+            Je suis {site.name}, développeur Full Stack freelance{site.companyName ? ` et fondateur de ${site.companyName}` : ''}.
+            J&apos;accompagne startups, PME et agences pour transformer une idée en produit fiable :
+            cadrage, interface, API, base de données et mise en production.
+          </Description>
+          <Description>
+            Chez Weneeds, j&apos;ai construit avec une équipe de 5 une plateforme SaaS de recrutement en
+            microservices (NX, NestJS, Next.js), avec matching par IA et moteur de recherche avancé.
+            Cette expérience, je la mets aujourd&apos;hui au service de vos projets.
           </Description>
 
+          <StatGrid>
+            {stats.map((stat) => (
+              <StatTile key={stat.value}>
+                <StatValue>{stat.value}</StatValue>
+                <StatLabel>{stat.label}</StatLabel>
+              </StatTile>
+            ))}
+          </StatGrid>
+
           <InfoList>
-            {contactInfo.map((item) => (
+            {parcours.map((item) => (
               <InfoRow key={item.label}>
-                <InfoLabel>
-                  {item.label}
-                </InfoLabel>
-                {item.href ? (
-                  <InfoValueLink
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    {item.value}
-                  </InfoValueLink>
-                ) : (
-                  <InfoValueText>{item.value}</InfoValueText>
-                )}
+                <InfoLabel>{item.label}</InfoLabel>
+                <InfoValueText>{item.value}</InfoValueText>
               </InfoRow>
             ))}
           </InfoList>
 
           <CVButtonRow>
             <DownloadButton
-              href="/cv.pdf"
-              download
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              href={ctaHref}
+              target={ctaIsExternal ? '_blank' : undefined}
+              rel={ctaIsExternal ? 'noopener noreferrer' : undefined}
+              whileHover={{ x: -2, y: -2 }}
+              whileTap={{ x: 1, y: 1 }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Télécharger mon CV
+              <ArrowRight size={16} />
+              Discuter de mon projet
             </DownloadButton>
             <ReviewButton
-              href="mailto:souhail.ziyadi2022@outlook.com"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              href={site.cv}
+              download
+              whileHover={{ x: -2, y: -2 }}
+              whileTap={{ x: 1, y: 1 }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Me contacter
+              <Download size={16} />
+              Mon CV
             </ReviewButton>
           </CVButtonRow>
         </TextColumn>
 
         <ImageColumn {...fadeUp(0.25)}>
           <ImageContainerWrapper>
-            <ImageGlow />
             <ImageWrapper>
-              <Image src="/profilee.png" alt="Souhail Ziyadi" fill style={{ objectFit: 'cover' }} priority />
+              <Image src="/profpic.png" alt={site.name} fill style={{ objectFit: 'cover' }} priority />
             </ImageWrapper>
-            <DecoratorBottomRight />
-            <DecoratorTopLeft />
           </ImageContainerWrapper>
         </ImageColumn>
       </ContentGrid>

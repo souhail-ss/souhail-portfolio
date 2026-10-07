@@ -1,169 +1,160 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
-import ShimmeringText from '@/components/atoms/ShimmeringText/ShimmeringText';
+import React, { useState } from 'react';
+import { Send, ArrowRight, Check } from 'lucide-react';
 import { useChat } from '@/context/ChatContext';
+import { ctaHref, ctaIsExternal, site } from '@/data/site';
 import {
   HeroSection,
-  ContentContainer,
-  TitleName,
+  HeroGrid,
+  ContentColumn,
+  AvailabilityBadge,
+  StatusDot,
+  Headline,
   Highlight,
-  Subtitle,
+  Lead,
   ButtonContainer,
   PrimaryButton,
   SecondaryButton,
-  ScrollIndicator,
-  ScrollText,
+  StackRow,
+  StackChip,
+  BriefColumn,
+  BriefCard,
+  BriefTopBar,
+  BriefBody,
+  BriefLabel,
+  BriefHeading,
+  BriefSteps,
+  BriefStep,
+  StepIcon,
+  BriefFooter,
   AITeaserWrapper,
   AIInputBorder,
   AIInputRow,
   AIInput,
   AISubmitButton,
+  ScrollIndicator,
+  ScrollText,
 } from './Hero.styles';
 
-const WELCOME       = 'Full-Stack Developer • Paris, France';
-const STAGGER_MS    = 55;
-const SPAWN_DUR_MS  = 750;
-const SPAWN_TOTAL   = (WELCOME.length - 1) * STAGGER_MS + SPAWN_DUR_MS;
-const SHIMMER_MS    = 1400;
-const SHRINK_DUR_MS = 1300;
-const COMPLETE_DELAY = SPAWN_TOTAL + SHIMMER_MS + SHRINK_DUR_MS + 400;
+const STACK = ['Next.js', 'React', 'NestJS', 'TypeScript', 'PostgreSQL', 'React Native'];
 
-interface HeroProps {
-  onComplete?: () => void;
-  skipAnimation?: boolean;
-}
+const BRIEF_STEPS: { label: string; state: 'done' | 'active' | 'todo' }[] = [
+  { label: 'Cadrage & devis sous 48h', state: 'done' },
+  { label: 'Maquettes & choix techniques', state: 'done' },
+  { label: 'Développement par itérations', state: 'active' },
+  { label: 'Mise en production & suivi', state: 'todo' },
+];
 
-export default function Hero({ onComplete, skipAnimation = false }: HeroProps) {
-  const [phase, setPhase] = useState<'intro' | 'settling' | 'done'>(skipAnimation ? 'done' : 'intro');
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+});
+
+export default function Hero() {
   const [heroInput, setHeroInput] = useState('');
   const [inputFocused, setInputFocused] = useState(false);
   const { openExpandedWithQuestion } = useChat();
 
-  const handleComplete = useCallback(() => {
-    onComplete?.();
-  }, [onComplete]);
-
-  useEffect(() => {
-    if (skipAnimation) {
-      setPhase('done');
-      return;
-    }
-    const t1 = setTimeout(() => setPhase('settling'), SPAWN_TOTAL + SHIMMER_MS);
-    const t2 = setTimeout(() => setPhase('done'),     SPAWN_TOTAL + SHIMMER_MS + SHRINK_DUR_MS * 0.6);
-    const t3 = setTimeout(handleComplete, COMPLETE_DELAY);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, [handleComplete, skipAnimation]);
-
-  const settled = phase !== 'intro';
-  const done    = phase === 'done';
-
-  const handleHeroInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && heroInput.trim()) {
-      openExpandedWithQuestion(heroInput.trim());
-      setHeroInput('');
-    }
+  const submit = () => {
+    const q = heroInput.trim();
+    if (!q) return;
+    openExpandedWithQuestion(q);
+    setHeroInput('');
   };
 
   return (
     <HeroSection>
-      <ContentContainer>
+      <HeroGrid>
+        <ContentColumn>
+          <AvailabilityBadge {...rise(0)}>
+            <StatusDot />
+            Disponible pour de nouveaux projets
+          </AvailabilityBadge>
 
-        <motion.div
-          initial={{ scale: skipAnimation ? 1 : 2.8 }}
-          animate={{ scale: settled ? 1 : 2.8 }}
-          transition={{ duration: skipAnimation ? 0 : 1.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ transformOrigin: 'center center' }}
-        >
-          <ShimmeringText
-            text={WELCOME}
-            color="var(--text-muted)"
-            shimmeringColor="var(--text-primary)"
-            duration={1.6}
-            className="text-base md:text-xl font-semibold tracking-[0.22em] uppercase"
-          />
-        </motion.div>
+          <Headline {...rise(0.08)}>
+            Je conçois et livre votre produit web, <Highlight>du MVP à la production.</Highlight>
+          </Headline>
 
-        <TitleName
-          initial={{ opacity: skipAnimation ? 1 : 0, y: skipAnimation ? 0 : 32 }}
-          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 32 }}
-          transition={{ duration: skipAnimation ? 0 : 0.95, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Souhail{' '}
-          <Highlight>Ziyadi</Highlight>
-        </TitleName>
+          <Lead {...rise(0.16)}>
+            <strong>{site.name}</strong>, développeur Full Stack freelance à Paris. Applications web et
+            mobiles sur mesure, livrées par itérations que vous pouvez tester, avec un code propre et
+            maintenable.
+          </Lead>
 
-        <Subtitle
-          initial={{ opacity: skipAnimation ? 1 : 0, y: skipAnimation ? 0 : 20 }}
-          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 20 }}
-          transition={{ duration: skipAnimation ? 0 : 0.75, delay: done && !skipAnimation ? 0.2 : 0 }}
-        >
-          Développeur Full Stack
-        </Subtitle>
+          <ButtonContainer {...rise(0.24)}>
+            <PrimaryButton
+              href={ctaHref}
+              target={ctaIsExternal ? '_blank' : undefined}
+              rel={ctaIsExternal ? 'noopener noreferrer' : undefined}
+            >
+              Discuter de mon projet
+              <ArrowRight size={16} />
+            </PrimaryButton>
+            <SecondaryButton href="#projects">Voir mes réalisations</SecondaryButton>
+          </ButtonContainer>
 
-        <ButtonContainer
-          initial={{ opacity: skipAnimation ? 1 : 0, y: skipAnimation ? 0 : 20 }}
-          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 20 }}
-          transition={{ duration: skipAnimation ? 0 : 0.7, delay: done && !skipAnimation ? 0.4 : 0 }}
-        >
-          <PrimaryButton href="#about">
-            À propos de moi
-          </PrimaryButton>
-          <SecondaryButton href="#projects">
-            Voir mes projets
-          </SecondaryButton>
-        </ButtonContainer>
+          <StackRow {...rise(0.32)}>
+            {STACK.map((tech) => (
+              <StackChip key={tech}>{tech}</StackChip>
+            ))}
+          </StackRow>
 
-        <AITeaserWrapper
-          initial={{ opacity: skipAnimation ? 1 : 0, y: skipAnimation ? 0 : 16 }}
-          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 16 }}
-          transition={{ duration: skipAnimation ? 0 : 0.7, delay: done && !skipAnimation ? 0.6 : 0 }}
-        >
-          <AIInputBorder $focused={inputFocused}>
-            <AIInputRow>
-              <AIInput
-                value={heroInput}
-                onChange={(e) => setHeroInput(e.target.value)}
-                onKeyDown={handleHeroInputKeyDown}
-                onFocus={() => setInputFocused(true)}
-                onBlur={() => setInputFocused(false)}
-                placeholder="mon IA répond pour moi , Posez vos questions! "
-              />
-              <AISubmitButton
-                disabled={!heroInput.trim()}
-                onClick={() => {
-                  if (heroInput.trim()) {
-                    openExpandedWithQuestion(heroInput.trim());
-                    setHeroInput('');
-                  }
-                }}
-              >
-                <Send />
-              </AISubmitButton>
-            </AIInputRow>
-          </AIInputBorder>
-        </AITeaserWrapper>
-      </ContentContainer>
+          <AITeaserWrapper {...rise(0.4)}>
+            <AIInputBorder $focused={inputFocused}>
+              <AIInputRow>
+                <AIInput
+                  value={heroInput}
+                  onChange={(e) => setHeroInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && submit()}
+                  onFocus={() => setInputFocused(true)}
+                  onBlur={() => setInputFocused(false)}
+                  placeholder="Décrivez votre projet à mon assistant IA…"
+                  aria-label="Poser une question à l'assistant IA"
+                />
+                <AISubmitButton disabled={!heroInput.trim()} onClick={submit} aria-label="Envoyer">
+                  <Send />
+                </AISubmitButton>
+              </AIInputRow>
+            </AIInputBorder>
+          </AITeaserWrapper>
+        </ContentColumn>
 
-      <ScrollIndicator
-        href="#about"
-        initial={{ opacity: skipAnimation ? 1 : 0 }}
-        animate={{ opacity: done ? 1 : 0 }}
-        transition={{ delay: done && !skipAnimation ? 0.9 : 0, duration: skipAnimation ? 0 : 0.8 }}
-      >
-        <ScrollText>Scroll</ScrollText>
-        <motion.svg
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-          width="20" height="20" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" strokeWidth="2"
-          strokeLinecap="round" strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <polyline points="19 12 12 19 5 12" />
-        </motion.svg>
+        <BriefColumn {...rise(0.3)}>
+          <BriefCard>
+            <BriefTopBar>
+              <span className="dot" />
+              <span className="dot" />
+              <span className="dot" />
+              <span className="title">projet / brief.md</span>
+            </BriefTopBar>
+            <BriefBody>
+              <div>
+                <BriefLabel>Comment on travaille</BriefLabel>
+                <BriefHeading>De l&apos;idée à la mise en ligne</BriefHeading>
+              </div>
+              <BriefSteps>
+                {BRIEF_STEPS.map((step) => (
+                  <BriefStep key={step.label} $state={step.state}>
+                    <StepIcon $state={step.state}>
+                      {step.state === 'done' && <Check size={12} strokeWidth={3} />}
+                    </StepIcon>
+                    {step.label}
+                  </BriefStep>
+                ))}
+              </BriefSteps>
+              <BriefFooter>
+                <span>Un seul interlocuteur</span>
+                <strong>Devis gratuit</strong>
+              </BriefFooter>
+            </BriefBody>
+          </BriefCard>
+        </BriefColumn>
+      </HeroGrid>
+
+      <ScrollIndicator href="#services" {...rise(0.6)} aria-label="Voir mes services">
+        <ScrollText>Services</ScrollText>
       </ScrollIndicator>
     </HeroSection>
   );

@@ -33,16 +33,13 @@ const skills: { name: string; icon: string; level: number; category: Exclude<Cat
   { name: 'Styled Components', icon: 'styledcomponents', level: 5, category: 'Frontend' },
   { name: 'Material UI',       icon: 'mui',              level: 4, category: 'Frontend' },
   { name: 'Tailwind CSS',      icon: 'tailwindcss',      level: 4, category: 'Frontend' },
-  { name: 'Bootstrap',         icon: 'bootstrap',        level: 4, category: 'Frontend' },
   { name: 'Redux',             icon: 'redux',            level: 4, category: 'Frontend' },
-  { name: 'jQuery',            icon: 'jquery',           level: 3, category: 'Frontend' },
   // Backend
   { name: 'Node.js',           icon: 'nodedotjs',        level: 5, category: 'Backend' },
   { name: 'NestJS',            icon: 'nestjs',           level: 5, category: 'Backend' },
   { name: 'Express.js',        icon: 'express',          level: 4, category: 'Backend', colorOverride: 'white' },
   { name: 'GraphQL',           icon: 'graphql',          level: 4, category: 'Backend' },
   { name: 'Python',            icon: 'python',           level: 3, category: 'Backend' },
-  { name: 'PHP',               icon: 'php',              level: 3, category: 'Backend' },
   { name: 'Django',            icon: 'django',           level: 2, category: 'Backend', colorOverride: 'white' },
   // Database
   { name: 'PostgreSQL',        icon: 'postgresql',       level: 5, category: 'Database' },
@@ -59,7 +56,6 @@ const skills: { name: string; icon: string; level: number; category: Exclude<Cat
   { name: 'Figma',             icon: 'figma',            level: 4, category: 'Tools & Others' },
   { name: 'Jest',              icon: 'jest',             level: 4, category: 'Tools & Others' },
   { name: 'Postman',           icon: 'postman',          level: 5, category: 'Tools & Others' },
-  { name: 'Jira',              icon: 'jira',             level: 4, category: 'Tools & Others' },
   { name: 'Flutter',           icon: 'flutter',          level: 3, category: 'Tools & Others' },
   { name: 'React Native',      icon: 'react',            level: 4, category: 'Tools & Others' },
   { name: 'Dart',              icon: 'dart',             level: 3, category: 'Tools & Others' },
@@ -77,7 +73,7 @@ export default function Skills() {
         viewport={{ once: true }} transition={{ duration: 0.7 }}
       >
         <Slash>/</Slash>
-        <span>Compétences</span>
+        <span>Stack technique</span>
         <Line />
       </Title>
 
@@ -93,7 +89,7 @@ export default function Skills() {
           {filtered.map((skill) => (
             <Card
               key={skill.name}
-              whileHover={{ y: -4, borderColor: 'rgba(99,102,241,0.5)' }}
+              whileHover={{ x: -2, y: -2 }}
             >
               <CardIcon
                 src={`https://cdn.simpleicons.org/${skill.icon}${skill.colorOverride ? `/${skill.colorOverride}` : ''}`}

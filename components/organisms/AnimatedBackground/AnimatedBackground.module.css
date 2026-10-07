@@ -5,39 +5,48 @@
   pointer-events: none;
   background: var(--bg-page);
   overflow: hidden;
-  transition: background 0.3s ease;
 }
 
-.blob {
+.spot {
   position: absolute;
   border-radius: 50%;
-  filter: blur(70px);
+  filter: blur(90px);
   will-change: transform;
-  opacity: var(--blob-opacity);
-  transition: opacity 0.3s ease;
 }
 
-.b0 { animation: moveX 23s linear infinite alternate,
-                 moveY 17s linear infinite alternate; }
-
-.b1 { animation: moveX 31s linear infinite alternate,
-                 moveY 19s linear infinite alternate; }
-
-.b2 { animation: moveX 18s linear infinite alternate,
-                 moveY 27s linear infinite alternate; }
-
-.b3 { animation: moveX 37s linear infinite alternate,
-                 moveY 13s linear infinite alternate; }
-
-.b4 { animation: moveX 26s linear infinite alternate,
-                 moveY 33s linear infinite alternate; }
-
-@keyframes moveX {
-  from { transform: translateX(-28vw); }
-  to   { transform: translateX(28vw);  }
+.spotA {
+  width: 46vw;
+  height: 46vw;
+  max-width: 720px;
+  max-height: 720px;
+  top: -12%;
+  left: 50%;
+  margin-left: -23vw;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16) 0%, transparent 65%);
+  animation: driftA 26s ease-in-out infinite alternate;
 }
 
-@keyframes moveY {
-  from { transform: translateY(-22vh); }
-  to   { transform: translateY(22vh);  }
+.spotB {
+  width: 34vw;
+  height: 34vw;
+  max-width: 520px;
+  max-height: 520px;
+  bottom: -10%;
+  right: -6%;
+  background: radial-gradient(circle, rgba(var(--accent-2-rgb), 0.12) 0%, transparent 65%);
+  animation: driftB 32s ease-in-out infinite alternate;
+}
+
+@keyframes driftA {
+  from { transform: translate3d(-6vw, 0, 0); }
+  to   { transform: translate3d(6vw, 8vh, 0); }
+}
+
+@keyframes driftB {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-8vw, -6vh, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotA, .spotB { animation: none; }
 }

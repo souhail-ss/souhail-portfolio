@@ -19,13 +19,13 @@ export const Title = styled(motion.h2)`
 `;
 
 export const Slash = styled.span`
-  color: #6366f1;
+  color: var(--accent);
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 1px;
-  background-color: var(--border);
+  height: 2px;
+  background-color: var(--text-primary);
   margin-left: 0.5rem;
 `;
 
@@ -47,32 +47,37 @@ export const CarouselTrack = styled.div`
   &::-webkit-scrollbar { display: none; }
 `;
 
-export const ProjectLink = styled(Link)`
-  display: block;
+export const ProjectItem = styled(motion.div)`
   flex-shrink: 0;
   scroll-snap-align: start;
   width: calc((100% - 2 * 1.25rem) / 3);
-  text-decoration: none;
 
   @media (max-width: 768px) {
     width: clamp(260px, 80vw, 320px);
   }
 `;
 
-export const ProjectCard = styled(motion.div)`
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+export const ProjectLink = styled(Link)`
+  display: block;
+  height: 100%;
+  text-decoration: none;
+`;
+
+export const ProjectCard = styled.div`
+  background-color: var(--bg-elev);
+  border: 3px solid var(--text-primary);
   border-radius: 1rem;
+  box-shadow: 5px 5px 0 var(--text-primary);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  transition: all 0.3s;
+  transition: transform 0.15s, box-shadow 0.15s;
   height: 100%;
 
   ${ProjectLink}:hover & {
-    border-color: rgba(99, 102, 241, 0.4);
-    background-color: var(--bg-card-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--text-primary);
   }
 `;
 
@@ -111,7 +116,7 @@ export const ProjectTitle = styled.h3`
   transition: color 0.3s;
 
   ${ProjectLink}:hover & {
-    color: #6366f1;
+    color: var(--accent);
   }
 `;
 
@@ -132,10 +137,10 @@ export const TechPill = styled.span`
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
   border-radius: 9999px;
-  background-color: rgba(67, 56, 202, 0.2);
-  color: #6366f1;
-  border: 1px solid rgba(67, 56, 202, 0.3);
-  font-weight: 500;
+  background-color: var(--accent-a20);
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+  font-weight: 700;
 `;
 
 export const ActionButtonsContainer = styled.div`
@@ -152,15 +157,17 @@ export const ActionButtonSecondary = styled.a`
   gap: 0.5rem;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--border-strong);
-  color: var(--text-muted);
+  background-color: var(--bg-elev);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
+  color: var(--text-primary);
   font-size: 0.75rem;
-  font-weight: 500;
-  transition: all 0.2s;
+  font-weight: 700;
+  transition: all 0.15s;
 
   &:hover {
-    border-color: var(--text-muted);
-    color: var(--text-primary);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 
@@ -172,15 +179,18 @@ export const ActionButtonPrimary = styled.a`
   gap: 0.5rem;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  background-color: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #6366f1;
+  background-color: var(--accent);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
+  color: var(--on-accent);
   font-size: 0.75rem;
-  font-weight: 500;
-  transition: all 0.2s;
+  font-weight: 700;
+  transition: all 0.15s;
 
   &:hover {
-    background-color: rgba(99, 102, 241, 0.25);
+    background-color: var(--accent-dk);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 
@@ -205,7 +215,7 @@ export const ScrollThumb = styled(motion.div)`
   top: 0;
   height: 100%;
   border-radius: 9999px;
-  background: #6366f1;
+  background: var(--accent);
   cursor: grab;
 
   &:active {

@@ -9,7 +9,7 @@ export const typing = keyframes`
 export const Overlay = styled(motion.div)`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(18, 18, 18, 0.35);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -23,14 +23,14 @@ export const ModalContainer = styled(motion.div)`
   height: 620px;
   max-width: 100%;
   max-height: 90vh;
-  background: #111111;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-elev);
+  border: 4px solid var(--text-primary);
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 25px 80px -20px rgba(0, 0, 0, 0.6);
+  box-shadow: 10px 10px 0 var(--text-primary);
 
   @media (max-width: 960px) {
     width: 100%;
@@ -56,7 +56,7 @@ export const ModalHeader = styled.div`
   justify-content: flex-end;
   padding: 0 16px;
   z-index: 10;
-  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.98), rgba(17, 17, 17, 0));
+  background: linear-gradient(to bottom, var(--bg-elev) 60%, transparent);
 `;
 
 export const ControlsRow = styled.div`
@@ -69,18 +69,18 @@ export const ControlButton = styled.button<{ $variant?: 'close' }>`
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
+  background: var(--bg-elev);
+  border: 2px solid var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-muted);
   transition: all 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.14);
-    color: ${({ $variant }) => $variant === 'close' ? '#ff5f57' : '#fff'};
+    background: var(--bg-card-hover);
+    color: ${({ $variant }) => $variant === 'close' ? '#ff5f57' : 'var(--text-primary)'};
   }
 
   svg { width: 18px; height: 18px; }
@@ -101,7 +101,7 @@ export const MessagesContainer = styled.div`
   &::-webkit-scrollbar { width: 6px; }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--border-strong);
     border-radius: 3px;
   }
 `;
@@ -119,14 +119,14 @@ export const EmptyState = styled.div`
 export const EmptyTitle = styled.h3`
   font-size: 26px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0 0 12px;
   letter-spacing: -0.02em;
 `;
 
 export const EmptyText = styled.p`
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   margin: 0 0 32px;
   max-width: 400px;
   line-height: 1.5;
@@ -142,18 +142,20 @@ export const SuggestionsGrid = styled.div`
 
 export const SuggestionButton = styled(motion.button)`
   padding: 12px 20px;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: var(--bg-elev);
+  border: 2px solid var(--text-primary);
   border-radius: 100px;
-  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 3px 3px 0 var(--text-primary);
+  color: var(--text-primary);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
 
   &:hover {
-    background: rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.5);
+    background: var(--accent-a15);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--text-primary);
   }
 `;
 
@@ -167,7 +169,8 @@ export const MessageAvatar = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #222;
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
   align-self: flex-end;
@@ -187,15 +190,16 @@ export const MessageBubble = styled.div<{ $role: 'user' | 'assistant' }>`
   ${({ $role }) =>
     $role === 'user'
       ? `
-          background: #6366f1;
-          color: #fff;
+          background: var(--accent);
+          color: var(--on-accent);
+          border: 2px solid var(--text-primary);
           border-bottom-right-radius: 6px;
         `
       : `
-          background: rgba(255, 255, 255, 0.07);
-          color: #fff;
+          background: var(--bg-elev);
+          color: var(--text-primary);
           border-bottom-left-radius: 6px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 2px solid var(--text-primary);
         `}
 `;
 
@@ -210,7 +214,7 @@ export const TypingDot = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--text-dim);
   animation: ${typing} 1s ease-in-out infinite;
 `;
 
@@ -219,8 +223,8 @@ export const InputSection = styled.div`
   align-items: flex-end;
   gap: 12px;
   padding: 20px 40px 30px;
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-page);
+  border-top: 1px solid var(--border);
 
   @media (max-width: 640px) {
     padding: 16px 20px 24px;
@@ -229,11 +233,11 @@ export const InputSection = styled.div`
 
 export const TextArea = styled.textarea`
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-input);
+  border: 2px solid var(--text-primary);
   border-radius: 16px;
   padding: 16px 20px;
-  color: #fff;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 15px;
   line-height: 1.5;
@@ -242,12 +246,11 @@ export const TextArea = styled.textarea`
   max-height: 140px;
   transition: all 0.15s ease;
 
-  &::placeholder { color: rgba(255, 255, 255, 0.35); }
+  &::placeholder { color: var(--text-dim); }
 
   &:focus {
     outline: none;
-    border-color: #6366f1;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-card-hover);
   }
 
   &:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -259,17 +262,21 @@ export const SendButton = styled(motion.button)`
   justify-content: center;
   gap: 8px;
   padding: 16px 24px;
-  background: #6366f1;
-  border: none;
+  background: var(--accent);
+  border: 2px solid var(--text-primary);
+  box-shadow: 3px 3px 0 var(--text-primary);
   border-radius: 16px;
-  color: #fff;
+  color: var(--on-accent);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.15s ease;
   white-space: nowrap;
 
-  &:hover:not(:disabled) { background: #4f46e5; }
+  &:hover:not(:disabled) {
+    background: var(--accent-dk);
+    box-shadow: 4px 4px 0 var(--text-primary);
+  }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 

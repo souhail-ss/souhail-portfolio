@@ -18,17 +18,18 @@ export const NavWrapper = styled.nav<{ $scrolled: boolean }>`
   max-width: 50rem;
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid var(--nav-border);
-  transition: all 0.5s;
+  border: 3px solid var(--text-primary);
+  transition: all 0.3s;
   backdrop-filter: blur(40px);
 
   ${props => props.$scrolled
     ? css`
         background-color: var(--bg-nav-scrolled);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        box-shadow: 5px 5px 0 var(--text-primary);
       `
     : css`
         background-color: var(--bg-nav);
+        box-shadow: 3px 3px 0 var(--text-primary);
       `}
 `;
 
@@ -37,8 +38,8 @@ export const TopAccentLine = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  height: 1.5px;
-  background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.6), transparent);
+  height: 3px;
+  background: var(--accent);
 `;
 
 export const NavInner = styled.div`
@@ -60,7 +61,7 @@ export const Logo = styled(motion.a)`
 `;
 
 export const LogoDot = styled.span`
-  color: #6366f1;
+  color: var(--accent);
 `;
 
 export const DesktopMenu = styled.ul`
@@ -95,7 +96,7 @@ export const NavLinkUnderline = styled.span`
   left: 0.875rem;
   right: 0.875rem;
   height: 1px;
-  background-color: #6366f1;
+  background-color: var(--accent);
   transform: scaleX(0);
   transition: transform 0.3s;
   transform-origin: left;
@@ -115,38 +116,65 @@ export const CVPillItem = styled.li`
 export const CVPill = styled.a`
   padding: 0.375rem 1rem;
   border-radius: 0.75rem;
-  background-color: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: #6366f1;
+  background-color: var(--accent);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
+  color: var(--on-accent);
   font-size: 0.875rem;
-  font-weight: 600;
-  transition: all 0.2s;
+  font-weight: 700;
+  transition: all 0.15s;
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
 
   &:hover {
-    background-color: #6366f1;
-    color: white;
-    border-color: #6366f1;
+    background-color: var(--accent-dk);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 
 export const CVEyeButton = styled.a`
   padding: 0.375rem 0.5rem;
   border-radius: 0.75rem;
-  background-color: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #6366f1;
-  transition: all 0.2s;
+  background-color: var(--bg-elev);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
+  color: var(--text-primary);
+  transition: all 0.15s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   &:hover {
-    background-color: #6366f1;
-    color: white;
-    border-color: #6366f1;
+    background-color: var(--accent);
+    color: var(--on-accent);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
+  }
+`;
+
+export const ThemeToggleButton = styled.button`
+  padding: 0.375rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  background-color: var(--bg-elev);
+  border: 2px solid var(--text-primary);
+  box-shadow: 2px 2px 0 var(--text-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg { width: 14px; height: 14px; }
+
+  &:hover {
+    background-color: var(--accent-a15);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--text-primary);
   }
 `;
 
@@ -240,9 +268,11 @@ export const MobileCVPill = styled.a`
   display: block;
   padding: 0.625rem 0.75rem;
   border-radius: 0.75rem;
-  color: #6366f1;
-  background-color: rgba(99, 102, 241, 0.1);
+  border: 2px solid var(--text-primary);
+  color: var(--on-accent);
+  background-color: var(--accent);
+  box-shadow: 2px 2px 0 var(--text-primary);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
 `;
