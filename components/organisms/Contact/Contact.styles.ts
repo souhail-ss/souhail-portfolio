@@ -13,12 +13,9 @@ export const Panel = styled(motion.div)`
   grid-template-columns: minmax(0, 1fr);
   gap: 3rem;
   padding: 2rem;
-  border-radius: 1.75rem;
-  border: 4px solid var(--text-primary);
-  box-shadow: 8px 8px 0 var(--text-primary);
-  background:
-    radial-gradient(ellipse 60% 80% at 0% 0%, var(--accent-a15), transparent 70%),
-    var(--bg-elev);
+  border-radius: 2.25rem;
+  box-shadow: var(--clay-lg);
+  background: var(--bg-elev);
   overflow: hidden;
 
   @media (min-width: 768px) {
@@ -30,7 +27,7 @@ export const Panel = styled(motion.div)`
 
 export const Heading = styled.h2`
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: var(--text-primary);
@@ -41,7 +38,7 @@ export const Heading = styled.h2`
 `;
 
 export const Accent = styled.span`
-  color: var(--accent);
+  color: var(--accent-2);
 `;
 
 export const Text = styled.p`
@@ -64,24 +61,21 @@ export const PrimaryButton = styled.a`
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  border: 3px solid var(--text-primary);
-  background: var(--accent);
+  border-radius: 1.25rem;
+  background: var(--accent-grad);
   color: var(--on-accent);
   font-size: 0.9375rem;
-  font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-primary);
-  transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  font-weight: 600;
+  box-shadow: var(--clay-sm);
+  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
 
   &:hover {
-    background: var(--accent-dk);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-md);
   }
 
   &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--text-primary);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -90,24 +84,21 @@ export const SecondaryButton = styled.a`
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  border: 3px solid var(--text-primary);
+  border-radius: 1.25rem;
   background: var(--bg-elev);
   color: var(--text-primary);
   font-size: 0.9375rem;
-  font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--clay-sm);
   transition: all 0.15s;
 
   &:hover {
-    background: var(--accent-a10);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-md);
   }
 
   &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--text-primary);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -123,7 +114,7 @@ export const DetailLink = styled.a`
   align-items: center;
   gap: 0.875rem;
   padding: 0.85rem 0.5rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   color: var(--text-muted);
   font-size: 0.875rem;
   overflow-wrap: anywhere;
@@ -132,15 +123,15 @@ export const DetailLink = styled.a`
     padding: 0.85rem 1rem;
     font-size: 0.9375rem;
   }
-  transition: background 0.2s, color 0.2s;
+  transition: box-shadow 0.2s, color 0.2s;
 
   svg {
     flex-shrink: 0;
-    color: var(--accent);
+    color: var(--accent-2);
   }
 
   &:hover {
-    background: var(--bg-card-hover);
+    box-shadow: var(--clay-inset);
     color: var(--text-primary);
   }
 `;
@@ -155,6 +146,6 @@ export const DetailStatic = styled.div`
 
   svg {
     flex-shrink: 0;
-    color: var(--accent);
+    color: var(--accent-2);
   }
 `;

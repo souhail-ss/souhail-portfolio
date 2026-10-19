@@ -21,6 +21,15 @@ type Category = 'Toutes' | 'Frontend' | 'Backend' | 'Database' | 'DevOps & Cloud
 
 const FILTERS: Category[] = ['Toutes', 'Frontend', 'Backend', 'Database', 'DevOps & Cloud', 'Tools & Others'];
 
+const FILTER_COLORS: Record<Category, { color: string; hoverTint: string }> = {
+  'Toutes':          { color: 'var(--accent)', hoverTint: 'var(--accent-a15)' },
+  'Frontend':        { color: 'var(--blue)',   hoverTint: 'rgba(var(--blue-rgb), 0.15)' },
+  'Backend':         { color: 'var(--green)',  hoverTint: 'rgba(var(--green-rgb), 0.15)' },
+  'Database':        { color: 'var(--accent-2)', hoverTint: 'rgba(var(--accent-2-rgb), 0.15)' },
+  'DevOps & Cloud':  { color: 'var(--accent)', hoverTint: 'var(--accent-a15)' },
+  'Tools & Others':  { color: 'var(--yellow)', hoverTint: 'rgba(var(--yellow-rgb), 0.18)' },
+};
+
 const skills: { name: string; icon: string; level: number; category: Exclude<Category, 'Toutes'>; colorOverride?: string }[] = [
   // Frontend
   { name: 'React.js',          icon: 'react',            level: 5, category: 'Frontend' },
@@ -57,7 +66,6 @@ const skills: { name: string; icon: string; level: number; category: Exclude<Cat
   { name: 'Jest',              icon: 'jest',             level: 4, category: 'Tools & Others' },
   { name: 'Postman',           icon: 'postman',          level: 5, category: 'Tools & Others' },
   { name: 'Flutter',           icon: 'flutter',          level: 3, category: 'Tools & Others' },
-  { name: 'React Native',      icon: 'react',            level: 4, category: 'Tools & Others' },
   { name: 'Dart',              icon: 'dart',             level: 3, category: 'Tools & Others' },
 ];
 
@@ -79,7 +87,13 @@ export default function Skills() {
 
       <FilterRow>
         {FILTERS.map(f => (
-          <FilterTab key={f} $active={f === active} onClick={() => setActive(f)}>
+          <FilterTab
+            key={f}
+            $active={f === active}
+            $color={FILTER_COLORS[f].color}
+            $hoverTint={FILTER_COLORS[f].hoverTint}
+            onClick={() => setActive(f)}
+          >
             {f}
           </FilterTab>
         ))}

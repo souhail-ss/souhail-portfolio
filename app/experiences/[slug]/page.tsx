@@ -1,6 +1,7 @@
 import { getExperienceBySlug, experiences } from '@/lib/experiences';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import AnimatedBackground from '@/components/organisms/AnimatedBackground/AnimatedBackground';
 import ExperienceTabs from '@/components/organisms/ExperienceTabs/ExperienceTabs';
 
 export async function generateStaticParams() {
@@ -18,13 +19,14 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
   if (!exp) notFound();
 
   return (
-    <main className="min-h-screen bg-[var(--bg-page)] text-white">
+    <main className="relative min-h-screen text-[var(--text-primary)]">
+      <AnimatedBackground />
       <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-accent-dark/10 to-transparent pointer-events-none -z-0" />
 
       <div className="relative max-w-4xl mx-auto px-6 py-20">
         <Link
           href="/#experiences"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-accent transition-colors duration-200 mb-14 text-sm group"
+          className="inline-flex items-center gap-2 text-[var(--text-dim)] hover:text-accent transition-colors duration-200 mb-14 text-sm group"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             className="group-hover:-translate-x-1 transition-transform duration-200">
@@ -37,13 +39,13 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
         {/* Header */}
         <div className="mb-4 space-y-3">
           <p className="text-accent text-xs font-bold uppercase tracking-[0.2em]">Expérience professionnelle</p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{exp!.company}</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--text-primary)] leading-tight">{exp!.company}</h1>
           <p className="text-accent text-xl font-semibold">{exp!.role}</p>
-          <p className="text-white/40 text-sm">{exp!.type}</p>
+          <p className="text-[var(--text-dim)] text-sm">{exp!.type}</p>
         </div>
 
         {/* Period & Location */}
-        <div className="flex flex-wrap gap-5 text-sm text-white/40 mb-8">
+        <div className="flex flex-wrap gap-5 text-sm text-[var(--text-dim)] mb-8">
           <span className="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />

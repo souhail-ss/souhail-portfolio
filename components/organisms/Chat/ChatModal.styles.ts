@@ -9,8 +9,9 @@ export const typing = keyframes`
 export const Overlay = styled(motion.div)`
   position: fixed;
   inset: 0;
-  background: rgba(18, 18, 18, 0.35);
-  backdrop-filter: blur(4px);
+  background: rgba(4, 3, 16, 0.60);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,14 +24,15 @@ export const ModalContainer = styled(motion.div)`
   height: 620px;
   max-width: 100%;
   max-height: 90vh;
-  background: var(--bg-elev);
-  border: 4px solid var(--text-primary);
+  background: var(--bg-overlay);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  box-shadow: 10px 10px 0 var(--text-primary);
+  box-shadow: var(--clay-lg);
 
   @media (max-width: 960px) {
     width: 100%;
@@ -56,7 +58,7 @@ export const ModalHeader = styled.div`
   justify-content: flex-end;
   padding: 0 16px;
   z-index: 10;
-  background: linear-gradient(to bottom, var(--bg-elev) 60%, transparent);
+  background: transparent;
 `;
 
 export const ControlsRow = styled.div`
@@ -70,7 +72,6 @@ export const ControlButton = styled.button<{ $variant?: 'close' }>`
   height: 36px;
   border-radius: 8px;
   background: var(--bg-elev);
-  border: 2px solid var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -143,9 +144,8 @@ export const SuggestionsGrid = styled.div`
 export const SuggestionButton = styled(motion.button)`
   padding: 12px 20px;
   background: var(--bg-elev);
-  border: 2px solid var(--text-primary);
   border-radius: 100px;
-  box-shadow: 3px 3px 0 var(--text-primary);
+  box-shadow: var(--clay-sm);
   color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
@@ -153,9 +153,8 @@ export const SuggestionButton = styled(motion.button)`
   transition: all 0.15s ease;
 
   &:hover {
-    background: var(--accent-a15);
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -170,7 +169,6 @@ export const MessageAvatar = styled.div`
   height: 40px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
   align-self: flex-end;
@@ -190,16 +188,15 @@ export const MessageBubble = styled.div<{ $role: 'user' | 'assistant' }>`
   ${({ $role }) =>
     $role === 'user'
       ? `
-          background: var(--accent);
+          background: var(--accent-grad);
           color: var(--on-accent);
-          border: 2px solid var(--text-primary);
           border-bottom-right-radius: 6px;
         `
       : `
           background: var(--bg-elev);
           color: var(--text-primary);
+          box-shadow: var(--clay-xs);
           border-bottom-left-radius: 6px;
-          border: 2px solid var(--text-primary);
         `}
 `;
 
@@ -223,7 +220,7 @@ export const InputSection = styled.div`
   align-items: flex-end;
   gap: 12px;
   padding: 20px 40px 30px;
-  background: var(--bg-page);
+  background: transparent;
   border-top: 1px solid var(--border);
 
   @media (max-width: 640px) {
@@ -233,8 +230,8 @@ export const InputSection = styled.div`
 
 export const TextArea = styled.textarea`
   flex: 1;
-  background: var(--bg-input);
-  border: 2px solid var(--text-primary);
+  background: var(--bg-field);
+  box-shadow: var(--clay-inset);
   border-radius: 16px;
   padding: 16px 20px;
   color: var(--text-primary);
@@ -262,20 +259,19 @@ export const SendButton = styled(motion.button)`
   justify-content: center;
   gap: 8px;
   padding: 16px 24px;
-  background: var(--accent);
-  border: 2px solid var(--text-primary);
-  box-shadow: 3px 3px 0 var(--text-primary);
+  background: var(--accent-grad);
+  box-shadow: var(--clay-sm);
   border-radius: 16px;
   color: var(--on-accent);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
   white-space: nowrap;
 
   &:hover:not(:disabled) {
-    background: var(--accent-dk);
-    box-shadow: 4px 4px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-sm);
   }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }

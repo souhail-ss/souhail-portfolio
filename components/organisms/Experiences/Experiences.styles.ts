@@ -30,7 +30,7 @@ export const BgBlob = styled.div<{ $top: string; $left: string; $size: number; $
 
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
@@ -39,13 +39,15 @@ export const Title = styled(motion.h2)`
 `;
 
 export const Slash = styled.span`
-  color: var(--accent);
+  color: var(--green);
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 2px;
-  background-color: var(--text-primary);
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-grad-soft);
+  box-shadow: var(--clay-xs);
   margin-left: 0.5rem;
 `;
 
@@ -60,11 +62,13 @@ export const TimelineContainer = styled.div`
 
 export const TimelineLine = styled.div`
   position: absolute;
-  left: 1.25rem;
+  left: calc(1.375rem - 4px);
   top: 1.5rem;
   bottom: 1.5rem;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(var(--accent-rgb), 0.8), rgba(var(--accent-dk-rgb), 0.4), transparent);
+  width: 8px;
+  border-radius: 999px;
+  background: var(--accent-grad-soft);
+  box-shadow: var(--clay-xs);
 `;
 
 export const ExperiencesList = styled.div`
@@ -80,13 +84,12 @@ export const ItemContent = styled.div`
   padding-left: 4rem;
 
   &:hover .timeline-dot {
-    background-color: var(--accent);
+    background: var(--accent-grad);
     transform: scale(1.25);
   }
 
   &:hover .experience-card {
-    transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0 var(--text-primary);
+    box-shadow: var(--clay-md);
   }
 
   &:hover .company-name {
@@ -106,16 +109,14 @@ export const TimelineDot = styled.div.attrs({ className: 'timeline-dot' })`
   height: 1.25rem;
   border-radius: 9999px;
   background-color: var(--bg-elev);
-  border: 3px solid var(--text-primary);
   transition: all 0.2s;
-  box-shadow: 2px 2px 0 var(--text-primary);
+  box-shadow: var(--clay-xs);
 `;
 
 export const ExperienceCard = styled.div.attrs({ className: 'experience-card' })`
   background-color: var(--bg-elev);
-  border: 3px solid var(--text-primary);
-  border-radius: 1rem;
-  box-shadow: 5px 5px 0 var(--text-primary);
+  border-radius: 2rem;
+  box-shadow: var(--clay-md);
   padding: 1.75rem;
   transition: all 0.2s;
 `;
@@ -133,7 +134,7 @@ export const CompanyInfo = styled.div``;
 
 export const CompanyName = styled.h3.attrs({ className: 'company-name' })`
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   transition: color 0.3s;
 `;
@@ -181,10 +182,10 @@ export const SkillPill = styled.span`
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
   border-radius: 9999px;
-  background-color: var(--accent-a20);
-  color: var(--text-primary);
-  border: 2px solid var(--text-primary);
-  font-weight: 700;
+  background: var(--bg-elev);
+  color: var(--text-muted);
+  box-shadow: var(--clay-inset);
+  font-weight: 500;
 `;
 
 export const ViewDetails = styled.p.attrs({ className: 'view-details' })`

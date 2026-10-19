@@ -7,11 +7,8 @@ export const typing = keyframes`
 `;
 
 const wave = keyframes`
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-12deg); }
-  40% { transform: rotate(10deg); }
-  60% { transform: rotate(-8deg); }
-  80% { transform: rotate(6deg); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 `;
 
 export const Container = styled(motion.div)`
@@ -20,14 +17,15 @@ export const Container = styled(motion.div)`
   right: 2rem;
   width: 350px;
   height: 450px;
-  background: var(--bg-elev-2);
-  border-radius: 12px 12px 0 0;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px 24px 0 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: -4px -4px 0 var(--text-primary);
+  box-shadow: var(--clay-sm);
   z-index: 1000;
-  border: 3px solid var(--text-primary);
   border-bottom: none;
 
   @media (max-width: 768px) {
@@ -44,7 +42,7 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px 12px 12px 16px;
-  background: var(--bg-page);
+  background: transparent;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 `;
@@ -64,7 +62,6 @@ export const Avatar = styled.div`
   height: 36px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
 
@@ -85,7 +82,7 @@ export const OnlineDot = styled.span`
   height: 10px;
   background: #22c55e;
   border-radius: 50%;
-  border: 2px solid var(--bg-page);
+  border: 2px solid var(--bg-elev);
 `;
 
 export const HeaderInfo = styled.div`
@@ -113,7 +110,7 @@ export const HeaderControls = styled.div`
 export const ControlButton = styled.button<{ $variant?: 'close' }>`
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 999px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -181,9 +178,8 @@ export const SuggestionsWrapper = styled.div`
 export const SuggestionButton = styled(motion.button)`
   padding: 10px 14px;
   background: var(--bg-elev);
-  border: 2px solid var(--text-primary);
-  border-radius: 8px;
-  box-shadow: 3px 3px 0 var(--text-primary);
+  border-radius: 14px;
+  box-shadow: var(--clay-sm);
   color: var(--text-primary);
   font-size: 13px;
   font-weight: 600;
@@ -192,9 +188,8 @@ export const SuggestionButton = styled(motion.button)`
   transition: all 0.15s ease;
 
   &:hover {
-    background: var(--accent-a15);
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -209,7 +204,6 @@ export const MessageAvatar = styled.div`
   height: 28px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 2px solid var(--text-primary);
   overflow: hidden;
   flex-shrink: 0;
   align-self: flex-end;
@@ -229,15 +223,14 @@ export const MessageBubble = styled.div<{ $role: 'user' | 'assistant' }>`
   ${({ $role }) =>
     $role === 'user'
       ? `
-          background: var(--accent);
+          background: var(--accent-grad);
           color: var(--on-accent);
-          border: 2px solid var(--text-primary);
           border-bottom-right-radius: 4px;
         `
       : `
           background: var(--bg-elev);
           color: var(--text-primary);
-          border: 2px solid var(--text-primary);
+          box-shadow: var(--clay-xs);
           border-bottom-left-radius: 4px;
         `}
 `;
@@ -262,15 +255,15 @@ export const InputSection = styled.div`
   align-items: center;
   gap: 8px;
   padding: 12px;
-  background: var(--bg-page);
+  background: transparent;
   border-top: 1px solid var(--border);
   flex-shrink: 0;
 `;
 
 export const TextInput = styled.input`
   flex: 1;
-  background: var(--bg-input);
-  border: 2px solid var(--text-primary);
+  background: var(--bg-field);
+  box-shadow: var(--clay-inset);
   border-radius: 20px;
   padding: 10px 16px;
   color: var(--text-primary);
@@ -292,9 +285,8 @@ export const SendButton = styled(motion.button)`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  background: var(--accent-grad);
+  box-shadow: var(--clay-xs);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -304,8 +296,8 @@ export const SendButton = styled(motion.button)`
   transition: box-shadow 0.15s;
 
   &:hover:not(:disabled) {
-    background: var(--accent-dk);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-sm);
   }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }

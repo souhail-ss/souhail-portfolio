@@ -6,11 +6,10 @@ export const Container = styled.div``;
 export const TabBar = styled.div`
   display: flex;
   gap: 0.25rem;
-  padding: 0.25rem;
+  padding: 0.375rem;
   background-color: var(--bg-elev);
-  border-radius: 0.75rem;
-  border: 3px solid var(--text-primary);
-  box-shadow: 4px 4px 0 var(--text-primary);
+  border-radius: 1.125rem;
+  box-shadow: var(--clay-inset);
   margin-bottom: 2rem;
 `;
 
@@ -20,10 +19,10 @@ export const TabButton = styled.button<{ $active: boolean }>`
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: 1.25rem;
   transition: color 0.2s;
   cursor: pointer;
-  color: ${props => props.$active ? 'var(--text-primary)' : 'var(--text-dim)'};
+  color: ${props => props.$active ? 'var(--accent)' : 'var(--text-dim)'};
   background: none;
   border: none;
 
@@ -35,9 +34,9 @@ export const TabButton = styled.button<{ $active: boolean }>`
 export const ActiveTabBackground = styled(motion.div)`
   position: absolute;
   inset: 0;
-  background-color: var(--accent);
-  border: 2px solid var(--text-primary);
-  border-radius: 0.5rem;
+  background: var(--bg-elev);
+  box-shadow: var(--clay-sm);
+  border-radius: 1.25rem;
 `;
 
 export const TabLabel = styled.span`
@@ -47,15 +46,14 @@ export const TabLabel = styled.span`
 
 export const ContentContainer = styled.div`
   background-color: var(--bg-elev);
-  border: 3px solid var(--text-primary);
-  border-radius: 1rem;
-  box-shadow: 5px 5px 0 var(--text-primary);
+  border-radius: 2rem;
+  box-shadow: var(--clay-md);
   padding: 2rem;
 `;
 
 export const ContentHeader = styled.h2`
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--accent);
@@ -68,7 +66,7 @@ export const ContentHeader = styled.h2`
 export const HeaderLine = styled.span`
   width: 1rem;
   height: 1px;
-  background-color: var(--accent);
+  background: var(--accent-grad);
 `;
 
 export const DescriptionText = styled.p`
@@ -96,7 +94,7 @@ export const MissionBullet = styled.span`
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 9999px;
-  background-color: var(--accent);
+  background: var(--accent-grad);
   flex-shrink: 0;
 `;
 
@@ -112,18 +110,16 @@ export const SkillPill = styled.span`
   gap: 0.5rem;
   padding: 0.375rem 0.875rem;
   font-size: 0.875rem;
-  border-radius: 0.5rem;
+  border-radius: 1.25rem;
   background-color: var(--bg-elev);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  box-shadow: var(--clay-xs);
   color: var(--text-primary);
   font-weight: 600;
   transition: all 0.15s;
 
   &:hover {
-    background-color: var(--accent-a15);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-sm);
   }
 `;
 

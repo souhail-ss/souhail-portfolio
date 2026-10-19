@@ -1,6 +1,7 @@
 import { getProjectBySlug, projects } from '@/lib/projects';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import AnimatedBackground from '@/components/organisms/AnimatedBackground/AnimatedBackground';
 
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -35,13 +36,14 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-[var(--bg-page)] text-white">
+    <main className="relative min-h-screen text-[var(--text-primary)]">
+      <AnimatedBackground />
       <div className="fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-accent-dark/10 to-transparent pointer-events-none -z-0" />
 
       <div className="relative max-w-4xl mx-auto px-6 py-20">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-accent transition-colors duration-200 mb-14 text-sm group"
+          className="inline-flex items-center gap-2 text-[var(--text-dim)] hover:text-accent transition-colors duration-200 mb-14 text-sm group"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             className="group-hover:-translate-x-1 transition-transform duration-200">
@@ -54,7 +56,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Header */}
         <div className="mb-8 space-y-3">
           <p className="text-accent text-xs font-bold uppercase tracking-[0.2em]">Projet</p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{project!.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--text-primary)] leading-tight">{project!.title}</h1>
         </div>
 
         {/* Tech stack */}
@@ -62,8 +64,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {project!.tech.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs font-medium rounded-full border"
-              style={{ background: 'rgba(var(--accent-dk-rgb), 0.2)', borderColor: 'rgba(var(--accent-dk-rgb), 0.3)', color: 'var(--accent)' }}
+              className="px-3 py-1 text-xs font-bold rounded-full"
+              style={{ background: 'var(--bg-elev)', boxShadow: 'var(--clay-inset)', color: 'var(--text-muted)' }}
             >
               {tech}
             </span>
@@ -72,23 +74,23 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         {/* Description */}
         <div
-          className="rounded-xl p-6 mb-8 border"
-          style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.06)' }}
+          className="rounded-xl p-6 mb-8"
+          style={{ background: 'var(--bg-elev)', boxShadow: 'var(--clay-md)' }}
         >
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/30 mb-3">Description</h2>
-          <p className="text-white/70 leading-relaxed">{project!.fullDescription}</p>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--text-dim)] mb-3">Description</h2>
+          <p className="text-[var(--text-muted)] leading-relaxed">{project!.fullDescription}</p>
         </div>
 
         {/* Highlights */}
         <div
-          className="rounded-xl p-6 mb-8 border"
-          style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.06)' }}
+          className="rounded-xl p-6 mb-8"
+          style={{ background: 'var(--bg-elev)', boxShadow: 'var(--clay-md)' }}
         >
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/30 mb-4">Points clés</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--text-dim)] mb-4">Points clés</h2>
           <ul className="space-y-3">
             {project!.highlights.map((h, i) => (
-              <li key={i} className="flex items-start gap-3 text-white/70 text-sm leading-relaxed">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent)' }} />
+              <li key={i} className="flex items-start gap-3 text-[var(--text-muted)] text-sm leading-relaxed">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent-grad)' }} />
                 {h}
               </li>
             ))}
@@ -103,7 +105,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 href={project!.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all duration-200 border-white/15 text-white/70 hover:border-accent hover:text-accent"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5"
+                style={{ background: 'var(--bg-elev)', color: 'var(--text-primary)', boxShadow: 'var(--clay-xs)' }}
               >
                 <GithubIcon /> GitHub
               </a>
@@ -113,8 +116,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 href={project!.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
-                style={{ background: 'rgba(var(--accent-rgb), 0.15)', border: '1px solid rgba(var(--accent-rgb), 0.3)', color: 'var(--accent)' }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5"
+                style={{ background: 'var(--accent-grad)', color: 'var(--on-accent)', boxShadow: 'var(--clay-xs)' }}
               >
                 <ExternalLinkIcon /> Live
               </a>
