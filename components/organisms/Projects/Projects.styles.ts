@@ -39,6 +39,7 @@ export const CarouselTrack = styled.div`
   display: flex;
   gap: 1.25rem;
   overflow-x: auto;
+  border-radius: 1rem;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   padding: 0.75rem 0 1rem;
@@ -106,7 +107,7 @@ export const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 
 export const ProjectTitle = styled.h3`
