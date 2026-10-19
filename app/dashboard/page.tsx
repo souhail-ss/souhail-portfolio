@@ -116,7 +116,7 @@ function HBar({ data, title }: { data: CountStat[]; title: string }) {
               {d._id || 'Unknown'}
             </span>
             <div style={{ flex: 1, background: 'rgba(255,255,255,0.06)', borderRadius: '3px', height: '5px', overflow: 'hidden' }}>
-              <div style={{ width: `${(d.count / max) * 100}%`, height: '100%', background: 'var(--accent)', borderRadius: '3px', transition: 'width 0.6s ease' }} />
+              <div style={{ width: `${(d.count / max) * 100}%`, height: '100%', background: 'var(--accent-grad)', borderRadius: '3px', transition: 'width 0.6s ease' }} />
             </div>
             <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '12px', width: '24px', textAlign: 'right', flexShrink: 0 }}>{d.count}</span>
           </div>
@@ -156,7 +156,7 @@ function ActivityChart({ dailyViews, dailySessions }: { dailyViews: CountStat[];
           const sH = Math.max((sess / maxVal) * 72, sess > 0 ? 3 : 0);
           return (
             <div key={day} title={`${day}: ${views} views, ${sess} sessions`} style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '1px', height: '72px', cursor: 'default' }}>
-              <div style={{ flex: 1, height: `${vH}px`, background: 'var(--accent)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
+              <div style={{ flex: 1, height: `${vH}px`, background: 'var(--accent-grad)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
               <div style={{ flex: 1, height: `${sH}px`, background: 'rgba(var(--accent-rgb), 0.35)', borderRadius: '2px 2px 0 0', transition: 'height 0.5s ease' }} />
             </div>
           );
@@ -290,7 +290,7 @@ export default function DashboardPage() {
           <button
             type="submit"
             disabled={loading || !password}
-            style={{ width: '100%', padding: '11px', background: 'var(--accent)', border: 'none', borderRadius: '8px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: loading || !password ? 'not-allowed' : 'pointer', opacity: loading || !password ? 0.6 : 1, transition: 'opacity 0.15s' }}
+            style={{ width: '100%', padding: '11px', background: 'var(--accent-grad)', border: 'none', borderRadius: '8px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: loading || !password ? 'not-allowed' : 'pointer', opacity: loading || !password ? 0.6 : 1, transition: 'opacity 0.15s' }}
           >
             {loading ? 'Verifying…' : 'Sign In'}
           </button>

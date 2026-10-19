@@ -5,9 +5,10 @@ import { Wrap, Title, Slash, Line, Subtitle } from './SectionTitle.styles';
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
+  accentColor?: string;
 }
 
-export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
+export default function SectionTitle({ title, subtitle, accentColor }: SectionTitleProps) {
   return (
     <Wrap
       initial={{ opacity: 0, y: 30 }}
@@ -16,7 +17,7 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <Title>
-        <Slash>/</Slash>
+        <Slash $color={accentColor}>/</Slash>
         <span>{title}</span>
         <Line />
       </Title>

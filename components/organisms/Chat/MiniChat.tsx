@@ -105,7 +105,7 @@ export const MiniChat: React.FC = () => {
 
   const suggestions = [
     "Es-tu disponible pour un nouveau projet ?",
-    "Comment se déroule une collaboration ?",
+    "J'ai un projet en tête, tu peux m'aider à le cadrer ?",
     "C'est vrai que tu fais du beatbox ? 🎤",
   ];
 

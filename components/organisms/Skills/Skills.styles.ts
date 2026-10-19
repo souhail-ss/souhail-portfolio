@@ -9,7 +9,7 @@ export const Section = styled.section`
 
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 2.5rem;
   display: flex;
@@ -23,8 +23,10 @@ export const Slash = styled.span`
 
 export const Line = styled.div`
   flex: 1;
-  height: 2px;
-  background: var(--text-primary);
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-grad-soft);
+  box-shadow: var(--clay-xs);
 `;
 
 export const FilterRow = styled.div`
@@ -34,22 +36,20 @@ export const FilterRow = styled.div`
   margin-bottom: 2.5rem;
 `;
 
-export const FilterTab = styled.button<{ $active: boolean }>`
+export const FilterTab = styled.button<{ $active: boolean; $color: string; $hoverTint: string }>`
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
-  border: 2px solid var(--text-primary);
-  background: ${({ $active }) => $active ? 'var(--accent)' : 'var(--bg-elev)'};
-  color: var(--text-primary);
-  box-shadow: ${({ $active }) => $active ? '3px 3px 0 var(--text-primary)' : 'none'};
+  background: var(--bg-elev);
+  color: ${({ $active, $color }) => $active ? $color : 'var(--text-muted)'};
+  box-shadow: ${({ $active }) => $active ? 'var(--clay-inset)' : 'var(--clay-xs)'};
 
   &:hover {
-    background: ${({ $active }) => $active ? 'var(--accent)' : 'var(--accent-a15)'};
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    color: ${({ $color }) => $color};
+    box-shadow: ${({ $active }) => $active ? 'var(--clay-inset)' : 'var(--clay-sm)'};
   }
 `;
 
@@ -65,10 +65,14 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled(motion.div)`
+  &:nth-child(5n+1) { background: var(--pastel-blue); }
+  &:nth-child(5n+2) { background: var(--pastel-pink); }
+  &:nth-child(5n+3) { background: var(--pastel-mint); }
+  &:nth-child(5n+4) { background: var(--pastel-purple); }
+  &:nth-child(5n+5) { background: var(--pastel-yellow); }
   background: var(--bg-elev);
-  border: 3px solid var(--text-primary);
-  border-radius: 1rem;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  border-radius: 2rem;
+  box-shadow: var(--clay-sm);
   padding: 1.5rem 1rem 1.25rem;
   display: flex;
   flex-direction: column;
@@ -78,7 +82,7 @@ export const Card = styled(motion.div)`
   transition: box-shadow 0.15s ease;
 
   &:hover {
-    box-shadow: 6px 6px 0 var(--text-primary);
+    box-shadow: var(--clay-md);
   }
 `;
 
@@ -105,10 +109,9 @@ export const Dots = styled.div`
 `;
 
 export const Dot = styled.span<{ $filled: boolean }>`
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: ${({ $filled }) => $filled ? 'var(--text-primary)' : 'var(--border-strong)'};
-  opacity: ${({ $filled }) => $filled ? '0.85' : '1'};
+  background: ${({ $filled }) => $filled ? 'var(--accent-grad)' : 'var(--border-strong)'};
   transition: background 0.2s;
 `;

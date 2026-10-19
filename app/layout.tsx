@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Nunito } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -7,27 +7,26 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const display = Space_Grotesk({
+const display = Nunito({
   subsets: ['latin'],
   variable: '--font-display-face',
-  weight: ['500', '600', '700'],
+  weight: ['600', '700', '800'],
 });
 
-const title = 'Souhail Ziyadi — Développeur Full Stack freelance à Paris';
+const title = 'Souhail Ziyadi — Développeur Full Stack (React, Next.js, NestJS) · Paris';
 const description =
-  "Je conçois et livre des applications web et mobiles sur mesure, du MVP à la production. Développeur Full Stack freelance (React, Next.js, NestJS) basé à Paris — disponible pour de nouveaux projets.";
+  "Développeur Full Stack JavaScript/TypeScript basé à Paris : React, Next.js, NestJS. Expériences chez Weneeds et Stellantis. Ouvert aux postes en CDI.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
-    'développeur freelance',
     'développeur full stack',
-    'création application web',
-    'MVP',
-    'Next.js',
+    'développeur React',
+    'développeur Next.js',
     'NestJS',
-    'React',
+    'TypeScript',
+    'CDI',
     'Paris',
   ],
   openGraph: {
@@ -41,22 +40,18 @@ export const metadata: Metadata = {
 import StyledComponentsRegistry from '@/lib/registry';
 import { ChatProvider } from '@/context/ChatContext';
 import ChatModal from '@/components/organisms/Chat/ChatModal';
+import { chatEnabled } from '@/data/site';
 import PageTracker from '@/app/components/organisms/PageTracker';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="scroll-smooth">
       <body className={`${inter.variable} ${display.variable} font-sans antialiased`}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}catch(e){}})();`,
-          }}
-        />
         <StyledComponentsRegistry>
           <ChatProvider>
             <PageTracker />
             {children}
-            <ChatModal />
+            {chatEnabled && <ChatModal />}
           </ChatProvider>
         </StyledComponentsRegistry>
       </body>

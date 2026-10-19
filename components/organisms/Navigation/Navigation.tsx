@@ -2,12 +2,10 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
 import { ctaHref, ctaIsExternal } from '@/data/site';
 import {
   NavContainer,
   NavWrapper,
-  TopAccentLine,
   NavInner,
   Logo,
   LogoDot,
@@ -17,7 +15,6 @@ import {
   CVPillItem,
   CVPill,
   CVEyeButton,
-  ThemeToggleButton,
   MobileMenuButton,
   HamburgerLine1,
   HamburgerLine2,
@@ -30,10 +27,10 @@ import {
 } from './Navigation.styles';
 
 const navLinks = [
-  { label: 'Services',    href: '#services' },
+  { label: 'Expérience',  href: '#experiences' },
   { label: 'Projets',     href: '#projects' },
-  { label: 'Références',  href: '#experiences' },
-  { label: 'Méthode',     href: '#process' },
+  { label: 'Compétences', href: '#skills' },
+  { label: 'Formation',   href: '#education' },
   { label: 'À propos',    href: '#about' },
 ];
 
@@ -44,24 +41,12 @@ interface NavigationProps {
 export default function Navigation({ visible }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', fn);
     return () => window.removeEventListener('scroll', fn);
   }, []);
-
-  useEffect(() => {
-    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-  }, []);
-
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch {}
-  };
 
   return (
     <NavContainer
@@ -70,7 +55,6 @@ export default function Navigation({ visible }: NavigationProps) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <NavWrapper $scrolled={scrolled}>
-        <TopAccentLine />
 
         <NavInner>
           <Logo
@@ -103,9 +87,6 @@ export default function Navigation({ visible }: NavigationProps) {
                   <circle cx="12" cy="12" r="3" />
                 </svg>
               </CVEyeButton>
-              <ThemeToggleButton onClick={toggleTheme} aria-label="Changer de thème">
-                {theme === 'dark' ? <Sun /> : <Moon />}
-              </ThemeToggleButton>
             </CVPillItem>
           </DesktopMenu>
 
@@ -149,9 +130,6 @@ export default function Navigation({ visible }: NavigationProps) {
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </CVEyeButton>
-                  <ThemeToggleButton onClick={toggleTheme} aria-label="Changer de thème">
-                    {theme === 'dark' ? <Sun /> : <Moon />}
-                  </ThemeToggleButton>
                 </MobileCVPillItem>
               </MobileMenuList>
             </MobileDrawer>

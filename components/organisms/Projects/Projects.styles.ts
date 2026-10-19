@@ -10,7 +10,7 @@ export const ProjectsSection = styled.section`
 
 export const Title = styled(motion.h2)`
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 4rem;
   display: flex;
@@ -19,13 +19,15 @@ export const Title = styled(motion.h2)`
 `;
 
 export const Slash = styled.span`
-  color: var(--accent);
+  color: var(--accent-2);
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 2px;
-  background-color: var(--text-primary);
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-grad-soft);
+  box-shadow: var(--clay-xs);
   margin-left: 0.5rem;
 `;
 
@@ -65,9 +67,8 @@ export const ProjectLink = styled(Link)`
 
 export const ProjectCard = styled.div`
   background-color: var(--bg-elev);
-  border: 3px solid var(--text-primary);
-  border-radius: 1rem;
-  box-shadow: 5px 5px 0 var(--text-primary);
+  border-radius: 2rem;
+  box-shadow: var(--clay-md);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
@@ -76,8 +77,7 @@ export const ProjectCard = styled.div`
   height: 100%;
 
   ${ProjectLink}:hover & {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 var(--text-primary);
+    box-shadow: var(--clay-lg);
   }
 `;
 
@@ -111,7 +111,7 @@ export const ContentWrapper = styled.div`
 
 export const ProjectTitle = styled.h3`
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   transition: color 0.3s;
 
@@ -137,10 +137,10 @@ export const TechPill = styled.span`
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
   border-radius: 9999px;
-  background-color: var(--accent-a20);
-  color: var(--text-primary);
-  border: 2px solid var(--text-primary);
-  font-weight: 700;
+  background: var(--bg-elev);
+  color: var(--text-muted);
+  box-shadow: var(--clay-inset);
+  font-weight: 500;
 `;
 
 export const ActionButtonsContainer = styled.div`
@@ -156,18 +156,16 @@ export const ActionButtonSecondary = styled.a`
   justify-content: center;
   gap: 0.5rem;
   padding: 0.625rem;
-  border-radius: 0.5rem;
+  border-radius: 1.25rem;
   background-color: var(--bg-elev);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  box-shadow: var(--clay-xs);
   color: var(--text-primary);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.15s;
 
   &:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    box-shadow: var(--clay-sm);
   }
 `;
 
@@ -178,19 +176,17 @@ export const ActionButtonPrimary = styled.a`
   justify-content: center;
   gap: 0.5rem;
   padding: 0.625rem;
-  border-radius: 0.5rem;
-  background-color: var(--accent);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  border-radius: 1.25rem;
+  background: var(--accent-grad);
+  box-shadow: var(--clay-xs);
   color: var(--on-accent);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.15s;
 
   &:hover {
-    background-color: var(--accent-dk);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-sm);
   }
 `;
 
@@ -215,7 +211,7 @@ export const ScrollThumb = styled(motion.div)`
   top: 0;
   height: 100%;
   border-radius: 9999px;
-  background: var(--accent);
+  background: var(--accent-grad);
   cursor: grab;
 
   &:active {

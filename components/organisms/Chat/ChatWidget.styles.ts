@@ -7,11 +7,8 @@ const pulse = keyframes`
 `;
 
 const wave = keyframes`
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-12deg); }
-  40% { transform: rotate(10deg); }
-  60% { transform: rotate(-8deg); }
-  80% { transform: rotate(6deg); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 `;
 
 const popIn = keyframes`
@@ -26,19 +23,18 @@ export const FloatingButton = styled(motion.button)`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 3px solid var(--text-primary);
+  background: var(--accent-grad);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  box-shadow: var(--clay-sm);
   z-index: 1000;
   color: var(--on-accent);
   transition: box-shadow 0.15s;
 
   &:hover {
-    box-shadow: 6px 6px 0 var(--text-primary);
+    box-shadow: var(--clay-md);
   }
 
   svg {
@@ -64,7 +60,7 @@ export const Pulse = styled.span`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: rgba(var(--accent-rgb),  0.4);
+  background: rgba(var(--accent-rgb), 0.25);
   animation: ${pulse} 2s ease-out infinite;
 `;
 
@@ -92,14 +88,13 @@ export const TeaserBubble = styled.div`
   width: max-content;
   max-width: 220px;
   padding: 0.625rem 0.875rem;
-  border-radius: 0.75rem;
-  border: 3px solid var(--text-primary);
+  border-radius: 1rem;
   background: var(--bg-elev);
   color: var(--text-primary);
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.4;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  box-shadow: var(--clay-sm);
   animation: ${popIn} 0.25s ease-out;
   cursor: pointer;
   z-index: 1000;
@@ -112,8 +107,8 @@ export const TeaserBubble = styled.div`
     width: 10px;
     height: 10px;
     background: var(--bg-elev);
-    border-right: 3px solid var(--text-primary);
-    border-bottom: 3px solid var(--text-primary);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     transform: translateY(-50%) rotate(45deg);
   }
 

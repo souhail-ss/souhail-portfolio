@@ -7,7 +7,7 @@ export const Wrap = styled(motion.div)`
 
 export const Title = styled.h2`
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -15,14 +15,16 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
 `;
 
-export const Slash = styled.span`
-  color: var(--accent);
+export const Slash = styled.span<{ $color?: string }>`
+  color: ${({ $color }) => $color || 'var(--accent)'};
 `;
 
 export const Line = styled.div`
   flex: 1;
-  height: 2px;
-  background-color: var(--text-primary);
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-grad-soft);
+  box-shadow: var(--clay-xs);
   margin-left: 0.5rem;
 `;
 

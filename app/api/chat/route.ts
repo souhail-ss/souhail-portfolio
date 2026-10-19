@@ -6,6 +6,7 @@ import { generateChatResponse } from '@/lib/ai/chat-service';
 import { handleCors, jsonResponse, errorResponse } from '@/lib/server/cors';
 import { getTodayParis } from '@/lib/ai/providers/quota';
 import { getGeoFromIP, parseUserAgent } from '@/lib/server/geo';
+import { chatEnabled } from '@/data/site';
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) || jsonResponse({});
@@ -14,6 +15,7 @@ export async function OPTIONS(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const corsResponse = handleCors(request);
   if (corsResponse) return corsResponse;
+  if (!chatEnabled) return errorResponse('Chat is disabled', 503);
 
   try {
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||

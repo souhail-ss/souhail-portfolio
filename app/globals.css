@@ -12,18 +12,22 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ─── Theme tokens — "Bright" (design v3) ───────────────────────
+/* ─── Theme tokens — "Aurora" dark gradient mesh (design v7) ──────────────
    To re-skin the whole site, edit this block only.
+   Dark-only: surfaces are translucent so the aurora background glows through.
    The v2 (dark ink & mint) design is preserved on the git tag `design-v2`. */
 :root {
-  /* Accent: vivid orange (primary), coral red (secondary highlight) */
-  --accent:          #ff5a1f;
-  --accent-rgb:      255, 90, 31;
-  --accent-dk:       #e14a12;
-  --accent-dk-rgb:   225, 74, 18;
-  --accent-2:        #ff3b30;
-  --accent-2-rgb:    255, 59, 48;
-  --accent-soft-rgb: 255, 198, 164;
+  /* Accent: indigo (primary), pink (secondary highlight),
+     with a blue → violet → pink gradient for filled buttons/CTAs */
+  --accent:          #818cf8;
+  --accent-rgb:      129, 140, 248;
+  --accent-dk:       #6366f1;
+  --accent-dk-rgb:   99, 102, 241;
+  --accent-2:        #f472b6;
+  --accent-2-rgb:    244, 114, 182;
+  --accent-soft-rgb: 199, 210, 254;
+  --accent-grad:     linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  --accent-grad-soft: linear-gradient(90deg, #a5b4fc 0%, #c4b5fd 50%, #f9a8d4 100%);
   --on-accent:       #ffffff;
 
   --accent-a10:      rgba(var(--accent-rgb), 0.10);
@@ -36,76 +40,76 @@ html {
   --accent-a60:      rgba(var(--accent-rgb), 0.60);
   --accent-a80:      rgba(var(--accent-rgb), 0.80);
 
-  /* Backgrounds — soft white */
-  --bg-page:         #fafaf7;
-  --bg-elev:         #ffffff;
-  --bg-elev-2:       #f3f1ec;
-  --bg-field:        #ffffff;
-  --bg-nav:          rgba(250,250,247,0.82);
-  --bg-nav-scrolled: rgba(250,250,247,0.96);
-  --bg-card:         rgba(18,18,18,0.035);
-  --bg-card-hover:   rgba(18,18,18,0.07);
-  --bg-input:        rgba(18,18,18,0.04);
+  /* Extra palette colors — used to color-code categories/icons across the site */
+  --blue:            #60a5fa;
+  --blue-rgb:        96, 165, 250;
+  --on-blue:         #ffffff;
+  --yellow:          #fbbf24;
+  --yellow-rgb:      251, 191, 36;
+  --on-yellow:       #121212;
+  --green:           #34d399;
+  --green-rgb:       52, 211, 153;
+  --on-green:        #06281c;
+  --purple:          #a78bfa;
+  --purple-rgb:      167, 139, 250;
+  --on-purple:       #ffffff;
+  --teal:            #2dd4bf;
+  --teal-rgb:        45, 212, 191;
+  --on-teal:         #04201d;
+
+  /* Backgrounds — near-black indigo page, translucent glass surfaces */
+  --bg-page:          #07061a;
+  --bg-elev:          rgba(22,19,48,0.55);
+  --bg-elev-2:        rgba(30,26,64,0.55);
+  --bg-field:         rgba(12,10,30,0.60);
+  --bg-overlay:       rgba(14,12,34,0.90); /* floating panels over content (chat) */
+  --bg-nav:           rgba(10,8,28,0.55);
+  --bg-nav-scrolled:  rgba(10,8,28,0.82);
+
+  /* Card tints — translucent color washes */
+  --pastel-blue:      rgba(59,130,246,0.14);
+  --pastel-pink:      rgba(236,72,153,0.14);
+  --pastel-mint:      rgba(20,184,166,0.14);
+  --pastel-purple:    rgba(139,92,246,0.16);
+  --pastel-yellow:    rgba(224,148,0,0.13);
+  --bg-card:         rgba(255,255,255,0.04);
+  --bg-card-hover:   rgba(255,255,255,0.08);
+  --bg-input:        rgba(255,255,255,0.05);
 
   /* Borders */
-  --border:          rgba(18,18,18,0.10);
-  --border-strong:   rgba(18,18,18,0.18);
-  --nav-border:      rgba(18,18,18,0.08);
+  --border:          rgba(255,255,255,0.08);
+  --border-strong:   rgba(255,255,255,0.16);
+  --nav-border:      rgba(255,255,255,0.08);
 
-  /* Text — near-black */
-  --text-primary:    #121212;
-  --text-muted:      rgba(18,18,18,0.62);
-  --text-dim:        rgba(18,18,18,0.40);
+  /* Text */
+  --text-primary:    #eef0ff;
+  --text-muted:      rgba(238,240,255,0.68);
+  --text-dim:        rgba(238,240,255,0.44);
+
+  /* Glass elevations (named --clay-* for historical reasons):
+     drop shadow + 1px inner glass edge + top highlight; md/lg add a faint accent glow */
+  --clay-xs:         0 2px 10px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.07), inset 0 1px 0 rgba(255,255,255,0.08);
+  --clay-sm:         0 6px 20px rgba(0,0,0,0.40), inset 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.10);
+  --clay-md:         0 12px 36px rgba(0,0,0,0.45), 0 0 40px rgba(var(--accent-rgb),0.10), inset 0 0 0 1px rgba(255,255,255,0.10), inset 0 1px 0 rgba(255,255,255,0.12);
+  --clay-lg:         0 24px 60px rgba(0,0,0,0.55), 0 0 60px rgba(var(--accent-rgb),0.14), inset 0 0 0 1px rgba(255,255,255,0.10), inset 0 1px 0 rgba(255,255,255,0.14);
+  --clay-inset:      inset 0 2px 10px rgba(0,0,0,0.50), inset 0 0 0 1px rgba(var(--accent-rgb),0.45);
 
   /* Nav */
-  --nav-text:        rgba(18,18,18,0.55);
-  --nav-text-hover:  #121212;
-  --nav-bg-hover:    rgba(18,18,18,0.06);
+  --nav-text:        rgba(238,240,255,0.60);
+  --nav-text-hover:  #ffffff;
+  --nav-bg-hover:    rgba(255,255,255,0.07);
 
   /* Blobs */
-  --blob-opacity:    1;
-
-  /* Type */
-  --font-display:    var(--font-display-face), var(--font-inter), system-ui, sans-serif;
-}
-
-/* ─── Dark mode override ─────────────────────────────────────────
-   Toggled via [data-theme="dark"] on <html> (see ThemeToggle). */
-:root[data-theme='dark'] {
-  --on-accent:       #ffffff;
-
-  /* Backgrounds — near-black */
-  --bg-page:         #121214;
-  --bg-elev:         #1b1b1e;
-  --bg-elev-2:       #232326;
-  --bg-field:        #1b1b1e;
-  --bg-nav:          rgba(18,18,20,0.82);
-  --bg-nav-scrolled: rgba(18,18,20,0.96);
-  --bg-card:         rgba(245,245,240,0.045);
-  --bg-card-hover:   rgba(245,245,240,0.09);
-  --bg-input:        rgba(245,245,240,0.06);
-
-  /* Borders */
-  --border:          rgba(245,245,240,0.14);
-  --border-strong:   rgba(245,245,240,0.22);
-  --nav-border:      rgba(245,245,240,0.12);
-
-  /* Text — near-white (also drives the comic "ink" borders/shadows) */
-  --text-primary:    #f5f5f0;
-  --text-muted:      rgba(245,245,240,0.64);
-  --text-dim:        rgba(245,245,240,0.42);
-
-  /* Nav */
-  --nav-text:        rgba(245,245,240,0.58);
-  --nav-text-hover:  #f5f5f0;
-  --nav-bg-hover:    rgba(245,245,240,0.09);
+  --blob-opacity:    0.55;
 }
 
 body {
+  /* Declared here (not :root) because next/font sets --font-display-face on <body> */
+  --font-display:    var(--font-display-face), var(--font-inter), system-ui, sans-serif;
+  color-scheme: dark;
   background-color: var(--bg-page);
   color: var(--text-primary);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3 {
@@ -122,6 +126,6 @@ h1, h2, h3 {
 }
 
 ::selection {
-  background: var(--accent-a30);
-  color: var(--text-primary);
+  background: var(--accent-a40);
+  color: #ffffff;
 }

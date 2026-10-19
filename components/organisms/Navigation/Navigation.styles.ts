@@ -16,30 +16,20 @@ export const NavWrapper = styled.nav<{ $scrolled: boolean }>`
   position: relative;
   width: 100%;
   max-width: 50rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   overflow: hidden;
-  border: 3px solid var(--text-primary);
   transition: all 0.3s;
   backdrop-filter: blur(40px);
 
   ${props => props.$scrolled
     ? css`
         background-color: var(--bg-nav-scrolled);
-        box-shadow: 5px 5px 0 var(--text-primary);
+        box-shadow: var(--clay-md);
       `
     : css`
         background-color: var(--bg-nav);
-        box-shadow: 3px 3px 0 var(--text-primary);
+        box-shadow: var(--clay-sm);
       `}
-`;
-
-export const TopAccentLine = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--accent);
 `;
 
 export const NavInner = styled.div`
@@ -54,7 +44,7 @@ export const Logo = styled(motion.a)`
   align-items: center;
   gap: 0.125rem;
   color: var(--text-primary);
-  font-weight: 900;
+  font-weight: 600;
   font-size: 1.125rem;
   letter-spacing: -0.025em;
   user-select: none;
@@ -77,7 +67,7 @@ export const DesktopMenu = styled.ul`
 export const DesktopNavLink = styled.a`
   position: relative;
   padding: 0.375rem 0.875rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
@@ -86,7 +76,7 @@ export const DesktopNavLink = styled.a`
 
   &:hover {
     color: var(--nav-text-hover);
-    background-color: var(--nav-bg-hover);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -96,7 +86,7 @@ export const NavLinkUnderline = styled.span`
   left: 0.875rem;
   right: 0.875rem;
   height: 1px;
-  background-color: var(--accent);
+  background: var(--accent-grad);
   transform: scaleX(0);
   transition: transform 0.3s;
   transform-origin: left;
@@ -115,31 +105,28 @@ export const CVPillItem = styled.li`
 
 export const CVPill = styled.a`
   padding: 0.375rem 1rem;
-  border-radius: 0.75rem;
-  background-color: var(--accent);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  border-radius: 1rem;
+  background: var(--accent-grad);
+  box-shadow: var(--clay-xs);
   color: var(--on-accent);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.15s;
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
 
   &:hover {
-    background-color: var(--accent-dk);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-sm);
   }
 `;
 
 export const CVEyeButton = styled.a`
   padding: 0.375rem 0.5rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   background-color: var(--bg-elev);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  box-shadow: var(--clay-xs);
   color: var(--text-primary);
   transition: all 0.15s;
   display: inline-flex;
@@ -147,34 +134,8 @@ export const CVEyeButton = styled.a`
   justify-content: center;
 
   &:hover {
-    background-color: var(--accent);
-    color: var(--on-accent);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
-  }
-`;
-
-export const ThemeToggleButton = styled.button`
-  padding: 0.375rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.75rem;
-  background-color: var(--bg-elev);
-  border: 2px solid var(--text-primary);
-  box-shadow: 2px 2px 0 var(--text-primary);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.15s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  svg { width: 14px; height: 14px; }
-
-  &:hover {
-    background-color: var(--accent-a15);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-sm);
   }
 `;
 
@@ -243,7 +204,7 @@ export const MobileMenuList = styled.ul`
 export const MobileNavLink = styled.a`
   display: block;
   padding: 0.625rem 0.75rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
@@ -251,7 +212,7 @@ export const MobileNavLink = styled.a`
 
   &:hover {
     color: var(--nav-text-hover);
-    background-color: var(--nav-bg-hover);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -267,12 +228,11 @@ export const MobileCVPillItem = styled.li`
 export const MobileCVPill = styled.a`
   display: block;
   padding: 0.625rem 0.75rem;
-  border-radius: 0.75rem;
-  border: 2px solid var(--text-primary);
+  border-radius: 1rem;
   color: var(--on-accent);
-  background-color: var(--accent);
-  box-shadow: 2px 2px 0 var(--text-primary);
+  background: var(--accent-grad);
+  box-shadow: var(--clay-xs);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
 `;

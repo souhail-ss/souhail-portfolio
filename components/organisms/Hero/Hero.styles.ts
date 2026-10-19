@@ -42,7 +42,6 @@ export const AvailabilityBadge = styled(motion.div)`
   gap: 0.625rem;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  border: 2px solid var(--text-primary);
   background: var(--bg-elev);
   color: var(--text-primary);
   font-size: 0.8125rem;
@@ -53,13 +52,13 @@ export const StatusDot = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-grad);
   animation: ${pulse} 2s infinite;
 `;
 
 export const Headline = styled(motion.h1)`
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -70,7 +69,10 @@ export const Headline = styled(motion.h1)`
 `;
 
 export const Highlight = styled.span`
-  color: var(--accent);
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 `;
 
 export const Lead = styled(motion.p)`
@@ -100,13 +102,12 @@ export const PrimaryButton = styled.a`
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  border: 3px solid var(--text-primary);
-  background-color: var(--accent);
+  border-radius: 1.25rem;
+  background: var(--accent-grad);
   color: var(--on-accent);
   font-size: 0.9375rem;
-  font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--clay-sm);
   transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
 
   svg {
@@ -114,9 +115,8 @@ export const PrimaryButton = styled.a`
   }
 
   &:hover {
-    background-color: var(--accent-dk);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--text-primary);
+    filter: brightness(1.06);
+    box-shadow: var(--clay-md);
 
     svg {
       transform: translateX(3px);
@@ -124,8 +124,7 @@ export const PrimaryButton = styled.a`
   }
 
   &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--text-primary);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -133,24 +132,21 @@ export const SecondaryButton = styled.a`
   display: inline-flex;
   align-items: center;
   padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  border: 3px solid var(--text-primary);
+  border-radius: 1.25rem;
   background: var(--bg-elev);
   color: var(--text-primary);
   font-size: 0.9375rem;
-  font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--clay-sm);
   transition: all 0.15s;
 
   &:hover {
-    background: var(--accent-a10);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-md);
   }
 
   &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--text-primary);
+    box-shadow: var(--clay-inset);
   }
 `;
 
@@ -163,142 +159,150 @@ export const StackRow = styled(motion.ul)`
 
 export const StackChip = styled.li`
   padding: 0.25rem 0.7rem;
-  border-radius: 6px;
-  border: 2px solid var(--text-primary);
+  border-radius: 999px;
   background: var(--bg-elev);
   color: var(--text-primary);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  box-shadow: 2px 2px 0 var(--text-primary);
+  box-shadow: var(--clay-xs);
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
 
   &:hover {
-    background: var(--accent-a15);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0 var(--text-primary);
+    color: var(--accent);
+    box-shadow: var(--clay-sm);
   }
 `;
 
-/* ─── Project brief card (visual asset) ───────────────────────── */
+/* ─── Profile card (visual asset) ─────────────────────────────── */
 
-export const BriefColumn = styled(motion.div)`
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
+export const ProfileColumn = styled(motion.div)`
+  width: 100%;
+  max-width: 26rem;
+  justify-self: center;
 `;
 
-export const BriefCard = styled.div`
+export const ProfileCard = styled.div`
   position: relative;
-  border-radius: 1.25rem;
-  border: 3px solid var(--text-primary);
+  border-radius: 2.25rem;
   background: var(--bg-elev);
-  box-shadow: 8px 8px 0 var(--text-primary);
+  box-shadow: var(--clay-lg);
   overflow: hidden;
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
 `;
 
-export const BriefTopBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 3px solid var(--text-primary);
-  background: var(--bg-elev-2);
+export const Avatar = styled.div`
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--accent-grad);
+  box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.35);
 
-  span.dot {
-    width: 9px;
-    height: 9px;
+  span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    border: 1.5px solid var(--text-primary);
-    background: var(--bg-elev);
+    overflow: hidden;
+    background: var(--bg-page);
+  }
+`;
+
+export const ProfileName = styled.div`
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+`;
+
+export const ProfileRole = styled.div`
+  margin-top: -0.6rem;
+  font-size: 0.875rem;
+  color: var(--accent);
+  font-weight: 600;
+`;
+
+export const ProfileMeta = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+`;
+
+export const ProfileStats = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+`;
+
+export const ProfileStat = styled.div`
+  padding: 0.875rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--bg-elev-2);
+  box-shadow: var(--clay-xs);
+
+  strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 800;
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  span.title {
-    margin-left: 0.5rem;
-    font-size: 0.75rem;
+  span {
+    font-size: 0.6875rem;
     color: var(--text-dim);
     letter-spacing: 0.04em;
   }
 `;
 
-export const BriefBody = styled.div`
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-`;
-
-export const BriefLabel = styled.div`
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-  font-weight: 600;
-`;
-
-export const BriefHeading = styled.div`
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-top: 0.35rem;
-`;
-
-export const BriefSteps = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`;
-
-export const BriefStep = styled.li<{ $state: 'done' | 'active' | 'todo' }>`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 0.9rem;
-  border-radius: 0.75rem;
-  border: 2px solid var(--text-primary);
-  background: ${({ $state }) => ($state === 'active' ? 'var(--accent-a15)' : 'var(--bg-elev)')};
-  color: ${({ $state }) => ($state === 'todo' ? 'var(--text-dim)' : 'var(--text-primary)')};
-  font-size: 0.875rem;
-`;
-
-export const StepIcon = styled.span<{ $state: 'done' | 'active' | 'todo' }>`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: ${({ $state }) => ($state === 'done' ? 'var(--accent)' : 'var(--bg-elev)')};
-  border: 2px solid var(--text-primary);
-  color: var(--on-accent);
-
-  &::after {
-    content: '';
-    display: ${({ $state }) => ($state === 'active' ? 'block' : 'none')};
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-`;
-
-export const BriefFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export const ProfileCompanies = styled.div`
+  width: 100%;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
   font-size: 0.75rem;
   color: var(--text-dim);
 
   strong {
-    color: var(--accent-2);
+    color: var(--text-primary);
     font-weight: 600;
+  }
+`;
+
+export const SocialLinks = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const SocialLink = styled.a`
+  width: 48px;
+  height: 48px;
+  border-radius: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elev);
+  color: var(--text-primary);
+  box-shadow: var(--clay-sm);
+  transition: color 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    color: var(--accent);
+    box-shadow: var(--clay-md);
   }
 `;
 
@@ -314,9 +318,8 @@ export const AITeaserWrapper = styled(motion.div)`
 export const AIInputBorder = styled.div<{ $focused: boolean }>`
   padding: 0;
   border-radius: 999px;
-  border: 3px solid var(--text-primary);
   background: var(--bg-elev);
-  box-shadow: ${({ $focused }) => ($focused ? '5px 5px 0 var(--text-primary)' : '3px 3px 0 var(--text-primary)')};
+  box-shadow: ${({ $focused }) => ($focused ? 'var(--clay-inset)' : 'var(--clay-sm)')};
   transition: box-shadow 0.2s;
   width: 520px;
   max-width: 100%;
@@ -352,7 +355,6 @@ export const AISubmitButton = styled.button`
   height: 38px;
   border-radius: 50%;
   background: var(--bg-elev);
-  border: 2px solid var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -363,7 +365,7 @@ export const AISubmitButton = styled.button`
   svg { width: 17px; height: 17px; }
 
   &:hover:not(:disabled) {
-    background: var(--accent);
+    background: var(--accent-grad);
     color: var(--on-accent);
     transform: scale(1.08);
   }

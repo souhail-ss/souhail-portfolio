@@ -51,7 +51,7 @@ export const projects: Project[] = [
     description: "Application full-stack de gestion de notes personnelles. Backend NestJS avec API REST, frontend React moderne. PostgreSQL en production, SQLite pour le développement local.",
     fullDescription: "Application full-stack de gestion de notes personnelles avec une architecture propre et bien structurée. Le backend NestJS expose une API REST complète avec authentification JWT, tandis que le frontend React offre une interface moderne et réactive. La base de données est PostgreSQL en production et SQLite en développement local pour faciliter l'onboarding des développeurs.",
     tech: ['NestJS', 'React', 'TypeScript', 'PostgreSQL', 'SQLite'],
-    github: 'https://github.com/souhail-ss',
+    github: 'https://github.com/souhail-ss/notes-app',
     live: '',
     highlights: [
       "API REST complète avec NestJS et authentification JWT",

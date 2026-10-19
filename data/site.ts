@@ -1,6 +1,6 @@
 import { database } from './portfolio.data';
 
-const { profile, services, process: processSteps } = database;
+const { profile } = database;
 
 /**
  * Single source of truth for client-facing content and contact/CTA links.
@@ -21,10 +21,11 @@ export const site = {
   bookingUrl: '' as string,
 };
 
-const subject = encodeURIComponent('Projet — prise de contact depuis votre portfolio');
+const subject = encodeURIComponent('Prise de contact depuis votre portfolio');
 
 /** Main call-to-action target: booking page if configured, otherwise a pre-filled email. */
 export const ctaHref = site.bookingUrl || `mailto:${site.email}?subject=${subject}`;
 export const ctaIsExternal = Boolean(site.bookingUrl);
 
-export { services, processSteps };
+/** AI chat assistant (widget, modal, hero input and /api/chat). Set to true to re-enable. */
+export const chatEnabled = false;
